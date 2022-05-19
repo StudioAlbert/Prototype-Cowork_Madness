@@ -1,0 +1,3 @@
+[submodule "CoworkMadness/Assets/Scripts/_Engine"]
+	path = CoworkMadness/Assets/Scripts/_Engine
+	url = https://github.com/StudioAlbert/BehaviourTree.git
