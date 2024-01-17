@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/06%20-%20UI/CommonStyle.uss?fileID=7433441132597879392&amp;guid=8a9f88da6d9d6e54a867c80d5c171d40&amp;type=3#CommonStyle" />
+    <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: column;">
+        <ui:VisualElement name="Bottom" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; height: 25px; flex-basis: auto; justify-content: flex-start;">
+            <ui:Foldout text="Placers" name="Placement" style="justify-content: flex-start; align-items: flex-start; border-bottom-color: rgb(0, 0, 0); border-bottom-width: 1px;">
+                <ui:VisualElement name="FloorContainer" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; align-self: auto; align-items: center; justify-content: flex-start; padding-left: 15px; padding-right: 15px; padding-top: 15px; padding-bottom: 15px;">
+                    <ui:VisualElement name="Status" style="flex-grow: 1; background-color: rgb(70, 69, 69); width: 10px; height: 10px; align-self: auto; justify-content: flex-start; align-items: auto;" />
+                    <ui:Button text="Floor" display-tooltip-when-elided="true" name="Button" class="button-item" style="white-space: nowrap; flex-grow: initial; flex-shrink: initial; border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; height: 15px; background-color: rgb(94, 94, 94); font-size: 11px; border-left-color: rgb(99, 161, 83); border-right-color: rgb(99, 161, 83); border-top-color: rgb(99, 161, 83); border-bottom-color: rgb(99, 161, 83);" />
+                </ui:VisualElement>
+            </ui:Foldout>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
