@@ -2,7 +2,7 @@
 using GOAPCore;
 using UnityEngine;
 
-namespace GOAPActions
+namespace GOAPCore
 {
     public class Action_UseMachine: GAction
     {
