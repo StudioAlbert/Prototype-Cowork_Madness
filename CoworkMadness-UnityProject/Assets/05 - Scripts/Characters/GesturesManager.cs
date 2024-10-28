@@ -47,22 +47,25 @@ public class GesturesManager : MonoBehaviour
     #region SALUTE
     public void Salute()
     {
+        // Stop playing gestures
         StopCoroutine(_playGestureCo);
-        _animator.ResetTrigger("Salute");
-        _animator.SetTrigger("Salute");
+        // Trigger Salute
+        _animator.ResetTrigger(AnimatorHandles.Salute);
+        _animator.SetTrigger(AnimatorHandles.Salute);
         // pick a different salute
         _saluteIndex = Random.Range(0, 4);
-        _animator.SetInteger("SalutePosture", _saluteIndex);
+        _animator.SetInteger(AnimatorHandles.SalutePosture, _saluteIndex);
         
         
     }
     void OnSaluteEnd()
     {
+        // TODO : Delete events in FBX Clips, without this function will happent a warning
         Debug.Log("Salute End");
-        _animator.ResetTrigger("Salute");
     }
     void OnSaluteBegin()
     {
+        // TODO : Delete events in FBX Clips, without this function will happent a warning
         Debug.Log("Salute Begin");
     }
     
@@ -90,10 +93,10 @@ public class GesturesManager : MonoBehaviour
             //_animator.ResetTrigger("NewGesture");
             yield return new WaitForSeconds(Random.Range(_minTempo, _maxTempo));
             //_animator.SetInteger("GestureIndex", Random.Range(0,11));
-            _animator.SetFloat("GestureWeight", Random.Range(0f, 1f));
-            _animator.SetTrigger("NewGesture");
+            _animator.SetFloat(AnimatorHandles.GestureWeight, Random.Range(0f, 1f));
+            _animator.SetTrigger(AnimatorHandles.NewGesture);
             yield return new WaitForEndOfFrame();
-            _animator.ResetTrigger("NewGesture");
+            _animator.ResetTrigger(AnimatorHandles.NewGesture);
 
             _gestureIndex++;
             if (_gestureIndex > 11)

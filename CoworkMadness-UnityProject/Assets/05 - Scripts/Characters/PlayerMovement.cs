@@ -6,8 +6,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _fwdSpeed = 1.0f;
     [SerializeField] private float _rotationSpeed = 25.0f;
     
+    // Components
     private PlayerInputController _inputController;
     private CharacterController _characterController;
+    [SerializeField] private Animator _animator;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
             _characterController.SimpleMove(transform.forward * (_inputController.Movement * _fwdSpeed * Time.deltaTime));
             _characterController.transform.Rotate(Vector3.up, _inputController.Rotation * _rotationSpeed * Time.deltaTime);
         }
+        
+        _animator.SetFloat(AnimatorHandles.WalkSpeed, _characterController.velocity.magnitude);
             
     }
 }
