@@ -10,14 +10,13 @@ public class GesturesManager : MonoBehaviour
     [SerializeField] PlayerInputController _inputController;
 
     [SerializeField] private Animator _animator;
-    [SerializeField] [Range(0, 11)] private int _gestureIndex = 0;
     [SerializeField] [Range(0, 3)] private int _saluteIndex = 0;
     [SerializeField] private bool _isChating;
 
     [SerializeField] private float _minTempo = 0.4f;
     [SerializeField] private float _maxTempo = 0.7f;
 
-    private Coroutine _playGestureCo;
+    private Coroutine _playGestureCo = null;
 
     //private bool _saluteLock = false;
 
@@ -48,15 +47,14 @@ public class GesturesManager : MonoBehaviour
     public void Salute()
     {
         // Stop playing gestures
-        StopCoroutine(_playGestureCo);
+        StopPlayGesture();
         // Trigger Salute
-        _animator.ResetTrigger(AnimatorHandles.Salute);
-        _animator.SetTrigger(AnimatorHandles.Salute);
         // pick a different salute
         _saluteIndex = Random.Range(0, 4);
         _animator.SetInteger(AnimatorHandles.SalutePosture, _saluteIndex);
-        
-        
+        _animator.SetTrigger(AnimatorHandles.Salute);
+        _animator.ResetTrigger(AnimatorHandles.Salute);
+
     }
     void OnSaluteEnd()
     {
@@ -73,17 +71,24 @@ public class GesturesManager : MonoBehaviour
 
     #region GESTURES
 
-    private void StartPlayGesture()
-    {
-        StopPlayGesture();
-    }
-
-    private void StopPlayGesture()
+    private const int MaxGestures = 3;
+    
+    public void StartPlayGesture()
     {
         if (_playGestureCo == null)
         {
             _playGestureCo = StartCoroutine(PlayGesture());
         }
+    }
+
+    public void StopPlayGesture()
+    {
+        if (_playGestureCo != null)
+        {
+            StopCoroutine(_playGestureCo);
+            _playGestureCo = null;
+        }
+            
     }
 
     private IEnumerator PlayGesture()
@@ -97,10 +102,6 @@ public class GesturesManager : MonoBehaviour
             _animator.SetTrigger(AnimatorHandles.NewGesture);
             yield return new WaitForEndOfFrame();
             _animator.ResetTrigger(AnimatorHandles.NewGesture);
-
-            _gestureIndex++;
-            if (_gestureIndex > 11)
-                _gestureIndex = 0;
 
         }
     }

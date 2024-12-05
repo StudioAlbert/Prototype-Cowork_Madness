@@ -22,7 +22,7 @@ public class PlayerInputController : MonoBehaviour
     }
     private void OnSalute(InputValue value)
     {
-        _salute = value.isPressed;
+        _salute = !value.isPressed;
     }
     
 }

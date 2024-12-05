@@ -25,11 +25,11 @@
                 },
                 {
                     "name": "Salute",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "4c75912d-4895-4ab8-b06b-f8d565dae456",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press(behavior=2)",
                     "initialStateCheck": true
                 }
             ],
