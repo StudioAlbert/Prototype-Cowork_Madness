@@ -17,55 +17,60 @@ public class GesturesManager : MonoBehaviour
     [SerializeField] private float _maxTempo = 0.7f;
 
     private Coroutine _playGestureCo = null;
-
-    //private bool _saluteLock = false;
-
-    private void Start()
-    {
-        
-    }
+    private bool _saluteLock = false;
 
     void OnEnable()
     {
+        _inputController.SaluteUp += StartSalute;
+        _inputController.SaluteDown += StopSalute;
         StartPlayGesture();
     }
     private void OnDisable()
     {
+        _inputController.SaluteUp -= StartSalute;
+        _inputController.SaluteDown -= StopSalute;
         StopPlayGesture();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(_inputController.Salute)
-        {
-            Salute();
-        }        
+        Debug.Log("Trigger state : " + _animator.GetBool(AnimatorHandles.Salute));
     }
 
     #region SALUTE
-    public void Salute()
+    public void StartSalute()
     {
-        // Stop playing gestures
+        Debug.Log("Salute Action");
+        
+        // Stop playing gestures -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
         StopPlayGesture();
-        // Trigger Salute
-        // pick a different salute
-        _saluteIndex = Random.Range(0, 4);
-        _animator.SetInteger(AnimatorHandles.SalutePosture, _saluteIndex);
-        _animator.SetTrigger(AnimatorHandles.Salute);
-        _animator.ResetTrigger(AnimatorHandles.Salute);
-
+        
+        if(!_saluteLock)
+        {
+            // pick a different salute
+            _saluteIndex = Random.Range(0, 4);
+            _animator.SetInteger(AnimatorHandles.SalutePosture, _saluteIndex);
+            _animator.SetTrigger(AnimatorHandles.Salute);
+        }
     }
-    void OnSaluteEnd()
+    public void StopSalute()
     {
-        // TODO : Delete events in FBX Clips, without this function will happent a warning
-        Debug.Log("Salute End");
+        //_animator.ResetTrigger(AnimatorHandles.Salute);
     }
     void OnSaluteBegin()
     {
         // TODO : Delete events in FBX Clips, without this function will happent a warning
         Debug.Log("Salute Begin");
+        _saluteLock = true;
     }
+    void OnSaluteEnd()
+    {
+        // TODO : Delete events in FBX Clips, without this function will happent a warning
+        Debug.Log("Salute End");
+        _saluteLock = false;
+    }
+
     
     #endregion
 

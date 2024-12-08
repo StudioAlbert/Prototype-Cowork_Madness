@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class PlayerInputController : MonoBehaviour
@@ -11,6 +12,8 @@ public class PlayerInputController : MonoBehaviour
     
     private bool _salute;
     public bool Salute => _salute;
+    public UnityAction SaluteUp;
+    public UnityAction SaluteDown;
 
     private void OnTurn(InputValue value)
     {
@@ -22,7 +25,18 @@ public class PlayerInputController : MonoBehaviour
     }
     private void OnSalute(InputValue value)
     {
-        _salute = !value.isPressed;
+        bool isPressed = value.isPressed;
+        
+        if (_salute != isPressed)
+        {
+            if (isPressed)
+                SaluteDown?.Invoke();
+            else
+                SaluteUp?.Invoke();
+        }
+        
+        _salute = isPressed;
+        
     }
     
 }
