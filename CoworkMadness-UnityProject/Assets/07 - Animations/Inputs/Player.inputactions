@@ -18,7 +18,7 @@
                     "name": "Walk",
                     "type": "Value",
                     "id": "7b1a711f-f2e2-4b78-9a9a-1933d4808a62",
-                    "expectedControlType": "Axis",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -81,7 +81,7 @@
                 {
                     "name": "",
                     "id": "f9c7af3c-bed6-4ff5-bb43-339c3e7af599",
-                    "path": "<Gamepad>/leftStick/y",
+                    "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -90,9 +90,9 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "1D Axis",
+                    "name": "2D Vector",
                     "id": "0b8d8ebd-8c29-4576-84e7-217926ddaee0",
-                    "path": "1DAxis",
+                    "path": "2DVector",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -101,7 +101,7 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "negative",
+                    "name": "Up",
                     "id": "465686fb-50a8-4389-9113-f4821cc1bf91",
                     "path": "<Keyboard>/downArrow",
                     "interactions": "",
@@ -112,9 +112,31 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "positive",
+                    "name": "Down",
                     "id": "67a789d7-0377-440f-b65b-d208a56737ac",
                     "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Walk",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Left",
+                    "id": "b4ba57c5-5a97-4a5d-a4ee-5046aa76e86e",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Walk",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Right",
+                    "id": "75ac249e-3dc6-4c01-9ff7-f72396821875",
+                    "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
