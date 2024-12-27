@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4967308275308124011}
   - component: {fileID: 484649462664391638}
-  - component: {fileID: 5390508429470338509}
   - component: {fileID: 699481652237413216}
   - component: {fileID: 7856018953714105749}
   m_Layer: 0
@@ -90,31 +89,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!143 &5390508429470338509
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5632009866109901668}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 1.81
-  m_Radius: 0.48
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!114 &699481652237413216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,7 +114,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fwdSpeed: 1
-  _rotationSpeed: 25
+  _rotationSpeed: 70.2
+  _turnBackTime: 0.3
+  _moveRoot: {fileID: 2475829814250305447}
   _animator: {fileID: 2529003090066322119}
 --- !u!1001 &5212942932702855985
 PrefabInstance:
@@ -198,11 +174,52 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossMale01
       objectReference: {fileID: 0}
+    - target: {fileID: 7728393646389047798, guid: d127ad1a56924cf47a32dbbed348588a, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7780575386349647874, guid: d127ad1a56924cf47a32dbbed348588a, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7644450738984230376, guid: d127ad1a56924cf47a32dbbed348588a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 957496442636301998}
   m_SourcePrefab: {fileID: 100100000, guid: d127ad1a56924cf47a32dbbed348588a, type: 3}
+--- !u!1 &2472085369139732185 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7644450738984230376, guid: d127ad1a56924cf47a32dbbed348588a, type: 3}
+  m_PrefabInstance: {fileID: 5212942932702855985}
+  m_PrefabAsset: {fileID: 0}
+--- !u!143 &957496442636301998
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2472085369139732185}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.81
+  m_Radius: 0.48
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!4 &2475829814250305447 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7639228545970402454, guid: d127ad1a56924cf47a32dbbed348588a, type: 3}
