@@ -4088,6 +4088,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2529003090066322119, guid: 1104dfc12af0a9846bbebe14ff6f8890, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4967308275308124011, guid: 1104dfc12af0a9846bbebe14ff6f8890, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.34
@@ -4132,6 +4136,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7856018953714105749, guid: 1104dfc12af0a9846bbebe14ff6f8890, type: 3}
+      propertyPath: RotationSmoothTime
+      value: 0.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 7856018953714105749, guid: 1104dfc12af0a9846bbebe14ff6f8890, type: 3}
+      propertyPath: _characterController
+      value: 
+      objectReference: {fileID: 1029653897}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7234,7 +7246,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.01
+  near clip plane: -2
   far clip plane: 1000
   field of view: 60
   orthographic: 1
@@ -7611,6 +7623,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4169780530555398, guid: 94179664ac141d742b2bebeeb5e09184, type: 3}
   m_PrefabInstance: {fileID: 1006127323}
+  m_PrefabAsset: {fileID: 0}
+--- !u!143 &1029653897 stripped
+CharacterController:
+  m_CorrespondingSourceObject: {fileID: 957496442636301998, guid: 1104dfc12af0a9846bbebe14ff6f8890, type: 3}
+  m_PrefabInstance: {fileID: 533990556}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1029653899 stripped
 Transform:
@@ -9917,7 +9934,7 @@ MonoBehaviour:
   Lens:
     FieldOfView: 60
     OrthographicSize: 3.37
-    NearClipPlane: 0.01
+    NearClipPlane: -2
     FarClipPlane: 1000
     Dutch: 0
     ModeOverride: 0

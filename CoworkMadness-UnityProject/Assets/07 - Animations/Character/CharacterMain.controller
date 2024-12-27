@@ -571,7 +571,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 3
     m_ConditionEvent: WalkSpeed
-    m_EventTreshold: 0.1
+    m_EventTreshold: 0.01
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -4956309194059619783}
   m_Solo: 0
@@ -753,7 +753,7 @@ AnimatorController:
   - serializedVersion: 5
     m_Name: Salute
     m_StateMachine: {fileID: 6719600856622997518}
-    m_Mask: {fileID: 31900000, guid: 12aef9974ea1ae841941620cbdf3d8f7, type: 2}
+    m_Mask: {fileID: 0}
     m_Motions: []
     m_Behaviours: []
     m_BlendingMode: 1
@@ -1053,7 +1053,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 3725277462207662099}
-    m_Position: {x: 330, y: 110, z: 0}
+    m_Position: {x: 330, y: 120, z: 0}
   m_ChildStateMachines:
   - serializedVersion: 1
     m_StateMachine: {fileID: -6363885220569424139}
@@ -1182,7 +1182,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 4
     m_ConditionEvent: WalkSpeed
-    m_EventTreshold: 0.1
+    m_EventTreshold: 0.01
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8000015126301051707}
   m_Solo: 0
