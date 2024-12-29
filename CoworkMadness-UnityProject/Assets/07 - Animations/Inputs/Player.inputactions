@@ -147,7 +147,7 @@
                 {
                     "name": "",
                     "id": "31d24053-6dea-41f9-b5e7-d450508e8881",
-                    "path": "<Gamepad>/rightShoulder",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -163,6 +163,54 @@
                     "processors": "",
                     "groups": "",
                     "action": "Salute",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Camera",
+            "id": "a3379fac-8ae2-44fe-a891-77ea4282ffaf",
+            "actions": [
+                {
+                    "name": "PivotRight",
+                    "type": "Button",
+                    "id": "e3582373-5887-4ef5-bdc5-4e2a59050d24",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press(behavior=2)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PivotLeft",
+                    "type": "Button",
+                    "id": "a7e1a416-8ee3-4b65-ab14-29ae44477c84",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press(behavior=2)",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7d019740-5e70-4efd-9918-d0dca27cc166",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PivotRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "161fda75-5995-4785-bbad-9006006d4b72",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PivotLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

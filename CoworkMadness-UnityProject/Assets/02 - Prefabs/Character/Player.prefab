@@ -113,11 +113,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a651afd9b94df479bcfa23eccb486f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fwdSpeed: 1
+  _fwdSpeed: 2.37
   _rotationSpeed: 70.2
+  RotationSmoothTime: 0.23
   _turnBackTime: 0.3
   _moveRoot: {fileID: 2475829814250305447}
   _animator: {fileID: 2529003090066322119}
+  _characterController: {fileID: 957496442636301998}
 --- !u!1001 &5212942932702855985
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -176,7 +178,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7728393646389047798, guid: d127ad1a56924cf47a32dbbed348588a, type: 3}
       propertyPath: m_ApplyRootMotion
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7780575386349647874, guid: d127ad1a56924cf47a32dbbed348588a, type: 3}
       propertyPath: m_DynamicOccludee

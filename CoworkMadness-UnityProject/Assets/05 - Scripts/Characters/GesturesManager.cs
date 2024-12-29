@@ -35,7 +35,7 @@ public class GesturesManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Trigger state : " + _animator.GetBool(AnimatorHandles.Salute));
+        // Debug.Log("Trigger state : " + _animator.GetBool(AnimatorHandles.Salute));
     }
 
     #region SALUTE
