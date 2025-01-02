@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &7643547048098567864
+--- !u!1001 &7900926611549680505
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,11 +10,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1652544263031632, guid: 667648fed638e664891f2956d621847f, type: 3}
       propertyPath: m_Name
-      value: BusinessMale01
+      value: NPC_DevelopperMale01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4556681443485572, guid: 667648fed638e664891f2956d621847f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.0000021
+      objectReference: {fileID: 0}
+    - target: {fileID: 4556681443485572, guid: 667648fed638e664891f2956d621847f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 7.1353765
       objectReference: {fileID: 0}
     - target: {fileID: 4688765892190766, guid: 667648fed638e664891f2956d621847f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.0000011
       objectReference: {fileID: 0}
     - target: {fileID: 4688765892190766, guid: 667648fed638e664891f2956d621847f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -22,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4688765892190766, guid: 667648fed638e664891f2956d621847f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 2.0451255
       objectReference: {fileID: 0}
     - target: {fileID: 4688765892190766, guid: 667648fed638e664891f2956d621847f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -55,7 +63,7 @@ PrefabInstance:
     - target: {fileID: 137779373425176250, guid: 667648fed638e664891f2956d621847f, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 4300032, guid: 318840a7e38980943bb4c508fa842265, type: 3}
+      objectReference: {fileID: 4300022, guid: 318840a7e38980943bb4c508fa842265, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -977,6 +977,7 @@ SkinnedMeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1232,8 +1233,9 @@ GameObject:
   - component: {fileID: 4688765892190766}
   - component: {fileID: 95579000025458510}
   - component: {fileID: 2833825991826738823}
+  - component: {fileID: 1326252105492447682}
   m_Layer: 0
-  m_Name: EmptyNPC
+  m_Name: NPC_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1290,10 +1292,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 047840dd987d471499828947617b9fd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inputController: {fileID: 0}
   _animator: {fileID: 95579000025458510}
-  _gestureIndex: 0
+  _saluteIndex: 0
+  _isChating: 0
   _minTempo: 0.4
   _maxTempo: 0.7
+--- !u!143 &1326252105492447682
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652544263031632}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &1661704491848366
 GameObject:
   m_ObjectHideFlags: 0
