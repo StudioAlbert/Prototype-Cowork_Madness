@@ -23,31 +23,23 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Pan Target : " + _panAxisAngle);
         _panTilt.PanAxis.Value = Mathf.SmoothDamp(_panTilt.PanAxis.Value, _panAxisAngle, ref _smoothVelocity, _panTime);
     }
 
     void OnPivotRight(InputValue value)
     {
-        Debug.Log("OnPivotRight : value=" + value.Get<float>() + " : isPressed=" + value.isPressed);
-
         if (!value.isPressed)
         {
             _panAxisAngle -= 90f;
         }
-
     }
 
     void OnPivotLeft(InputValue value)
     {
-        Debug.Log("OnPivotLeft : value=" + value.Get<float>() + " : isPressed=" + value.isPressed);
-
-        float pivotDirection = value.Get<float>();
         if (!value.isPressed)
         {
             _panAxisAngle += 90f;
         }
-
     }
 
 }
