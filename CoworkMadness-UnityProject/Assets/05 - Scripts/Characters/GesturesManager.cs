@@ -21,14 +21,20 @@ public class GesturesManager : MonoBehaviour
 
     void OnEnable()
     {
-        _inputController.SaluteUp += StartSalute;
-        _inputController.SaluteDown += StopSalute;
+        if (_inputController != null)
+        {
+            _inputController.SaluteUp += StartSalute;
+            _inputController.SaluteDown += StopSalute;
+        }
         StartPlayGesture();
     }
     private void OnDisable()
     {
-        _inputController.SaluteUp -= StartSalute;
-        _inputController.SaluteDown -= StopSalute;
+        if (_inputController != null)
+        {
+            _inputController.SaluteUp -= StartSalute;
+            _inputController.SaluteDown -= StopSalute;
+        }
         StopPlayGesture();
     }
 

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 33438072713512510}
   - component: {fileID: 23252166358838338}
   - component: {fileID: 65099494995407328}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Bld_Floor_Carpet_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

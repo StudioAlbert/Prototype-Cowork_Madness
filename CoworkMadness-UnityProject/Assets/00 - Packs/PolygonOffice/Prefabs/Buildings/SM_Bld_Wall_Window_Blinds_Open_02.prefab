@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 33260229463136474}
   - component: {fileID: 23136502786679970}
   - component: {fileID: 65980013008935738}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_Bld_Wall_Window_Blinds_Open_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}

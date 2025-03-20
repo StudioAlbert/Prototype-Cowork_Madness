@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 23705504554066490}
   - component: {fileID: 64942998087607278}
   - component: {fileID: 7540392067849225595}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Prop_Desk_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}

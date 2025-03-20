@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 33360948081744758}
   - component: {fileID: 23873195800557040}
   - component: {fileID: 64022496653015580}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Prop_CubicalWall_Pillar_Tall_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

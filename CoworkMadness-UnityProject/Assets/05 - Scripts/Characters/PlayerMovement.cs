@@ -54,12 +54,12 @@ public class PlayerMovement : MonoBehaviour
         // rotate to face input direction relative to camera position
         _moveRoot.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
 
-        if (inputMagnitude > 0.01)
-        {
-            // move the player
-            Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward * (_fwdSpeed * inputMagnitude);
-            _characterController.SimpleMove(targetDirection);
-        }
+        // if (inputMagnitude > 0.01)
+        // {
+        //     // move the player
+        //     Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward * (_fwdSpeed * inputMagnitude);
+        //     _characterController.SimpleMove(targetDirection);
+        // }
         _animator.SetFloat(AnimatorHandles.WalkSpeed, inputMagnitude);
     }
 }

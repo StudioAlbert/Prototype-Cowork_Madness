@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 33118649776133556}
   - component: {fileID: 23795526684835982}
   - component: {fileID: 64691268379834226}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Prop_CubicalWall_Tall_01_Half
   m_TagString: Untagged
   m_Icon: {fileID: 0}

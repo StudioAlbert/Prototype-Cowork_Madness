@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 33754387095306566}
   - component: {fileID: 23407489693612452}
   - component: {fileID: 64119733460246870}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Prop_Divider_Folding_01_Preset
   m_TagString: Untagged
   m_Icon: {fileID: 0}

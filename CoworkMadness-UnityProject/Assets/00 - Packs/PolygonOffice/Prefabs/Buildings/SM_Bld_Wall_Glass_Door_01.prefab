@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4209484027791232}
   - component: {fileID: 33615682475522616}
   - component: {fileID: 23312643930107616}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_Bld_Wall_Glass_Door_01_Glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 33279785088456078}
   - component: {fileID: 23444000007924648}
   - component: {fileID: 65936221951238910}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_Bld_Glass_Door_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 65155802676691948}
   - component: {fileID: 65023607611297460}
   - component: {fileID: 65649188047168610}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_Bld_Wall_Glass_Door_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,7 +360,7 @@ GameObject:
   - component: {fileID: 4396852027683316}
   - component: {fileID: 33957067044708832}
   - component: {fileID: 23743761155363822}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_Bld_Glass_Door_01_Glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}

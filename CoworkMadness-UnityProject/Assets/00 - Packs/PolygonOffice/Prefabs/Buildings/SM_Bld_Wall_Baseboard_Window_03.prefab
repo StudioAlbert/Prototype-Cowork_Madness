@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4789930387868008}
   - component: {fileID: 33871366600562200}
   - component: {fileID: 23136511937521142}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_Bld_Wall_Baseboard_Window_03_Glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 33087546291129758}
   - component: {fileID: 23886106897743458}
   - component: {fileID: 65182202747390584}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_Bld_Wall_Baseboard_Window_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}

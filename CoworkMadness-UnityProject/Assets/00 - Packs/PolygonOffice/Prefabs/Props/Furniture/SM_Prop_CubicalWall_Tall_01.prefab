@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 33157555055582604}
   - component: {fileID: 23547524238929964}
   - component: {fileID: 64615966645619370}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Prop_CubicalWall_Tall_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &4240427661990970
 Transform:
