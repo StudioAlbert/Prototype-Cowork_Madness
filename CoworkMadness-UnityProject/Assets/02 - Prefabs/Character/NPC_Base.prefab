@@ -1233,6 +1233,7 @@ GameObject:
   - component: {fileID: 4688765892190766}
   - component: {fileID: 95579000025458510}
   - component: {fileID: 2833825991826738823}
+  - component: {fileID: 1836757089774294555}
   - component: {fileID: 4384503548063055078}
   - component: {fileID: 4865036202285367438}
   - component: {fileID: 2286570228028743865}
@@ -1300,6 +1301,24 @@ MonoBehaviour:
   _isChating: 0
   _minTempo: 0.4
   _maxTempo: 0.7
+--- !u!114 &1836757089774294555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652544263031632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d591ab872aa44317ac160d233dc08a6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  desk: {fileID: 0}
+  coffeeMachine: {fileID: 0}
+  discussion: {fileID: 0}
+  workOverTime: 0
+  breakOverTime: 0
+  socialOverTime: 0
 --- !u!195 &4384503548063055078
 NavMeshAgent:
   m_ObjectHideFlags: 0

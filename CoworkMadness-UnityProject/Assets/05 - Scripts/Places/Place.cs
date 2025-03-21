@@ -1,5 +1,3 @@
-using System;
-using Places;
 using UnityEngine;
 
 public class Place : MonoBehaviour

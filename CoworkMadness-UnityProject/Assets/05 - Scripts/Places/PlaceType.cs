@@ -1,9 +1,6 @@
-﻿namespace Places
+﻿public enum PlaceType
 {
-    public enum PlaceType
-    {
-        Work,
-        Break,
-        Social
-    }
+    Work,
+    Break,
+    Social
 }

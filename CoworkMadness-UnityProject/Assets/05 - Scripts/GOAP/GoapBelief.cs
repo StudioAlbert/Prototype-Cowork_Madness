@@ -55,7 +55,7 @@ namespace GOAP
         private readonly GoapAgent _agent;
         private readonly Dictionary<string, GoapBelief> _beliefs;
 
-        GoapBeliefFactory(GoapAgent agent, Dictionary<string, GoapBelief> beliefs)
+        public GoapBeliefFactory(GoapAgent agent, Dictionary<string, GoapBelief> beliefs)
         {
             _agent = agent;
             _beliefs = beliefs;

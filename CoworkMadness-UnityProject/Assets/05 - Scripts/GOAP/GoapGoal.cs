@@ -1,7 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Data.SqlTypes;
-using Places;
-using UnityEditor;
 
 namespace GOAP
 {
@@ -22,27 +19,27 @@ namespace GOAP
 
             private readonly GoapGoal _goal;
             
-            Builder(string name)
+            public Builder(string name)
             {
                 _goal = new GoapGoal(name);
             }
 
-            Builder WithPriority(float priority)
+            public Builder WithPriority(float priority)
             {
                 _goal.Priority = priority;
                 return this;
             }
-            Builder WithType(PlaceType type)
+            public Builder WithType(PlaceType type)
             {
                 _goal.PlaceType = type;
                 return this;
             }
-            Builder AddDesiredEffect(GoapBelief effect)
+            public Builder WithDesiredEffect(GoapBelief effect)
             {
                 _goal.DesiredEfffects.Add(effect);
                 return this;
             }
-            GoapGoal Build()
+            public GoapGoal Build()
             {
                 return _goal;
             }

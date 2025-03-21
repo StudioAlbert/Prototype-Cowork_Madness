@@ -17,6 +17,9 @@ namespace GOAP
         private HashSet<GoapBelief> _preconditions = new();
         private HashSet<GoapBelief> _effects = new();
 
+        public HashSet<GoapBelief> Preconditions => _preconditions;
+        public HashSet<GoapBelief> Effects => _effects;
+
         private IActionStrategy _strategy;
         public bool Complete => _strategy.Complete;
         
