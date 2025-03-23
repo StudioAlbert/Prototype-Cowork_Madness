@@ -967,7 +967,7 @@ GameObject:
   m_Component:
   - component: {fileID: 108193941}
   m_Layer: 0
-  m_Name: ==== Chracters
+  m_Name: ==== Characters
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8046,6 +8046,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 165684435}
     - target: {fileID: 9207482175091700107, guid: 6c4d89e2dd385664b9835f934edda762, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9207482175091700107, guid: 6c4d89e2dd385664b9835f934edda762, type: 3}
       propertyPath: workOverTime
       value: -5
       objectReference: {fileID: 0}
@@ -8061,7 +8065,8 @@ PrefabInstance:
       propertyPath: socialOverTime
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7694252325357340995, guid: 6c4d89e2dd385664b9835f934edda762, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

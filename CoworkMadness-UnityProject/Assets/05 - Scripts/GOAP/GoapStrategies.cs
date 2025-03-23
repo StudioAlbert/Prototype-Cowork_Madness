@@ -1,4 +1,9 @@
-﻿namespace GOAP
+﻿using System;
+using Unity.VisualScripting.Dependencies.NCalc;
+using UnityEngine;
+using UnityEngine.AI;
+
+namespace GOAP
 {
     public interface IActionStrategy
     { 
@@ -7,7 +12,10 @@
 
         void Start();
         void Stop();
-        void Update(float deltaTime);
+        void Update(float deltaTime)
+        {
+            // not mandatory for every implementations
+        }
     }
 
     public class IdleStrategy : IActionStrategy
@@ -27,6 +35,23 @@
             _timer.OnTimerStart += () => Complete = false;
             _timer.OnTimerStop += () => Complete = true;
         }
+    }
+    
+    public class MoveStrategy : IActionStrategy {
+        readonly NavMeshAgent agent;
+        readonly Func<Vector3> destination;
+    
+        public bool CanPerform => !Complete;
+        public bool Complete => agent.remainingDistance <= 2f && !agent.pathPending;
+    
+        public MoveStrategy(NavMeshAgent agent, Func<Vector3> destination) {
+            this.agent = agent;
+            this.destination = destination;
+        }      
+    
+        public void Start() => agent.SetDestination(destination());
+        public void Stop() => agent.ResetPath();
+        
     }
 }
 

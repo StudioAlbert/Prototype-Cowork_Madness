@@ -69,6 +69,11 @@ namespace GOAP
                 .WithCondition(condition)
                 .Build());
         }
+        public void AddLocationBelief(string key, float distance, Transform location)
+        {
+            AddLocationBelief(key, distance, location.position);
+        }
+        
         public void AddLocationBelief(string key, float distance, Vector3 location)
         {
             _beliefs.Add(key, new GoapBelief.Builder(key)

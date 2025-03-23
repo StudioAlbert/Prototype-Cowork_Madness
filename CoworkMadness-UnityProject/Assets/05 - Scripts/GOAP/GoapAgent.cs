@@ -18,6 +18,7 @@ namespace GOAP
         [Header("Places")]
         [SerializeField] private Transform desk;
         [SerializeField] private Transform coffeeMachine;
+        [SerializeField] private Transform terrace;
         [SerializeField] private Transform discussion;
 
         // TODO Mood manager => updates the priority according to goal types
@@ -113,8 +114,13 @@ namespace GOAP
             GoapBeliefFactory bFactory = new GoapBeliefFactory(this, _beliefs);
 
             bFactory.AddBelief("Nothing", () => false);
+            bFactory.AddBelief("HadABreak", () => false);
             bFactory.AddBelief("AgentIdle", () => !_navMesh.hasPath);
             bFactory.AddBelief("AgentMoving", () => _navMesh.hasPath);
+            
+            bFactory.AddLocationBelief("HaveACoffee", 0.5f, coffeeMachine);
+            bFactory.AddLocationBelief("AtTheTerrace", 0.5f, terrace);
+            
         }
 
         private void SetupActions()
@@ -125,6 +131,22 @@ namespace GOAP
                 .WithStrategy(new IdleStrategy(5))
                 .AddEffect(_beliefs["Nothing"])
                 .Build());
+            
+            _actions.Add(new GoapAction.Builder("GetACoffee")
+                .WithStrategy(new MoveStrategy(_navMesh, () => coffeeMachine.position))
+                .AddEffect(_beliefs["HaveACoffee"])
+                .Build());
+            _actions.Add(new GoapAction.Builder("GoToTheTerrace")
+                .WithStrategy(new MoveStrategy(_navMesh, () => terrace.position))
+                .AddEffect(_beliefs["AtTheTerrace"])
+                .AddPrecondition(_beliefs["HaveACoffee"])
+                .Build());
+            _actions.Add(new GoapAction.Builder("DrinkCoffee")
+                .WithStrategy(new IdleStrategy(6))
+                .AddPrecondition(_beliefs["AtTheTerrace"])
+                .AddEffect(_beliefs["HadABreak"])
+                .Build());
+            
         }
         void SetupGoals()
         {
@@ -135,6 +157,13 @@ namespace GOAP
                 .WithType(PlaceType.Social)
                 .WithDesiredEffect(_beliefs["Nothing"])
                 .Build());
+            
+            _goals.Add(new GoapGoal.Builder("HaveABreak")
+                .WithPriority(1)
+                .WithType(PlaceType.Social)
+                .WithDesiredEffect(_beliefs["HadABreak"])
+                .Build());
+            
         }
         void GetAPlan()
         {
