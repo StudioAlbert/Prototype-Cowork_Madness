@@ -56,6 +56,7 @@ namespace GOAP
         private void Start()
         {
             SetupBeliefs();
+            SetupActions();
             SetupGoals();
         }
 
@@ -70,38 +71,40 @@ namespace GOAP
 
                 if (_actionPlan != null && _actionPlan.Actions.Count > 0)
                 {
+
                     _navMesh.ResetPath();
                     _currentGoal = _actionPlan.Goal;
+                    Debug.Log($"GOAL: {_currentGoal.Name} with {_actionPlan.Actions.Count} actions planned.");
+                    
                     _currentAction = _actionPlan.Actions.Pop();
                     _currentAction.Start();
-                    Debug.Log($"GOAL: {_currentGoal.Name} with {_actionPlan.Actions.Count} actions plammed.");
                     Debug.Log($"Popped action: {_currentAction.Name}");
                 }
             }
-            
-            
+
+
             // Exexcute current action
             if (_actionPlan != null && _currentAction != null)
             {
                 _currentAction.Update(Time.deltaTime);
-                    
-                    if(_currentAction.Complete)
+
+                if (_currentAction.Complete)
+                {
+                    Debug.Log($"Current Action {_currentAction.Name} Complete !");
+                    _currentAction.Stop();
+                    _currentAction = null;
+
+                    // end of the plan
+                    if (_actionPlan.Actions.Count == 0)
                     {
-                        Debug.Log("Currennt Action Complete !");
-                        _currentAction.Stop();
-                        _currentAction = null;
-                        
-                        // end of the plan
-                        if (_actionPlan.Actions.Count == 0)
-                        {
-                            Debug.Log("Plan complete");
-                            _lastGoal = _currentGoal;
-                            _currentGoal = null;
-                        }
+                        Debug.Log($"Plan complete for {_currentGoal.Name}");
+                        _lastGoal = _currentGoal;
+                        _currentGoal = null;
                     }
+                }
             }
-            
-            
+
+
         }
 
         private void SetupBeliefs()
@@ -112,6 +115,16 @@ namespace GOAP
             bFactory.AddBelief("Nothing", () => false);
             bFactory.AddBelief("AgentIdle", () => !_navMesh.hasPath);
             bFactory.AddBelief("AgentMoving", () => _navMesh.hasPath);
+        }
+
+        private void SetupActions()
+        {
+            _actions = new HashSet<GoapAction>();
+
+            _actions.Add(new GoapAction.Builder("Relax")
+                .WithStrategy(new IdleStrategy(5))
+                .AddEffect(_beliefs["Nothing"])
+                .Build());
         }
         void SetupGoals()
         {
@@ -136,9 +149,7 @@ namespace GOAP
 
             var potentialPlan = _planner.Plan(this, goalsToCheck, _lastGoal);
             if (potentialPlan != null)
-            {
                 _actionPlan = potentialPlan;
-            }
 
         }
 

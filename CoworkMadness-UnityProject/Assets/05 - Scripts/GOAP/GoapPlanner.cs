@@ -17,14 +17,28 @@ namespace GOAP
 
         public GoapPlan Plan(GoapAgent agent, HashSet<GoapGoal> goals, GoapGoal mostRecentGoal)
         {
-            // Orderd goals by priority,
+            // ==
+            if (agent.Actions == null || agent.Actions.Count == 0)
+            {
+                Debug.LogWarning($"{agent.name} No action available... No plan..");
+                return null;
+            }
+            
+            // ==
+            if (goals == null || goals.Count == 0)
+            {
+                Debug.LogWarning($"{agent.name} No goal available... No plan...");
+                return null;
+            }
+            
+            // Ordered goals by priority,
             // But the last goal is not executed every time
             List<GoapGoal> orderedGoals = goals
                 .Where(g => g.DesiredEfffects.Any(b => !b.Evaluate()))
                 .OrderByDescending(g => g == mostRecentGoal ? g.Priority - 0.1 : g.Priority)
                 .ToList();
 
-            // TRy every Goal
+            // Try every Goal
             foreach (GoapGoal goal in orderedGoals)
             {
                 Node goalNode = new Node(null, null, goal.DesiredEfffects, 0);
@@ -39,7 +53,7 @@ namespace GOAP
                     {
                         var cheapestChild = goalNode.Children.OrderBy(c => c.Cost).First();
                         goalNode = cheapestChild;
-                        actionsOfThePlan.Push(goalNode.Action);
+                        actionsOfThePlan.Push(cheapestChild.Action);
                     }
 
                     return new GoapPlan(goal, actionsOfThePlan, goalNode.Cost);
@@ -47,14 +61,16 @@ namespace GOAP
                 
             }
             
-            Debug.LogWarning("No Plan Found for any Gaol");
+            Debug.LogWarning("No Plan Found for any Goal");
             return null;
             
         }
         
         private bool FindActionsPath(Node parentNode, HashSet<GoapAction> actions)
         {
-            foreach (GoapAction action in actions)
+            var orderedActions = actions.OrderBy(a => a.Cost);
+            
+            foreach (GoapAction action in orderedActions)
             {
                 var requiredEffects = parentNode.RequiredEffects;
                 requiredEffects.RemoveWhere(b => b.Evaluate());
@@ -75,10 +91,11 @@ namespace GOAP
                     newAvailableActions.Remove(action);
 
                     var newNode = new Node(parentNode, action, newRequiredEffect, parentNode.Cost + action.Cost);
-
+                    parentNode.Children.Add(newNode);
+                    
                     if (FindActionsPath(newNode, newAvailableActions))
                     {
-                        parentNode.Children.Add(newNode);
+                        //parentNode.Children.Add(newNode);
                         newRequiredEffect.ExceptWith(newNode.Action.Preconditions);
                     }
 
@@ -98,7 +115,7 @@ namespace GOAP
     {
         
         public Node Parent { get; }
-        public GoapAction Action { get; }
+        public GoapAction Action { get; set; }
         public HashSet<GoapBelief> RequiredEffects { get; }
         public List<Node> Children { get; }
         public float Cost { get; }
@@ -107,7 +124,8 @@ namespace GOAP
         {
             Parent = parent;
             Action = action;
-            RequiredEffects = requiredEffects;
+            RequiredEffects = new HashSet<GoapBelief>(requiredEffects);
+            Children = new List<Node>();
             Cost = cost;
         }
         public bool IsLeafDead => Children.Count == 0 && Action == null;
