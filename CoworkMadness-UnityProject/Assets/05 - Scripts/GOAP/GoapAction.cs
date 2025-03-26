@@ -22,6 +22,7 @@ namespace GOAP
 
         private IActionStrategy _strategy;
         public bool Complete => _strategy.Complete;
+        public float Progress => _strategy.Progress;
         
         // Copy cat the strategy, Start, Update, stop
         public void Start() => _strategy.Start();

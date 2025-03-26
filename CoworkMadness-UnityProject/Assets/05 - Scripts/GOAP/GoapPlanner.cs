@@ -34,14 +34,14 @@ namespace GOAP
             // Ordered goals by priority,
             // But the last goal is not executed every time
             List<GoapGoal> orderedGoals = goals
-                .Where(g => g.DesiredEfffects.Any(b => !b.Evaluate()))
-                .OrderByDescending(g => g == mostRecentGoal ? g.Priority - 0.1 : g.Priority)
+                .Where(g => g.DesiredEffects.Any(b => !b.Evaluate()))
+                .OrderByDescending(g => g == mostRecentGoal ? g.Priority - 0.001 : g.Priority)
                 .ToList();
 
             // Try every Goal
             foreach (GoapGoal goal in orderedGoals)
             {
-                Node goalNode = new Node(null, null, goal.DesiredEfffects, 0);
+                Node goalNode = new Node(null, null, goal.DesiredEffects, 0);
 
                 if (FindActionsPath(goalNode, agent.Actions))
                 {

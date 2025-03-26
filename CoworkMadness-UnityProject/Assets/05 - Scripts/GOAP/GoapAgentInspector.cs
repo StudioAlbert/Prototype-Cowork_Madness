@@ -12,6 +12,17 @@ public class GoapAgentInspector : Editor {
 
         EditorGUILayout.Space();
 
+        // Show Goals
+        EditorGUILayout.LabelField("Goals:", EditorStyles.boldLabel);
+        if (agent.Goals != null) {
+            foreach (var goal in agent.Goals){
+                EditorGUILayout.BeginHorizontal();
+                GUILayout.Space(10);
+                EditorGUILayout.LabelField(goal.Name + " : " + goal.Priority);
+                EditorGUILayout.EndHorizontal();
+            }
+        }
+        
         if (agent.CurrentGoal != null) {
             EditorGUILayout.LabelField("Current Goal:", EditorStyles.boldLabel);
             EditorGUILayout.BeginHorizontal();
@@ -27,7 +38,7 @@ public class GoapAgentInspector : Editor {
             EditorGUILayout.LabelField("Current Action:", EditorStyles.boldLabel);
             EditorGUILayout.BeginHorizontal();
             GUILayout.Space(10);
-            EditorGUILayout.LabelField(agent.CurrentAction.Name);
+            EditorGUILayout.LabelField(agent.CurrentAction.Name + " (" + agent.CurrentAction.Progress + ")");
             EditorGUILayout.EndHorizontal();
         }
 

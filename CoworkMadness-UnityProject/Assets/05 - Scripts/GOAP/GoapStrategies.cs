@@ -9,6 +9,7 @@ namespace GOAP
     { 
         bool CanPerform { get; }
         bool Complete { get; }
+        float Progress { get; }
 
         void Start();
         void Stop();
@@ -22,12 +23,17 @@ namespace GOAP
     {
         public bool CanPerform => true;
         public bool Complete { get; private set; }
+        public float Progress { get; private set; }
 
         private readonly CountdownTimer _timer;
 
         public void Start() => _timer.Start();
         public void Stop() => _timer.Stop();
-        public void Update(float deltaTime) => _timer.Tick(deltaTime);
+        public void Update(float deltaTime)
+        {
+            _timer.Tick(deltaTime);
+            Progress = _timer.Progress;
+        }
 
         public IdleStrategy(float duration)
         {
@@ -43,6 +49,7 @@ namespace GOAP
     
         public bool CanPerform => !Complete;
         public bool Complete => agent.remainingDistance <= 2f && !agent.pathPending;
+        public float Progress { get; private set; }
     
         public MoveStrategy(NavMeshAgent agent, Func<Vector3> destination) {
             this.agent = agent;
@@ -51,7 +58,8 @@ namespace GOAP
     
         public void Start() => agent.SetDestination(destination());
         public void Stop() => agent.ResetPath();
-        
+        public void Update(float deltaTime) => Progress = agent.remainingDistance;
+
     }
 }
 

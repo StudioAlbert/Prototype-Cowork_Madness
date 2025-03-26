@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEditor;
 
 namespace GOAP
 {
@@ -8,11 +9,13 @@ namespace GOAP
         {
             Name = name;
         }
+
+        private float _startPriority;
         
         public string Name { get; }
         public float Priority { get; set; }
         public PlaceType PlaceType { get; private set; }
-        public HashSet<GoapBelief> DesiredEfffects = new();
+        public readonly HashSet<GoapBelief> DesiredEffects = new HashSet<GoapBelief>();
         
         public class Builder
         {
@@ -26,6 +29,7 @@ namespace GOAP
 
             public Builder WithPriority(float priority)
             {
+                _goal._startPriority = priority;
                 _goal.Priority = priority;
                 return this;
             }
@@ -36,7 +40,7 @@ namespace GOAP
             }
             public Builder WithDesiredEffect(GoapBelief effect)
             {
-                _goal.DesiredEfffects.Add(effect);
+                _goal.DesiredEffects.Add(effect);
                 return this;
             }
             public GoapGoal Build()
@@ -46,5 +50,9 @@ namespace GOAP
             
         }
 
+        public void ResetPriority()
+        {
+            Priority = _startPriority;
+        }
     }
 }
