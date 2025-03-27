@@ -83,7 +83,7 @@ namespace GOAP
             }
 
 
-            // Exexcute current action
+            // Execute current action
             if (_actionPlan != null && _currentAction != null)
             {
                 _currentAction.Update(Time.deltaTime);
@@ -140,14 +140,6 @@ namespace GOAP
             // TODO
             // Make a better (inventory/item class) prop/NPC system with feedback => have a coffee mug in the hand
             bFactory.AddBelief("HasACoffee", () => _inventory.CoffeeEquipped);
-            bFactory.AddBelief("EquipCoffee", () =>
-            {
-                return _inventory.CoffeeEquipped = true;
-            });
-            bFactory.AddBelief("DrinkCoffee", () =>
-            {
-                return _inventory.CoffeeEquipped = false;
-            });
             bFactory.AddLocationBelief("AtCoffeeMachine", 0.5f, coffeeMachine);
             bFactory.AddLocationBelief("AtTheTerrace", 0.5f, terrace);
 
@@ -167,51 +159,51 @@ namespace GOAP
 
             _actions.Add(new GoapAction.Builder("Nothing")
                 .WithStrategy(new IdleStrategy(0))
-                .AddEffect(_beliefs["Nothing"])
+                .AddPostCondition(_beliefs["Nothing"])
                 .Build());
 
             _actions.Add(new GoapAction.Builder("GetACoffee")
                 .WithStrategy(new MoveStrategy(_navMesh, () => coffeeMachine.position))
-                .AddEffect(_beliefs["AtCoffeeMachine"])
+                .AddPostCondition(_beliefs["AtCoffeeMachine"])
                 .Build());
             _actions.Add(new GoapAction.Builder("MakeACoffee")
                 .WithStrategy(new IdleStrategy(5))
                 .AddPrecondition(_beliefs["AtCoffeeMachine"])
-                .AddEffect(_beliefs["EquipCoffee"])
-                .AddEffect(_beliefs["HasACoffee"])
+                .AddPostCondition(_beliefs["HasACoffee"])
+                .AddConsequence(() => _inventory.CoffeeEquipped = true)
                 .Build());
             _actions.Add(new GoapAction.Builder("GoToTheTerrace")
                 .WithStrategy(new MoveStrategy(_navMesh, () => terrace.position))
                 .AddPrecondition(_beliefs["HasACoffee"])
-                .AddEffect(_beliefs["AtTheTerrace"])
+                .AddPostCondition(_beliefs["AtTheTerrace"])
                 .Build());
             _actions.Add(new GoapAction.Builder("DrinkCoffee")
                 .WithStrategy(new IdleStrategy(6))
                 .AddPrecondition(_beliefs["AtTheTerrace"])
-                .AddEffect(_beliefs["HadABreak"])
-                .AddEffect(_beliefs["DrinkCoffee"])
+                .AddPostCondition(_beliefs["HadABreak"])
+                .AddConsequence(() => _inventory.CoffeeEquipped = false)
                 .Build());
 
 
             _actions.Add(new GoapAction.Builder("GoToDesk")
                 .WithStrategy(new MoveStrategy(_navMesh, () => desk.position))
                 .AddPrecondition(_beliefs["HasADesk"])
-                .AddEffect(_beliefs["AtDesk"])
+                .AddPostCondition(_beliefs["AtDesk"])
                 .Build());
             _actions.Add(new GoapAction.Builder("Work")
                 .WithStrategy(new IdleStrategy(15))
                 .AddPrecondition(_beliefs["AtDesk"])
-                .AddEffect(_beliefs["MakeMoney"])
+                .AddPostCondition(_beliefs["MakeMoney"])
                 .Build());
 
             _actions.Add(new GoapAction.Builder("SmallTalkToBoss")
                 .WithStrategy(new MoveStrategy(_navMesh, () => talkPerson.position))
-                .AddEffect(_beliefs["MetSomeone"])
+                .AddPostCondition(_beliefs["MetSomeone"])
                 .Build());
             _actions.Add(new GoapAction.Builder("SmallTalkToBoss")
                 .WithStrategy(new IdleStrategy(3))
                 .AddPrecondition(_beliefs["MetSomeone"])
-                .AddEffect(_beliefs["HadATalk"])
+                .AddPostCondition(_beliefs["HadATalk"])
                 .Build());
 
         }

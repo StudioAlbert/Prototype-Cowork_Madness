@@ -16,39 +16,44 @@ public class GoapAgentInspector : Editor
         EditorGUILayout.Space();
 
         // Show Goals
-        EditorGUILayout.LabelField("Goals ordered:", EditorStyles.boldLabel);
+        // if (agent.CurrentGoal != null)
+        // {
+        //     EditorGUILayout.LabelField("Current Goal :", EditorStyles.boldLabel);
+        //     EditorGUILayout.BeginHorizontal();
+        //     GUILayout.Space(10);
+        //     EditorGUILayout.LabelField(agent.CurrentGoal.Name);
+        //     EditorGUILayout.EndHorizontal();
+        // }
+
+        EditorGUILayout.LabelField("Goals :", EditorStyles.boldLabel);
         if (agent.Goals != null)
         {
             foreach (var goal in agent.Goals.OrderByDescending(g => g.Priority))
             {
                 EditorGUILayout.BeginHorizontal();
                 GUILayout.Space(10);
-                EditorGUILayout.LabelField(goal.Name + " : " + goal.Priority.ToString("P"));
+                if (agent.CurrentGoal != null && goal == agent.CurrentGoal)
+                    EditorGUILayout.LabelField(goal.Name + " : " + goal.Priority.ToString("P"), EditorStyles.boldLabel);
+                else
+                    EditorGUILayout.LabelField(goal.Name + " : " + goal.Priority.ToString("P"));
                 EditorGUILayout.EndHorizontal();
             }
         }
+        EditorGUILayout.Space();
 
-        if (agent.CurrentGoal != null)
+        EditorGUILayout.LabelField("Actions :", EditorStyles.boldLabel); // Show current plan
+        EditorGUILayout.Space();
+        if (agent.CurrentAction != null)
         {
-            EditorGUILayout.LabelField("Current Goal:", EditorStyles.boldLabel);
             EditorGUILayout.BeginHorizontal();
             GUILayout.Space(10);
-            EditorGUILayout.LabelField(agent.CurrentGoal.Name);
+            EditorGUILayout.LabelField(agent.CurrentAction.Name + " : " + (1.0f - agent.CurrentAction.Progress).ToString("P"),
+                EditorStyles.boldLabel);
             EditorGUILayout.EndHorizontal();
         }
 
-        EditorGUILayout.Space();
-
-        // Show current plan
         if (agent.ActionPlan != null)
         {
-            EditorGUILayout.LabelField("Actions", EditorStyles.boldLabel);
-
-            EditorGUILayout.BeginHorizontal();
-            GUILayout.Space(10);
-            EditorGUILayout.LabelField(agent.CurrentAction.Name + " : " + (1.0f - agent.CurrentAction.Progress).ToString("P"), EditorStyles.boldLabel);
-            EditorGUILayout.EndHorizontal();
-
             foreach (var a in agent.ActionPlan.Actions)
             {
                 EditorGUILayout.BeginHorizontal();
@@ -61,12 +66,11 @@ public class GoapAgentInspector : Editor
         EditorGUILayout.Space();
 
         // Show beliefs
-        EditorGUILayout.LabelField("Beliefs:", EditorStyles.boldLabel);
+        EditorGUILayout.LabelField("Beliefs :", EditorStyles.boldLabel);
         if (agent.Beliefs != null)
         {
             foreach (var belief in agent.Beliefs)
             {
-                if (belief.Key is "Nothing" or "Something") continue;
                 EditorGUILayout.BeginHorizontal();
                 GUILayout.Space(10);
                 //EditorGUILayout.LabelField(belief.Key + ": " + belief.Value.Evaluate());

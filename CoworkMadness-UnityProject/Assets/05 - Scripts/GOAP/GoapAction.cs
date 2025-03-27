@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEditor;
 
@@ -14,16 +15,17 @@ namespace GOAP
         public string Name { get; }
         public float Cost { get; private set; }
 
-        private HashSet<GoapBelief> _preconditions = new();
-        private HashSet<GoapBelief> _effects = new();
+        private readonly HashSet<GoapBelief> _preconditions = new();
+        private readonly HashSet<GoapBelief> _postConditions = new();
+        private HashSet<Action> _consequences = new();
 
         public HashSet<GoapBelief> Preconditions => _preconditions;
-        public HashSet<GoapBelief> Effects => _effects;
+        public HashSet<GoapBelief> PostConditions => _postConditions;
 
         private IActionStrategy _strategy;
         public bool Complete => _strategy.Complete;
         public float Progress => _strategy.Progress;
-        
+
         // Copy cat the strategy, Start, Update, stop
         public void Start() => _strategy.Start();
         public void Stop() => _strategy.Stop();
@@ -31,21 +33,21 @@ namespace GOAP
         public void Update(float deltaTime)
         {
             // If we can apply the strategy , then update it
-            if(_strategy.CanPerform)
+            if (_strategy.CanPerform)
                 _strategy.Update(deltaTime);
 
             // If strategy is done, apply effects
             // If not, end it
             if (_strategy.Complete)
             {
-                foreach (GoapBelief effect in _effects)
+                foreach (Action c in _consequences)
                 {
-                    effect.Evaluate();
+                    c.Invoke();
                 }
             }
-
+            
         }
-        
+
         // BUILDER 
         public class Builder
         {
@@ -74,9 +76,14 @@ namespace GOAP
                 _action._preconditions.Add(condition);
                 return this;
             }
-            public Builder AddEffect(GoapBelief effect)
+            public Builder AddPostCondition(GoapBelief condition)
             {
-                _action._effects.Add(effect);
+                _action._postConditions.Add(condition);
+                return this;
+            }
+            public Builder AddConsequence(Action consequence)
+            {
+                _action._consequences.Add(consequence);
                 return this;
             }
             public GoapAction Build()
