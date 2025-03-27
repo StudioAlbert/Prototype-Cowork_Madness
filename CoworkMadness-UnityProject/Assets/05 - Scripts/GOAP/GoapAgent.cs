@@ -14,6 +14,7 @@ namespace GOAP
         private NavMeshAgent _navMesh;
         private Rigidbody _rb;
         private Animator _animator;
+        private Inventory _inventory;
 
         // TODO Place provider
         [Header("Places")]
@@ -41,13 +42,14 @@ namespace GOAP
         public HashSet<GoapAction> Actions => _actions;
         public HashSet<GoapGoal> Goals => _goals;
 
-        public event Action<GoapGoal> OnGoalDone; 
+        public event Action<GoapGoal> OnGoalDone;
 
         private void Awake()
         {
             _navMesh = GetComponent<NavMeshAgent>();
             _rb = GetComponent<Rigidbody>();
             _animator = GetComponent<Animator>();
+            _inventory = GetComponent<Inventory>();
 
             _planner = new GoapPlanner();
 
@@ -73,7 +75,7 @@ namespace GOAP
                     _navMesh.ResetPath();
                     _currentGoal = _actionPlan.Goal;
                     Debug.Log($"GOAL: {_currentGoal.Name} with {_actionPlan.Actions.Count} actions planned.");
-                    
+
                     _currentAction = _actionPlan.Actions.Pop();
                     _currentAction.Start();
                     Debug.Log($"Popped action: {_currentAction.Name}");
@@ -98,13 +100,13 @@ namespace GOAP
                         Debug.Log($"Plan complete for {_currentGoal.Name}");
                         _lastGoal = _currentGoal;
                         _currentGoal = null;
-                        
+
                         OnGoalDone?.Invoke(_lastGoal);
-                                                
+
                     }
                 }
             }
-            
+
             void GetAPlan()
             {
                 var priorityLvl = _currentGoal?.Priority ?? 0;
@@ -131,49 +133,66 @@ namespace GOAP
             GoapBeliefFactory bFactory = new GoapBeliefFactory(this, _beliefs);
 
             bFactory.AddBelief("Nothing", () => false);
-            
-            bFactory.AddBelief("HadABreak", () => false);
             bFactory.AddBelief("AgentIdle", () => !_navMesh.hasPath);
             bFactory.AddBelief("AgentMoving", () => _navMesh.hasPath);
-            
-            bFactory.AddLocationBelief("HaveACoffee", 0.5f, coffeeMachine);
+
+            bFactory.AddBelief("HadABreak", () => false);
+            // TODO
+            // Make a better (inventory/item class) prop/NPC system with feedback => have a coffee mug in the hand
+            bFactory.AddBelief("HasACoffee", () => _inventory.CoffeeEquipped);
+            bFactory.AddBelief("EquipCoffee", () =>
+            {
+                return _inventory.CoffeeEquipped = true;
+            });
+            bFactory.AddBelief("DrinkCoffee", () =>
+            {
+                return _inventory.CoffeeEquipped = false;
+            });
+            bFactory.AddLocationBelief("AtCoffeeMachine", 0.5f, coffeeMachine);
             bFactory.AddLocationBelief("AtTheTerrace", 0.5f, terrace);
-            
+
             bFactory.AddBelief("MakeMoney", () => false);
             bFactory.AddLocationBelief("AtDesk", 0.5f, desk);
             bFactory.AddBelief("HasADesk", () => desk.gameObject.activeSelf);
-            
+
             bFactory.AddBelief("HadATalk", () => false);
             bFactory.AddLocationBelief("MetSomeone", 0.5f, talkPerson);
-            
-            
+
+
         }
 
         private void SetupActions()
         {
             _actions = new HashSet<GoapAction>();
 
-            _actions.Add(new GoapAction.Builder("Relax")
-                .WithStrategy(new IdleStrategy(5))
+            _actions.Add(new GoapAction.Builder("Nothing")
+                .WithStrategy(new IdleStrategy(0))
                 .AddEffect(_beliefs["Nothing"])
                 .Build());
-            
+
             _actions.Add(new GoapAction.Builder("GetACoffee")
                 .WithStrategy(new MoveStrategy(_navMesh, () => coffeeMachine.position))
-                .AddEffect(_beliefs["HaveACoffee"])
+                .AddEffect(_beliefs["AtCoffeeMachine"])
+                .Build());
+            _actions.Add(new GoapAction.Builder("MakeACoffee")
+                .WithStrategy(new IdleStrategy(5))
+                .AddPrecondition(_beliefs["AtCoffeeMachine"])
+                .AddEffect(_beliefs["EquipCoffee"])
+                .AddEffect(_beliefs["HasACoffee"])
                 .Build());
             _actions.Add(new GoapAction.Builder("GoToTheTerrace")
                 .WithStrategy(new MoveStrategy(_navMesh, () => terrace.position))
+                .AddPrecondition(_beliefs["HasACoffee"])
                 .AddEffect(_beliefs["AtTheTerrace"])
-                .AddPrecondition(_beliefs["HaveACoffee"])
                 .Build());
             _actions.Add(new GoapAction.Builder("DrinkCoffee")
                 .WithStrategy(new IdleStrategy(6))
                 .AddPrecondition(_beliefs["AtTheTerrace"])
                 .AddEffect(_beliefs["HadABreak"])
+                .AddEffect(_beliefs["DrinkCoffee"])
                 .Build());
-            
-            
+
+
             _actions.Add(new GoapAction.Builder("GoToDesk")
                 .WithStrategy(new MoveStrategy(_navMesh, () => desk.position))
                 .AddPrecondition(_beliefs["HasADesk"])
@@ -184,7 +203,7 @@ namespace GOAP
                 .AddPrecondition(_beliefs["AtDesk"])
                 .AddEffect(_beliefs["MakeMoney"])
                 .Build());
-            
+
             _actions.Add(new GoapAction.Builder("SmallTalkToBoss")
                 .WithStrategy(new MoveStrategy(_navMesh, () => talkPerson.position))
                 .AddEffect(_beliefs["MetSomeone"])
@@ -194,7 +213,7 @@ namespace GOAP
                 .AddPrecondition(_beliefs["MetSomeone"])
                 .AddEffect(_beliefs["HadATalk"])
                 .Build());
-            
+
         }
         void SetupGoals()
         {
@@ -202,10 +221,10 @@ namespace GOAP
 
             _goals.Add(new GoapGoal.Builder("Nothing")
                 .WithPriority(0.01f)
-                .WithType(PlaceType.Social)
+                .WithType(PlaceType.None)
                 .WithDesiredEffect(_beliefs["Nothing"])
                 .Build());
-            
+
             _goals.Add(new GoapGoal.Builder("HaveABreak")
                 .WithPriority(0.1f)
                 .WithType(PlaceType.Break)

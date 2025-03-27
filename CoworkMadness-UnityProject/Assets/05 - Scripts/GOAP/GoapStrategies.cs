@@ -44,22 +44,30 @@ namespace GOAP
     }
     
     public class MoveStrategy : IActionStrategy {
-        readonly NavMeshAgent agent;
-        readonly Func<Vector3> destination;
+        private readonly NavMeshAgent _agent;
+        private readonly Func<Vector3> _destination;
     
         public bool CanPerform => !Complete;
-        public bool Complete => agent.remainingDistance <= 2f && !agent.pathPending;
+        public bool Complete => _agent.remainingDistance <= 2f && !_agent.pathPending;
         public float Progress { get; private set; }
-    
+
+        private float _startDistance;
+        
         public MoveStrategy(NavMeshAgent agent, Func<Vector3> destination) {
-            this.agent = agent;
-            this.destination = destination;
+            this._agent = agent;
+            this._destination = destination;
         }      
     
-        public void Start() => agent.SetDestination(destination());
-        public void Stop() => agent.ResetPath();
-        public void Update(float deltaTime) => Progress = agent.remainingDistance;
-
+        public void Start()
+        {
+            _startDistance = Vector3.Distance(_agent.transform.position, _destination());
+            _agent.SetDestination(_destination());
+        }
+        public void Stop() => _agent.ResetPath();
+        public void Update(float deltaTime)
+        { 
+            Progress = _agent.remainingDistance / _startDistance;
+        }
     }
 }
 

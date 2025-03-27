@@ -75,7 +75,7 @@ namespace GOAP
                 var requiredEffects = parentNode.RequiredEffects;
                 requiredEffects.RemoveWhere(b => b.Evaluate());
 
-                // No reauired effects so every thing is done, Success
+                // No required effects so every thing is done, Success
                 if (requiredEffects.Count == 0)
                 {
                     return true;

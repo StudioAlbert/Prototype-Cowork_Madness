@@ -66,6 +66,9 @@ public class Mood : MonoBehaviour
             case PlaceType.Social:
                 goal.Priority += socialOverTime * deltaTime / 100.0f;
                 break;
+            case PlaceType.None:
+                // No updates, stay the same
+                break;
             default:
                 throw new ArgumentOutOfRangeException();
         }
