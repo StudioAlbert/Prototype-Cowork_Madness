@@ -14,10 +14,10 @@ namespace GOAP
         // Is the belief True or False
         private Func<bool> _condition = () => false;
         // Some place where the belief can be true
-        private Func<Vector3> _location = () => Vector3.zero;
+        // private Func<Vector3> _location = () => Vector3.zero;
         
         public string Name { get; }
-        public Vector3 Location => _location();
+        // public Vector3 Location => _location();
         public bool Evaluate() => _condition();
 
         #region Builder
@@ -35,11 +35,11 @@ namespace GOAP
                 _belief._condition = condition;
                 return this;
             }
-            public Builder WithLocation(Func<Vector3> location)
-            {
-                _belief._location = location;
-                return this;
-            }
+            // public Builder WithLocation(Func<Vector3> location)
+            // {
+            //     _belief._location = location;
+            //     return this;
+            // }
             public GoapBelief Build()
             {
                 return _belief;
@@ -78,7 +78,7 @@ namespace GOAP
         {
             _beliefs.Add(key, new GoapBelief.Builder(key)
                 .WithCondition(() => InRangeOf(location, distance))
-                .WithLocation(() => location)
+                //.WithLocation(() => location)
                 .Build()
             );
         }
