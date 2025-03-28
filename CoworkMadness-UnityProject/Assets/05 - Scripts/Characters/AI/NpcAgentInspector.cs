@@ -3,8 +3,8 @@ using GOAP;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(GoapAgent))]
-public class GoapAgentInspector : Editor
+[CustomEditor(typeof(NpcAgent))]
+public class NpcAgentInspector : Editor
 {
     public override void OnInspectorGUI()
     {
