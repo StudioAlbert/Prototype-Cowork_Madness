@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using GOAP;
+using Places;
 using UnityEngine;
 
 [RequireComponent(typeof(GoapAgent))]
@@ -57,16 +58,16 @@ public class Mood : MonoBehaviour
 
         switch (goal.PlaceType)
         {
-            case PlaceType.Work:
+            case BasePlace.PlaceType.Work:
                 goal.Priority += workOverTime * deltaTime / 100.0f;
                 break;
-            case PlaceType.Break:
+            case BasePlace.PlaceType.Break:
                 goal.Priority += breakOverTime * deltaTime / 100.0f;
                 break;
-            case PlaceType.Social:
+            case BasePlace.PlaceType.Social:
                 goal.Priority += socialOverTime * deltaTime / 100.0f;
                 break;
-            case PlaceType.None:
+            case BasePlace.PlaceType.None:
                 // No updates, stay the same
                 break;
             default:

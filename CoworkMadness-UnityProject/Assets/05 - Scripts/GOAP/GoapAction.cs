@@ -22,7 +22,7 @@ namespace GOAP
         public HashSet<GoapBelief> Preconditions => _preconditions;
         public HashSet<GoapBelief> PostConditions => _postConditions;
 
-        private IActionStrategy _strategy;
+        private IGoapActionStrategy _strategy;
         public bool Complete => _strategy.Complete;
         public float Progress => _strategy.Progress;
 
@@ -66,7 +66,7 @@ namespace GOAP
                 _action.Cost = cost;
                 return this;
             }
-            public Builder WithStrategy(IActionStrategy strategy)
+            public Builder WithStrategy(IGoapActionStrategy strategy)
             {
                 _action._strategy = strategy;
                 return this;

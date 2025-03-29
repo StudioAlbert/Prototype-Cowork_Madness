@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 namespace GOAP
 {
-    public interface IActionStrategy
+    public interface IGoapActionStrategy
     { 
         bool CanPerform { get; }
         bool Complete { get; }
@@ -13,19 +13,23 @@ namespace GOAP
 
         void Start();
         void Stop();
-        void Update(float deltaTime)
-        {
-            // not mandatory for every implementations
-        }
+        void Update(float deltaTime);
     }
 
-    public class IdleStrategy : IActionStrategy
+    public class IdleStrategy : IGoapActionStrategy
     {
+        private readonly CountdownTimer _timer;
+        
+        public IdleStrategy(float duration)
+        {
+            _timer = new CountdownTimer(duration);
+            _timer.OnTimerStart += () => Complete = false;
+            _timer.OnTimerStop += () => Complete = true;
+        }
+        
         public bool CanPerform => true;
         public bool Complete { get; private set; }
         public float Progress { get; private set; }
-
-        private readonly CountdownTimer _timer;
 
         public void Start() => _timer.Start();
         public void Stop() => _timer.Stop();
@@ -35,15 +39,9 @@ namespace GOAP
             Progress = _timer.Progress;
         }
 
-        public IdleStrategy(float duration)
-        {
-            _timer = new CountdownTimer(duration);
-            _timer.OnTimerStart += () => Complete = false;
-            _timer.OnTimerStop += () => Complete = true;
-        }
     }
     
-    public class MoveStrategy : IActionStrategy {
+    public class MoveStrategy : IGoapActionStrategy {
         private readonly NavMeshAgent _agent;
         private readonly Func<Vector3> _destination;
     

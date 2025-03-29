@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Places;
 using UnityEditor;
 
 namespace GOAP
@@ -14,7 +15,7 @@ namespace GOAP
         
         public string Name { get; }
         public float Priority { get; set; }
-        public PlaceType PlaceType { get; private set; }
+        public BasePlace.PlaceType PlaceType { get; private set; }
         public readonly HashSet<GoapBelief> DesiredEffects = new HashSet<GoapBelief>();
         
         public class Builder
@@ -33,7 +34,7 @@ namespace GOAP
                 _goal.Priority = priority;
                 return this;
             }
-            public Builder WithType(PlaceType type)
+            public Builder WithType(BasePlace.PlaceType type)
             {
                 _goal.PlaceType = type;
                 return this;
