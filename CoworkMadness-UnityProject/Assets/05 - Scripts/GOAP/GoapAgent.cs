@@ -66,6 +66,7 @@ namespace GOAP
             if (_actionPlan != null && _currentAction != null)
             {
                 _currentAction.Update(Time.deltaTime);
+                
 
                 if (_currentAction.Complete)
                 {

@@ -14,8 +14,7 @@ namespace Places
             Social
         }
         
-        public abstract bool InUse { get; set; }
-        public bool Available => !InUse;
+        public abstract bool Available { get; }
         
         public abstract PlaceType Type { get; }
         public abstract Vector3 Position { get; }

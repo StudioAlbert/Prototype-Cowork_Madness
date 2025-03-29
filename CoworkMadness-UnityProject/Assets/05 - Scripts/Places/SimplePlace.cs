@@ -8,13 +8,16 @@ namespace Places
         public class SimplePlace : BasePlace
         {
             [SerializeField] private BasePlace.PlaceType type;
-            
-            public override bool InUse { get; set; }
+
+
+            public override bool Available => user == null;
             public override BasePlace.PlaceType Type => type;
             public override Vector3 Position => transform.position;
             public override void SetProgress(float progress)
             {
                 // Nope
             }
+
+            public GameObject user;
         }
 }

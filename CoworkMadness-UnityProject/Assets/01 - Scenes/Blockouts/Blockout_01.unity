@@ -1001,12 +1001,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 964805908}
-  - {fileID: 1200811706}
-  - {fileID: 1433848709}
   - {fileID: 1965373270}
   - {fileID: 647587539}
   - {fileID: 965409508}
+  - {fileID: 964805908}
+  - {fileID: 1200811706}
+  - {fileID: 1433848709}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &126532862
@@ -3462,6 +3462,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC_BusinessFemale01.02
       objectReference: {fileID: 0}
+    - target: {fileID: 9222791074539596511, guid: 6c4d89e2dd385664b9835f934edda762, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3534,6 +3538,10 @@ PrefabInstance:
     - target: {fileID: 9222791074539596511, guid: f1e0ff2ac8b21ae46943e0c51a9fc9ac, type: 3}
       propertyPath: m_Name
       value: NPC_DevelopperMale02.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 9222791074539596511, guid: f1e0ff2ac8b21ae46943e0c51a9fc9ac, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9516,6 +9524,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC_DevelopperMale02.02
       objectReference: {fileID: 0}
+    - target: {fileID: 9222791074539596511, guid: f1e0ff2ac8b21ae46943e0c51a9fc9ac, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11779,6 +11791,10 @@ PrefabInstance:
     - target: {fileID: 9222791074539596511, guid: 6c4d89e2dd385664b9835f934edda762, type: 3}
       propertyPath: m_Name
       value: NPC_BusinessFemale01.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 9222791074539596511, guid: 6c4d89e2dd385664b9835f934edda762, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15072,6 +15088,10 @@ PrefabInstance:
     - target: {fileID: 9222791074539596511, guid: f1e0ff2ac8b21ae46943e0c51a9fc9ac, type: 3}
       propertyPath: m_Name
       value: NPC_DevelopperMale02.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 9222791074539596511, guid: f1e0ff2ac8b21ae46943e0c51a9fc9ac, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

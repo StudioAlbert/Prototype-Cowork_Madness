@@ -23,8 +23,8 @@ public class NpcAgent : GoapAgent
     // TODO Place provider
     [FormerlySerializedAs("_desk")]
     [Header("Places")]
-    [SerializeField] private BasePlace desk;
-    [SerializeField] private BasePlace coffeeMachine;
+    [SerializeField] private SimplePlace desk;
+    [SerializeField] private SimplePlace coffeeMachine;
     [SerializeField] private BasePlace terrace;
     [SerializeField] private Transform talkPerson;
 
@@ -78,7 +78,7 @@ public class NpcAgent : GoapAgent
             .AddPostCondition(_beliefs["AtCoffeeMachine"])
             .Build());
         _actions.Add(new GoapAction.Builder("MakeACoffee")
-            .WithStrategy(new UsingMachineStrategy(5, coffeeMachine))
+            .WithStrategy(new UsingMachineStrategy(5, coffeeMachine, gameObject))
             .AddPrecondition(_beliefs["AtCoffeeMachine"])
             .AddPostCondition(_beliefs["HasACoffee"])
             .AddConsequence(() => _inventory.CoffeeEquipped = true)
@@ -102,7 +102,7 @@ public class NpcAgent : GoapAgent
             .AddPostCondition(_beliefs["AtDesk"])
             .Build());
         _actions.Add(new GoapAction.Builder("Work")
-            .WithStrategy(new UsingMachineStrategy(15, desk))
+            .WithStrategy(new UsingMachineStrategy(15, desk, gameObject))
             .AddPrecondition(_beliefs["AtDesk"])
             .AddPostCondition(_beliefs["MakeMoney"])
             .Build());
