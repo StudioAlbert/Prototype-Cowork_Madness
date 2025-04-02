@@ -20,8 +20,10 @@ namespace AI
             _user = agent;
         }
 
+        //public bool CanPerform => true;
         public bool CanPerform => _place.user == _user || _place.user  == null;
         public bool Complete { get; private set; }
+        public bool Failed => false;
         public float Progress => _timer.Progress;
         public void Start()
         {
@@ -30,11 +32,13 @@ namespace AI
             {
                 _place.user = _user;
             }
+            _place.Available = false;
         }
         public void Stop()
         {
             _timer.Stop();
             _place.user = null;
+            _place.Available = true;
         }
 
         public void Update(float deltaTime)

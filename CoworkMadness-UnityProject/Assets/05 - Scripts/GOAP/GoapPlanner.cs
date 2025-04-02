@@ -9,13 +9,13 @@ namespace GOAP
 
     public interface IGoapPlanner
     {
-        GoapPlan Plan(GoapAgent agent, HashSet<GoapGoal> goals, GoapGoal mostRecentGoal);
+        GoapPlan Plan(GoapAgent agent, List<GoapGoal> goals, GoapGoal mostRecentGoal);
     }
 
     class GoapPlanner : IGoapPlanner
     {
 
-        public GoapPlan Plan(GoapAgent agent, HashSet<GoapGoal> goals, GoapGoal mostRecentGoal)
+        public GoapPlan Plan(GoapAgent agent, List<GoapGoal> orderedGoals, GoapGoal mostRecentGoal)
         {
             // ==
             if (agent.Actions == null || agent.Actions.Count == 0)
@@ -25,7 +25,7 @@ namespace GOAP
             }
 
             // ==
-            if (goals == null || goals.Count == 0)
+            if (orderedGoals == null || orderedGoals.Count == 0)
             {
                 Debug.LogWarning($"{agent.name} No goal available... No plan...");
                 return null;
@@ -34,11 +34,11 @@ namespace GOAP
             // Ordered goals by priority,
             // But the last goal is not executed every time
             // If a goal is already accomplished (DesiredEffects Evaluate to true)
-            List<GoapGoal> orderedGoals = goals
-                //.Where(g => g.DesiredEffects.Any(b => !b.Evaluate()))
-                .OrderByDescending(g => g == mostRecentGoal ? g.Priority - 0.001 : g.Priority)
-                .ToList();
-            
+            // List<GoapGoal> orderedGoals = goals
+            //     //.Where(g => g.DesiredEffects.Any(b => !b.Evaluate()))§
+            //     .OrderByDescending(g => g == mostRecentGoal ? g.Priority - 0.001 : g.Priority)
+            //     .ToList();
+            //
 
 
             // Try every Goal

@@ -3405,7 +3405,7 @@ PrefabInstance:
     - target: {fileID: 3712612424107896632, guid: 6c4d89e2dd385664b9835f934edda762, type: 3}
       propertyPath: desk
       value: 
-      objectReference: {fileID: 1294966545}
+      objectReference: {fileID: 684418987}
     - target: {fileID: 3712612424107896632, guid: 6c4d89e2dd385664b9835f934edda762, type: 3}
       propertyPath: terrace
       value: 
@@ -3420,7 +3420,7 @@ PrefabInstance:
       objectReference: {fileID: 1837797722}
     - target: {fileID: 9216784917372142497, guid: 6c4d89e2dd385664b9835f934edda762, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.020001173
+      value: -0.020002335
       objectReference: {fileID: 0}
     - target: {fileID: 9216784917372142497, guid: 6c4d89e2dd385664b9835f934edda762, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3428,7 +3428,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9216784917372142497, guid: 6c4d89e2dd385664b9835f934edda762, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.1100011
+      value: 0.11000109
       objectReference: {fileID: 0}
     - target: {fileID: 9216784917372142497, guid: 6c4d89e2dd385664b9835f934edda762, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3482,7 +3482,7 @@ PrefabInstance:
     - target: {fileID: 3712612424107896632, guid: f1e0ff2ac8b21ae46943e0c51a9fc9ac, type: 3}
       propertyPath: desk
       value: 
-      objectReference: {fileID: 2026307814}
+      objectReference: {fileID: 1041014896}
     - target: {fileID: 3712612424107896632, guid: f1e0ff2ac8b21ae46943e0c51a9fc9ac, type: 3}
       propertyPath: terrace
       value: 
@@ -6508,6 +6508,10 @@ PrefabInstance:
       propertyPath: type
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2779933884251595805, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
+      propertyPath: available
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5299079557629974802, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
       propertyPath: _type
       value: 0
@@ -6712,6 +6716,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2779933884251595805, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
       propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2779933884251595805, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
+      propertyPath: available
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5299079557629974802, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
@@ -9467,7 +9475,7 @@ PrefabInstance:
     - target: {fileID: 3712612424107896632, guid: f1e0ff2ac8b21ae46943e0c51a9fc9ac, type: 3}
       propertyPath: desk
       value: 
-      objectReference: {fileID: 684418987}
+      objectReference: {fileID: 1294966545}
     - target: {fileID: 3712612424107896632, guid: f1e0ff2ac8b21ae46943e0c51a9fc9ac, type: 3}
       propertyPath: terrace
       value: 
@@ -9901,6 +9909,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2779933884251595805, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
       propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2779933884251595805, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
+      propertyPath: available
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5299079557629974802, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
@@ -10623,6 +10635,10 @@ PrefabInstance:
       propertyPath: type
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2779933884251595805, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
+      propertyPath: available
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5299079557629974802, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
       propertyPath: _type
       value: 0
@@ -10691,6 +10707,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2779933884251595805, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
       propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2779933884251595805, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
+      propertyPath: available
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5299079557629974802, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
@@ -11735,7 +11755,7 @@ PrefabInstance:
     - target: {fileID: 3712612424107896632, guid: 6c4d89e2dd385664b9835f934edda762, type: 3}
       propertyPath: desk
       value: 
-      objectReference: {fileID: 1041014896}
+      objectReference: {fileID: 2026307814}
     - target: {fileID: 3712612424107896632, guid: 6c4d89e2dd385664b9835f934edda762, type: 3}
       propertyPath: terrace
       value: 
@@ -11750,7 +11770,7 @@ PrefabInstance:
       objectReference: {fileID: 1837797722}
     - target: {fileID: 9216784917372142497, guid: 6c4d89e2dd385664b9835f934edda762, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.98
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 9216784917372142497, guid: 6c4d89e2dd385664b9835f934edda762, type: 3}
       propertyPath: m_LocalPosition.y
@@ -11758,7 +11778,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9216784917372142497, guid: 6c4d89e2dd385664b9835f934edda762, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.11
+      value: -2.06
       objectReference: {fileID: 0}
     - target: {fileID: 9216784917372142497, guid: 6c4d89e2dd385664b9835f934edda762, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12687,6 +12707,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2779933884251595805, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
       propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2779933884251595805, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
+      propertyPath: available
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5299079557629974802, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
@@ -14343,6 +14367,10 @@ PrefabInstance:
       propertyPath: type
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2779933884251595805, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
+      propertyPath: available
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5299079557629974802, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
       propertyPath: _type
       value: 2
@@ -15032,7 +15060,7 @@ PrefabInstance:
     - target: {fileID: 3712612424107896632, guid: f1e0ff2ac8b21ae46943e0c51a9fc9ac, type: 3}
       propertyPath: desk
       value: 
-      objectReference: {fileID: 2091243420}
+      objectReference: {fileID: 1417221074}
     - target: {fileID: 3712612424107896632, guid: f1e0ff2ac8b21ae46943e0c51a9fc9ac, type: 3}
       propertyPath: terrace
       value: 
@@ -15047,7 +15075,7 @@ PrefabInstance:
       objectReference: {fileID: 1837797722}
     - target: {fileID: 9216784917372142497, guid: f1e0ff2ac8b21ae46943e0c51a9fc9ac, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.89
+      value: 2.6
       objectReference: {fileID: 0}
     - target: {fileID: 9216784917372142497, guid: f1e0ff2ac8b21ae46943e0c51a9fc9ac, type: 3}
       propertyPath: m_LocalPosition.y
@@ -15055,7 +15083,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9216784917372142497, guid: f1e0ff2ac8b21ae46943e0c51a9fc9ac, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.25
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 9216784917372142497, guid: f1e0ff2ac8b21ae46943e0c51a9fc9ac, type: 3}
       propertyPath: m_LocalRotation.w
@@ -15109,7 +15137,7 @@ PrefabInstance:
     - target: {fileID: 3712612424107896632, guid: 6c4d89e2dd385664b9835f934edda762, type: 3}
       propertyPath: desk
       value: 
-      objectReference: {fileID: 1417221074}
+      objectReference: {fileID: 2091243420}
     - target: {fileID: 3712612424107896632, guid: 6c4d89e2dd385664b9835f934edda762, type: 3}
       propertyPath: terrace
       value: 
@@ -15124,7 +15152,7 @@ PrefabInstance:
       objectReference: {fileID: 1837797722}
     - target: {fileID: 9216784917372142497, guid: 6c4d89e2dd385664b9835f934edda762, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.4799983
+      value: 3.68
       objectReference: {fileID: 0}
     - target: {fileID: 9216784917372142497, guid: 6c4d89e2dd385664b9835f934edda762, type: 3}
       propertyPath: m_LocalPosition.y
@@ -15132,7 +15160,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9216784917372142497, guid: 6c4d89e2dd385664b9835f934edda762, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.6100005
+      value: -0.98
       objectReference: {fileID: 0}
     - target: {fileID: 9216784917372142497, guid: 6c4d89e2dd385664b9835f934edda762, type: 3}
       propertyPath: m_LocalRotation.w
@@ -15684,6 +15712,10 @@ PrefabInstance:
       propertyPath: type
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2779933884251595805, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
+      propertyPath: available
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5299079557629974802, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
       propertyPath: _type
       value: 2
@@ -16106,6 +16138,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2779933884251595805, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
       propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2779933884251595805, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
+      propertyPath: available
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5299079557629974802, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
@@ -16694,7 +16730,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.1
+  m_VoxelSize: 0.10666666
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: c77af020f83a6444c965fde97e83649f, type: 2}
   m_BuildHeightMesh: 0
@@ -16784,6 +16820,10 @@ PrefabInstance:
       propertyPath: type
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2779933884251595805, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
+      propertyPath: available
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5299079557629974802, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
       propertyPath: _type
       value: 0
@@ -16852,6 +16892,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2779933884251595805, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
       propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2779933884251595805, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
+      propertyPath: available
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5299079557629974802, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
@@ -17213,6 +17257,10 @@ PrefabInstance:
       propertyPath: type
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2779933884251595805, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
+      propertyPath: available
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5299079557629974802, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
       propertyPath: _type
       value: 0
@@ -17561,6 +17609,10 @@ PrefabInstance:
     - target: {fileID: 2779933884251595805, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
       propertyPath: type
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2779933884251595805, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
+      propertyPath: available
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5299079557629974802, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
       propertyPath: _type

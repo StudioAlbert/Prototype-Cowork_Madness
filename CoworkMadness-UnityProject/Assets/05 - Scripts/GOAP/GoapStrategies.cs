@@ -9,6 +9,7 @@ namespace GOAP
     { 
         bool CanPerform { get; }
         bool Complete { get; }
+        bool Failed { get; }
         float Progress { get; }
 
         void Start();
@@ -29,14 +30,14 @@ namespace GOAP
         
         public bool CanPerform => true;
         public bool Complete { get; private set; }
-        public float Progress { get; private set; }
+        public bool Failed => false;
+        public float Progress => _timer.Progress;
 
         public void Start() => _timer.Start();
         public void Stop() => _timer.Stop();
         public void Update(float deltaTime)
         {
             _timer.Tick(deltaTime);
-            Progress = _timer.Progress;
         }
 
     }
@@ -47,7 +48,8 @@ namespace GOAP
     
         public bool CanPerform => !Complete;
         public bool Complete => _agent.remainingDistance <= 2f && !_agent.pathPending;
-        public float Progress { get; private set; }
+        public bool Failed => false;
+        public float Progress =>  _agent.remainingDistance / _startDistance;
 
         private float _startDistance;
         
@@ -64,7 +66,7 @@ namespace GOAP
         public void Stop() => _agent.ResetPath();
         public void Update(float deltaTime)
         { 
-            Progress = _agent.remainingDistance / _startDistance;
+            // No update
         }
     }
 }

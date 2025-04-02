@@ -51,13 +51,14 @@ public class NpcAgent : GoapAgent
         bFactory.AddBelief("HadABreak", () => false);
         // TODO
         // Make a better (inventory/item class) prop/NPC system with feedback => have a coffee mug in the hand
+        bFactory.AddBelief("HasCoffeeMachine", () => coffeeMachine.Available);
+        bFactory.AddLocationBelief("AtCoffeeMachine", 1.5f, coffeeMachine.Position);
         bFactory.AddBelief("HasACoffee", () => _inventory.CoffeeEquipped);
-        bFactory.AddLocationBelief("AtCoffeeMachine", 0.5f, coffeeMachine.Position);
         bFactory.AddLocationBelief("AtTheTerrace", 0.5f, terrace.Position);
 
-        bFactory.AddBelief("MakeMoney", () => false);
+        bFactory.AddBelief("HasDesk", () => desk.Available);
         bFactory.AddLocationBelief("AtDesk", 1, desk.Position);
-        bFactory.AddBelief("HasADesk", () => desk.Available);
+        bFactory.AddBelief("MakeMoney", () => false);
 
         bFactory.AddBelief("HadATalk", () => false);
         bFactory.AddLocationBelief("MetSomeone", 0.5f, talkPerson);
@@ -75,10 +76,17 @@ public class NpcAgent : GoapAgent
 
         _actions.Add(new GoapAction.Builder("GetACoffee")
             .WithStrategy(new MoveStrategy(_navMesh, () => coffeeMachine.Position))
+            .AddPrecondition(_beliefs["HasCoffeeMachine"])
             .AddPostCondition(_beliefs["AtCoffeeMachine"])
             .Build());
+        // _actions.Add(new GoapAction.Builder("WaitForCoffeeMachine")
+        //     .WithStrategy(new IdleStrategy(5))
+        //     .AddPrecondition(_beliefs["AtCoffeeMachine"])
+        //     .AddPostCondition(_beliefs["CoffeeMachineAvailable"])
+        //     .Build());
         _actions.Add(new GoapAction.Builder("MakeACoffee")
             .WithStrategy(new UsingMachineStrategy(5, coffeeMachine, gameObject))
+            //.AddPrecondition(_beliefs["CoffeeMachineAvailable"])
             .AddPrecondition(_beliefs["AtCoffeeMachine"])
             .AddPostCondition(_beliefs["HasACoffee"])
             .AddConsequence(() => _inventory.CoffeeEquipped = true)
@@ -98,9 +106,14 @@ public class NpcAgent : GoapAgent
 
         _actions.Add(new GoapAction.Builder("GoToDesk")
             .WithStrategy(new MoveStrategy(_navMesh, () => desk.Position))
-            .AddPrecondition(_beliefs["HasADesk"])
+            .AddPrecondition(_beliefs["HasDesk"])
             .AddPostCondition(_beliefs["AtDesk"])
             .Build());
+        // _actions.Add(new GoapAction.Builder("WaitForDesk")
+        //     .WithStrategy(new QueueStrategy(5, desk))
+        //     //.AddPrecondition(_beliefs["HasDesk"])
+        //     .AddPostCondition(_beliefs["HasDesk"])
+        //     .Build());
         _actions.Add(new GoapAction.Builder("Work")
             .WithStrategy(new UsingMachineStrategy(15, desk, gameObject))
             .AddPrecondition(_beliefs["AtDesk"])
@@ -139,7 +152,7 @@ public class NpcAgent : GoapAgent
             .WithType(BasePlace.PlaceType.Work)
             .WithDesiredEffect(_beliefs["MakeMoney"])
             .Build());
-
+        
         _goals.Add(new GoapGoal.Builder("Talk")
             .WithPriority(0.1f)
             .WithType(BasePlace.PlaceType.Social)

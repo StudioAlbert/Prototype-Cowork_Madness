@@ -33,7 +33,7 @@ namespace GOAP
         public HashSet<GoapGoal> Goals => _goals;
 
         public event Action<GoapGoal> OnGoalDone;
-        
+
         private void Start()
         {
             SetupBeliefs();
@@ -45,20 +45,27 @@ namespace GOAP
         {
             if (_currentAction == null)
             {
-                Debug.Log($"{name} looking for a Plan.");
-                GetAPlan();
 
-                if (_actionPlan != null && _actionPlan.Actions.Count > 0)
+                if (_actionPlan == null || _actionPlan.Actions.Count == 0)
                 {
+                    Debug.Log($"{name} looking for a Plan.");
+                    GetAPlan();
 
-                    _navMesh.ResetPath();
-                    _currentGoal = _actionPlan.Goal;
-                    Debug.Log($"GOAL: {_currentGoal.Name} with {_actionPlan.Actions.Count} actions planned.");
+                    if (_actionPlan != null)
+                    {
+                        _navMesh.ResetPath();
+                        _currentGoal = _actionPlan.Goal;
+                        Debug.Log($"GOAL: {_currentGoal.Name} with {_actionPlan.Actions.Count} actions planned.");
+                    }
+                }
 
+                if (_actionPlan != null)
+                {
                     _currentAction = _actionPlan.Actions.Pop();
                     _currentAction.Start();
                     Debug.Log($"Popped action: {_currentAction.Name}");
                 }
+
             }
 
 
@@ -66,11 +73,15 @@ namespace GOAP
             if (_actionPlan != null && _currentAction != null)
             {
                 _currentAction.Update(Time.deltaTime);
-                
 
                 if (_currentAction.Complete)
                 {
-                    Debug.Log($"Current Action {_currentAction.Name} Complete !");
+                    if(_currentAction.Complete)
+                        Debug.Log($"Current Action {_currentAction.Name} Complete !");
+                    
+                    if(_currentAction.Failed)
+                        Debug.Log($"Current Action {_currentAction.Name} Failed !");
+                    
                     _currentAction.Stop();
                     _currentAction = null;
 
@@ -84,6 +95,8 @@ namespace GOAP
                         OnGoalDone?.Invoke(_lastGoal);
 
                     }
+                    
+                    
                 }
             }
 
@@ -91,12 +104,12 @@ namespace GOAP
             {
                 var priorityLvl = _currentGoal?.Priority ?? 0;
 
-                HashSet<GoapGoal> goalsToCheck = _goals;
-                if (_currentGoal != null)
-                {
-                    Debug.Log($"Do we have to change current Goal : {_currentGoal.Name}|{_currentGoal.Priority} ?");
-                    goalsToCheck = new HashSet<GoapGoal>(_goals.Where(g => g.Priority > priorityLvl));
-                }
+                List<GoapGoal> goalsToCheck = _goals.OrderByDescending(g => g.Priority).Where(g => g.Priority > priorityLvl).ToList();
+                // if (_currentGoal != null)
+                // {
+                //     Debug.Log($"Do we have to change current Goal : {_currentGoal.Name}|{_currentGoal.Priority} ?");
+                //     goalsToCheck = new HashSet<GoapGoal>(_goals.Where(g => g.Priority > priorityLvl));
+                // }
 
                 var potentialPlan = _planner.Plan(this, goalsToCheck, _lastGoal);
                 if (potentialPlan != null)

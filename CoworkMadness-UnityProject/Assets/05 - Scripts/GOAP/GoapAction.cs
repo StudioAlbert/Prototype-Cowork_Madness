@@ -24,6 +24,7 @@ namespace GOAP
 
         private IGoapActionStrategy _strategy;
         public bool Complete => _strategy.Complete;
+        public bool Failed => _strategy.Failed;
         public float Progress => _strategy.Progress;
 
         // Copy cat the strategy, Start, Update, stop
