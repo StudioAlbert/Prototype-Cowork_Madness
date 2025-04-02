@@ -15,9 +15,9 @@ namespace GOAP
         public string Name { get; }
         public float Cost { get; private set; }
 
-        private readonly HashSet<GoapBelief> _preconditions = new();
-        private readonly HashSet<GoapBelief> _postConditions = new();
-        private HashSet<Action> _consequences = new();
+        private readonly HashSet<GoapBelief> _preconditions = new HashSet<GoapBelief>();
+        private readonly HashSet<GoapBelief> _postConditions = new HashSet<GoapBelief>();
+        private readonly HashSet<Action> _consequences = new HashSet<Action>();
 
         public HashSet<GoapBelief> Preconditions => _preconditions;
         public HashSet<GoapBelief> PostConditions => _postConditions;

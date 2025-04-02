@@ -75,18 +75,18 @@ namespace GOAP
 
             foreach (GoapAction action in orderedActions)
             {
-                var desiredEffects = parentNode.DesiredEffects;
-                // Those who have been realized yet does not count
-                desiredEffects.RemoveWhere(b => b.Evaluate());
+                //var desiredEffects = parentNode.DesiredEffects;
+                // // Those who have been realized yet does not count
+                // desiredEffects.RemoveWhere(b => b.Evaluate());
+                //
+                // // No desired effects so every thing is done, Success
+                // if (desiredEffects.Count == 0)
+                //     return true;
                 
-                // No desired effects so every thing is done, Success
-                if (desiredEffects.Count == 0)
-                    return true;
-                
-                if (action.PostConditions.Any(desiredEffects.Contains))
+                if (action.PostConditions.Any(parentNode.DesiredEffects.Contains))
                 {
                     // Take previous effects desired
-                    var newDesiredEffects = new HashSet<GoapBelief>(desiredEffects);
+                    var newDesiredEffects = new HashSet<GoapBelief>(parentNode.DesiredEffects);
                     // Except those will be realized
                     newDesiredEffects.ExceptWith(action.PostConditions);
                     // Plus those who we want to be realized
