@@ -5,33 +5,21 @@ using UnityEngine;
 
 namespace AI
 {
-    [Obsolete("TODO : Queue attitude", true)]
+    //[Obsolete("TODO : Queue attitude", true)]
     public class QueueStrategy : IGoapActionStrategy
     {
         private readonly CountdownTimer _timer;
-        private readonly SimplePlace _place;
         
-        public QueueStrategy(float timeout, SimplePlace place)
+        public QueueStrategy(float duration)
         {
-            _place = place;
-            
-            _timer = new CountdownTimer(timeout);
-            _timer.OnTimerStart += () =>
-            {
-                Complete = false;
-                Failed = false;
-            };
-            _timer.OnTimerStop += () =>
-            {
-                Failed = true;
-                // If timer finishes, the action is Failed
-                Debug.Log("Wait failed !!!!!");
-            };
+            _timer = new CountdownTimer(duration);
+            _timer.OnTimerStart += () => Complete = false;
+            _timer.OnTimerStop += () => Complete = true;
         }
         
         public bool CanPerform => true;
         public bool Complete { get; private set; }
-        public bool Failed { get; private set; }
+        public bool Failed => false;
         public float Progress => _timer.Progress;
 
         public void Start() => _timer.Start();
@@ -39,11 +27,7 @@ namespace AI
         public void Update(float deltaTime)
         {
             _timer.Tick(deltaTime);
-            if (_place.Available)
-            {
-                // success
-                Complete = true;
-            }
         }
+
     }
 }

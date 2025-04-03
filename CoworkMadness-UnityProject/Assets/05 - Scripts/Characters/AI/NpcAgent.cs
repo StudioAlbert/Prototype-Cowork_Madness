@@ -79,7 +79,7 @@ public class NpcAgent : GoapAgent
             .AddPostCondition(_beliefs["AtCoffeeMachine"])
             .Build());
         _actions.Add(new GoapAction.Builder("WaitForCoffeeMachine")
-            .WithStrategy(new IdleStrategy(1))
+            .WithStrategy(new QueueStrategy(1))
             .AddPrecondition(_beliefs["AtCoffeeMachine"])
             .AddPostCondition(_beliefs["CoffeeMachineAvailable"])
             .Build());
