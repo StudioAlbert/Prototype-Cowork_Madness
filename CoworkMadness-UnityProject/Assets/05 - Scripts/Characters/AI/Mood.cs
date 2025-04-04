@@ -12,7 +12,7 @@ public class Mood : MonoBehaviour
     [SerializeField] private float workOverTime;
     [SerializeField] private float breakOverTime;
     [SerializeField] private float socialOverTime;
-    
+
     private HashSet<GoapGoal> _goals;
     private GoapAgent _agent;
 
@@ -28,29 +28,22 @@ public class Mood : MonoBehaviour
     {
         goal.ResetPriority();
     }
-    
+
     void UpdateCurrentGoal(float deltaTime)
     {
-        
-        if(_agent.CurrentGoal == null)
+        if (_agent.CurrentGoal == null)
             return;
-        
-       UpdateOneGoal(_agent.CurrentGoal, deltaTime);
 
+        UpdateOneGoal(_agent.CurrentGoal, deltaTime);
 
     }
     void UpdateGoals(float deltaTime)
     {
-        
-        if(_agent.Goals == null || _agent.Goals.Count <= 0)
+        if (_agent.Goals == null || _agent.Goals.Count <= 0)
             return;
 
         foreach (var goal in _agent.Goals)
-        {
             UpdateOneGoal(goal, deltaTime);
-        }
-        
-
 
     }
     private void UpdateOneGoal(GoapGoal goal, float deltaTime)

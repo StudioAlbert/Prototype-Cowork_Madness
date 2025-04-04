@@ -5,6 +5,7 @@ using UnityEngine.Serialization;
 public class InventoryItem : MonoBehaviour
 {
     [SerializeField] private bool isEquipped;
+    
     private MeshRenderer _object;
     
     public bool IsEquipped
@@ -13,15 +14,14 @@ public class InventoryItem : MonoBehaviour
         set
         {
             isEquipped = value;
-            _object.enabled = value;
+            if(_object != null) _object.enabled = value;
         }
     }
 
     private void Start()
     {
         _object = GetComponent<MeshRenderer>();
+        IsEquipped = false;
     }
-    
-
 
 }

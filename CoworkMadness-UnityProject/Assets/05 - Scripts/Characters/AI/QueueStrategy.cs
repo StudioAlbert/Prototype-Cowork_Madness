@@ -9,24 +9,33 @@ namespace AI
     public class QueueStrategy : IGoapActionStrategy
     {
         private readonly CountdownTimer _timer;
+        private readonly SimplePlace _place;
         
-        public QueueStrategy(float duration)
+        public QueueStrategy(float duration, SimplePlace place)
         {
+            _place = place;
+            
             _timer = new CountdownTimer(duration);
             _timer.OnTimerStart += () => Complete = false;
-            _timer.OnTimerStop += () => Complete = true;
+            _timer.OnTimerStop += () =>  Complete = true;
         }
         
         public bool CanPerform => true;
         public bool Complete { get; private set; }
-        public bool Failed => false;
         public float Progress => _timer.Progress;
 
         public void Start() => _timer.Start();
-        public void Stop() => _timer.Stop();
+        public void Stop()
+        {
+            _timer.Stop();
+        }
         public void Update(float deltaTime)
         {
             _timer.Tick(deltaTime);
+
+            if (_place.Available)
+                Stop();
+            
         }
 
     }

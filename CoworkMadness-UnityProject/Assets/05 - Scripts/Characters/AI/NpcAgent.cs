@@ -15,7 +15,7 @@ using UnityEngine.Serialization;
 // ReSharper disable once CheckNamespace
 public class NpcAgent : GoapAgent
 {
-
+    private const float KTargetDistance = 0.5f;
     private Rigidbody _rb;
     private Animator _animator;
     private Inventory _inventory;
@@ -51,17 +51,17 @@ public class NpcAgent : GoapAgent
         bFactory.AddBelief("HadABreak", () => false);
         // TODO
         // Make a better (inventory/item class) prop/NPC system with feedback => have a coffee mug in the hand
-        bFactory.AddLocationBelief("AtCoffeeMachine", .5f, coffeeMachine.Position);
+        bFactory.AddLocationBelief("AtCoffeeMachine", KTargetDistance, coffeeMachine.Position);
         bFactory.AddBelief("CoffeeMachineAvailable", () => coffeeMachine.Available);
         bFactory.AddBelief("HasACoffee", () => _inventory.CoffeeEquipped);
-        bFactory.AddLocationBelief("AtTheTerrace", .5f, terrace.Position);
+        bFactory.AddLocationBelief("AtTheTerrace", KTargetDistance, terrace.Position);
 
         bFactory.AddBelief("HasDesk", () => desk.Available);
-        bFactory.AddLocationBelief("AtDesk", 1, desk.Position);
+        bFactory.AddLocationBelief("AtDesk", KTargetDistance, desk.Position);
         bFactory.AddBelief("MakeMoney", () => false);
 
         bFactory.AddBelief("HadATalk", () => false);
-        bFactory.AddLocationBelief("MetSomeone", 0.5f, talkPerson);
+        bFactory.AddLocationBelief("MetSomeone", KTargetDistance, talkPerson);
         
     }
     protected override void SetupActions()
@@ -74,24 +74,22 @@ public class NpcAgent : GoapAgent
             .Build());
 
         _actions.Add(new GoapAction.Builder("GetACoffee")
-            .WithStrategy(new MoveStrategy(_navMesh, () => coffeeMachine.Position))
-            //.AddPrecondition(_beliefs["HasCoffeeMachine"])
+            .WithStrategy(new MoveStrategy(_navMesh, KTargetDistance, () => coffeeMachine.Position))
             .AddPostCondition(_beliefs["AtCoffeeMachine"])
             .Build());
         _actions.Add(new GoapAction.Builder("WaitForCoffeeMachine")
-            .WithStrategy(new QueueStrategy(1))
+            .WithStrategy(new QueueStrategy(20, coffeeMachine))
             .AddPrecondition(_beliefs["AtCoffeeMachine"])
             .AddPostCondition(_beliefs["CoffeeMachineAvailable"])
             .Build());
         _actions.Add(new GoapAction.Builder("MakeACoffee")
-            .WithStrategy(new UsingMachineStrategy(5, coffeeMachine, gameObject))
+            .WithStrategy(new UsingMachineStrategy(10, coffeeMachine, gameObject))
             .AddPrecondition(_beliefs["CoffeeMachineAvailable"])
-            //.AddPrecondition(_beliefs["AtCoffeeMachine"])
             .AddPostCondition(_beliefs["HasACoffee"])
             .AddConsequence(() => _inventory.CoffeeEquipped = true)
             .Build());
         _actions.Add(new GoapAction.Builder("GoToTheTerrace")
-            .WithStrategy(new MoveStrategy(_navMesh, () => terrace.Position))
+            .WithStrategy(new MoveStrategy(_navMesh, KTargetDistance, () => terrace.Position))
             .AddPrecondition(_beliefs["HasACoffee"])
             .AddPostCondition(_beliefs["AtTheTerrace"])
             .Build());
@@ -104,7 +102,7 @@ public class NpcAgent : GoapAgent
 
 
         _actions.Add(new GoapAction.Builder("GoToDesk")
-            .WithStrategy(new MoveStrategy(_navMesh, () => desk.Position))
+            .WithStrategy(new MoveStrategy(_navMesh, KTargetDistance, () => desk.Position))
             //.AddPrecondition(_beliefs["HasDesk"])
             .AddPostCondition(_beliefs["AtDesk"])
             .Build());
@@ -114,13 +112,13 @@ public class NpcAgent : GoapAgent
         //     .AddPostCondition(_beliefs["HasDesk"])
         //     .Build());
         _actions.Add(new GoapAction.Builder("Work")
-            .WithStrategy(new UsingMachineStrategy(15, desk, gameObject))
+            .WithStrategy(new UsingMachineStrategy(3, desk, gameObject))
             .AddPrecondition(_beliefs["AtDesk"])
             .AddPostCondition(_beliefs["MakeMoney"])
             .Build());
 
         _actions.Add(new GoapAction.Builder("SmallTalkToBoss")
-            .WithStrategy(new MoveStrategy(_navMesh, () => talkPerson.position))
+            .WithStrategy(new MoveStrategy(_navMesh, KTargetDistance, () => talkPerson.position))
             .AddPostCondition(_beliefs["MetSomeone"])
             .Build());
         _actions.Add(new GoapAction.Builder("SmallTalkToBoss")

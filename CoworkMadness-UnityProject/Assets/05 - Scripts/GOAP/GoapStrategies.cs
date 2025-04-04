@@ -9,7 +9,6 @@ namespace GOAP
     { 
         bool CanPerform { get; }
         bool Complete { get; }
-        bool Failed { get; }
         float Progress { get; }
 
         void Start();
@@ -30,7 +29,6 @@ namespace GOAP
         
         public bool CanPerform => true;
         public bool Complete { get; private set; }
-        public bool Failed => false;
         public float Progress => _timer.Progress;
 
         public void Start() => _timer.Start();
@@ -43,27 +41,28 @@ namespace GOAP
     }
     
     public class MoveStrategy : IGoapActionStrategy {
-        private readonly NavMeshAgent _agent;
+        private readonly NavMeshAgent _navMesh;
+        private readonly float _distance;
         private readonly Func<Vector3> _destination;
     
         public bool CanPerform => !Complete;
-        public bool Complete => _agent.remainingDistance <= 2f && !_agent.pathPending;
-        public bool Failed => false;
-        public float Progress =>  _agent.remainingDistance / _startDistance;
+        public bool Complete => _navMesh.remainingDistance <= _distance && !_navMesh.pathPending;
+        public float Progress =>  _navMesh.remainingDistance / _startDistance;
 
         private float _startDistance;
-        
-        public MoveStrategy(NavMeshAgent agent, Func<Vector3> destination) {
-            this._agent = agent;
-            this._destination = destination;
+
+        public MoveStrategy(NavMeshAgent navMesh, float distance, Func<Vector3> destination) {
+            _navMesh = navMesh;
+            _distance = distance;
+            _destination = destination;
         }      
     
         public void Start()
         {
-            _startDistance = Vector3.Distance(_agent.transform.position, _destination());
-            _agent.SetDestination(_destination());
+            _startDistance = Vector3.Distance(_navMesh.transform.position, _destination());
+            _navMesh.SetDestination(_destination());
         }
-        public void Stop() => _agent.ResetPath();
+        public void Stop() => _navMesh.ResetPath();
         public void Update(float deltaTime)
         { 
             // No update

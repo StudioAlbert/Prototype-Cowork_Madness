@@ -9,6 +9,10 @@ public class NpcAgentInspector : Editor
 {
     public override void OnInspectorGUI()
     {
+        
+        if (Application.isPlaying)
+            Repaint();
+        
         GoapAgent agent = (GoapAgent)target;
 
         EditorGUILayout.Space();

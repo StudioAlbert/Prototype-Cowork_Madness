@@ -9,13 +9,13 @@ namespace GOAP
 
     public interface IGoapPlanner
     {
-        GoapPlan Plan(GoapAgent agent, List<GoapGoal> goals, GoapGoal mostRecentGoal);
+        GoapPlan GetAPlan(GoapAgent agent, List<GoapGoal> goals, GoapGoal mostRecentGoal);
     }
 
     class GoapPlanner : IGoapPlanner
     {
 
-        public GoapPlan Plan(GoapAgent agent, List<GoapGoal> orderedGoals, GoapGoal mostRecentGoal)
+        public GoapPlan GetAPlan(GoapAgent agent, List<GoapGoal> orderedGoals, GoapGoal mostRecentGoal)
         {
             // ==
             if (agent.Actions == null || agent.Actions.Count == 0)
