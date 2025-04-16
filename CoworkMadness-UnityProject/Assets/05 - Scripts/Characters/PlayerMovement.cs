@@ -1,15 +1,16 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerMovement : MonoBehaviour
 {
 
-    [SerializeField] private float _fwdSpeed = 1.0f;
-    [SerializeField] private float _rotationSpeed = 25.0f;
-    [SerializeField] private float RotationSmoothTime;
-    [SerializeField] private float _turnBackTime = 0.3f;
-    [SerializeField] private Transform _moveRoot;
-    [SerializeField] private Animator _animator;
-    [SerializeField] private CharacterController _characterController;
+    // [SerializeField] private float _fwdSpeed = 1.0f;
+    // [SerializeField] private float _rotationSpeed = 25.0f;
+    [FormerlySerializedAs("RotationSmoothTime")] [SerializeField] private float rotationSmoothTime;
+    // [SerializeField] private float _turnBackTime = 0.3f;
+    [FormerlySerializedAs("_moveRoot")] [SerializeField] private Transform moveRoot;
+    [FormerlySerializedAs("_animator")] [SerializeField] private Animator animator;
+    [FormerlySerializedAs("_characterController")] [SerializeField] private CharacterController characterController;
     
     // Components
     private PlayerInputController _inputController;
@@ -46,13 +47,13 @@ public class PlayerMovement : MonoBehaviour
             _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg +
                               _mainCamera.transform.eulerAngles.y;
         }
-        float rotation = Mathf.SmoothDampAngle(_moveRoot.eulerAngles.y,
+        float rotation = Mathf.SmoothDampAngle(moveRoot.eulerAngles.y,
             _targetRotation,
             ref _rotationVelocity,
-            RotationSmoothTime);
+            rotationSmoothTime);
 
         // rotate to face input direction relative to camera position
-        _moveRoot.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+        moveRoot.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
 
         // if (inputMagnitude > 0.01)
         // {
@@ -60,6 +61,6 @@ public class PlayerMovement : MonoBehaviour
         //     Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward * (_fwdSpeed * inputMagnitude);
         //     _characterController.SimpleMove(targetDirection);
         // }
-        _animator.SetFloat(AnimatorHandles.WalkSpeed, inputMagnitude);
+        animator.SetFloat(AnimatorHandles.WalkSpeed, inputMagnitude);
     }
 }

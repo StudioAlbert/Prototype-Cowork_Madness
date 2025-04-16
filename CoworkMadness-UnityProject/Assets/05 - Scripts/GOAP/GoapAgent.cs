@@ -4,13 +4,16 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
+using Utilities;
 
 namespace GOAP
 {
     [RequireComponent(typeof(NavMeshAgent))]
     public abstract class GoapAgent : MonoBehaviour
     {
-
+        // Loggers
+        private LoggerObject _loggerObject;
+        
         // Physics and regular components
         protected NavMeshAgent _navMesh;
         // GOAP Machinery
@@ -36,6 +39,9 @@ namespace GOAP
 
         private void Start()
         {
+
+            _loggerObject = GetComponent<LoggerObject>();
+            
             SetupBeliefs();
             SetupActions();
             SetupGoals();
@@ -46,7 +52,7 @@ namespace GOAP
             // Update the plan and current action if there is one
             if (_currentAction == null)
             {
-                Debug.Log("Calculating any potential new plan");
+                _loggerObject.Log("Calculating any potential new plan");
                 GetAPlan();
 
                 if (_actionPlan != null && _actionPlan.Actions.Count > 0)
@@ -54,14 +60,14 @@ namespace GOAP
                     _navMesh.ResetPath();
 
                     _currentGoal = _actionPlan.Goal;
-                    Debug.Log($"Goal: {_currentGoal.Name} with {_actionPlan.Actions.Count} actions in plan");
+                    _loggerObject.Log($"Goal: {_currentGoal.Name} with {_actionPlan.Actions.Count} actions in plan");
                     _currentAction = _actionPlan.Actions.Pop();
-                    Debug.Log($"Popped action: {_currentAction.Name}");
+                    _loggerObject.Log($"Popped action: {_currentAction.Name}");
                     
                     // Verify all precondition effects are true
                     if (_currentAction.Preconditions.All(b =>
                         {
-                            Debug.Log($"Belief {b.Name} : " + b.Evaluate());
+                            _loggerObject.Log($"Belief {b.Name} : " + b.Evaluate());
                             return b.Evaluate();
                         })
                     )
@@ -70,7 +76,7 @@ namespace GOAP
                     }
                     else
                     {
-                        Debug.Log("Preconditions not met, clearing current action and goal");
+                        _loggerObject.Log("Preconditions not met, clearing current action and goal");
                         _currentAction = null;
                         ResetGoal();
                     }
@@ -85,13 +91,13 @@ namespace GOAP
 
                 if (_currentAction.Complete)
                 {
-                    Debug.Log($"{_currentAction.Name} complete");
+                    _loggerObject.Log($"{_currentAction.Name} complete");
                     _currentAction.Stop();
                     _currentAction = null;
 
                     if (_actionPlan.Actions.Count == 0)
                     {
-                        Debug.Log("Plan complete");
+                        _loggerObject.Log("Plan complete");
                         ResetGoal();
                     }
                 }
@@ -113,18 +119,18 @@ namespace GOAP
             if (potentialPlan != null)
             {
                 _actionPlan = potentialPlan;
-                Debug.Log($"{gameObject.name} found new plan : {_actionPlan.Goal.Name}");
+                _loggerObject.Log($"{gameObject.name} found new plan : {_actionPlan.Goal.Name}");
             }
             else
             {
-                Debug.Log($"{gameObject.name} keep the plan : {_actionPlan.Goal.Name}");
+                _loggerObject.Log($"{gameObject.name} keep the plan : {_actionPlan.Goal.Name}");
             }
         }
 
         private void ResetGoal()
         {
 
-            Debug.Log($"Reset Plan : " + (_currentGoal != null ? _currentGoal.Name : "No goal"));
+            _loggerObject.Log($"Reset Plan : " + (_currentGoal != null ? _currentGoal.Name : "No goal"));
             if (_currentGoal == null)
                 return;
 
