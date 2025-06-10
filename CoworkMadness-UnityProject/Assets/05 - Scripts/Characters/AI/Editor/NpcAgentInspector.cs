@@ -1,15 +1,30 @@
+#define UI_TOOLKIT_EDITOR
+
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using GOAP;
 using UnityEditor;
 using UnityEngine;
 using AI;
+using UnityEditor.UIElements;
+using UnityEngine.Serialization;
+using UnityEngine.UIElements;
+
+
 
 [CustomEditor(typeof(NpcAgent))]
+[SuppressMessage("Usage", "DBG001:Debug.Log usage interdit")]
 public class NpcAgentInspector : Editor
 {
+    [SerializeField] private VisualTreeAsset _mNpcAgentXML;
+
+    private TextField _currentGoalText;
+
+#if !UI_TOOLKIT_EDITOR
     public override void OnInspectorGUI()
     {
         
+
+
         if (Application.isPlaying)
             Repaint();
         
@@ -83,4 +98,56 @@ public class NpcAgentInspector : Editor
         }
 
     }
+#else
+    // Create a new VisualElement to be the root of the Inspector UI.
+    private VisualElement _myInspector;
+    
+    public override VisualElement CreateInspectorGUI()
+    {
+    
+        _myInspector = new VisualElement();
+        
+        // Load the reference UXML.
+        if (_mNpcAgentXML == null)
+            _mNpcAgentXML = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/06 - UI/Character/AI/NPCAgentEditor.uxml");
+    
+        // Instantiate the UXML.
+        _myInspector = _mNpcAgentXML.Instantiate();
+        
+        // Track when serialized object changes
+        //_myInspector.TrackSerializedObjectValue(serializedObject, OnSerializedObjectChanged);
+    
+        // Get a reference to the default Inspector Foldout control.
+        VisualElement InspectorFoldout = _myInspector.Q("DefaultInspector");
+        if (InspectorFoldout != null)
+        {
+            // Attach a default Inspector to the Foldout.
+            InspectorElement.FillDefaultInspector(InspectorFoldout, serializedObject, this);
+        }
+    
+        // Return the finished Inspector UI.
+        return _myInspector;
+    }
+
+    // private IntegerField _currentGoalField;
+    // private void OnSerializedObjectChanged(SerializedObject obj)
+    // {
+    //     // Update UI when properties change
+    //     Debug.Log("Serialized object changed!");
+    //     
+    //     _currentGoalField = _myInspector.Q<IntegerField>("CurrentGoal");
+    //     SerializedProperty currentGoal = obj.FindProperty("_currentGoal");
+    //     if (_currentGoalField != null && currentGoal != null)
+    //     {
+    //         _currentGoalField.label = currentGoal.FindPropertyRelative("_name").stringValue;
+    //         _currentGoalField.value = currentGoal.FindPropertyRelative("_priority").intValue;
+    //     }
+    //     
+    //     if (Application.isPlaying)
+    //         Repaint();
+    //     
+    // }
+    
+    
+#endif
 }

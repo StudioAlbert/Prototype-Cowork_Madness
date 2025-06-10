@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 using UnityEngine;
+using Utilities;
 
 namespace GOAP
 {
@@ -15,19 +16,26 @@ namespace GOAP
     class GoapPlanner : IGoapPlanner
     {
 
+        private LoggerObject _logger;
+
+        public GoapPlanner(LoggerObject logger)
+        {
+            _logger = logger;
+        }
+        
         public GoapPlan GetAPlan(GoapAgent agent, List<GoapGoal> orderedGoals, GoapGoal mostRecentGoal)
         {
             // ==
             if (agent.Actions == null || agent.Actions.Count == 0)
             {
-                Debug.LogWarning($"{agent.name} No action available... No plan..");
+                _logger.Warning($"{agent.name} No action available... No plan..");
                 return null;
             }
 
             // ==
             if (orderedGoals == null || orderedGoals.Count == 0)
             {
-                Debug.LogWarning($"{agent.name} No goal available... No plan...");
+                _logger.Warning($"{agent.name} No goal available... No plan...");
                 return null;
             }
 
@@ -64,12 +72,12 @@ namespace GOAP
 
             }
 
-            Debug.LogWarning("No Plan Found for any Goal");
+            _logger.Warning("No Plan Found for any Goal");
             return null;
 
         }
 
-        private bool FindActionsPath(Node parentNode, HashSet<GoapAction> actions)
+        private bool FindActionsPath(Node parentNode, List<GoapAction> actions)
         {
             var orderedActions = actions.OrderBy(a => a.Cost);
 
@@ -93,7 +101,7 @@ namespace GOAP
                     newDesiredEffects.UnionWith(action.Preconditions);
 
                     // get rid of the action concerned
-                    var newAvailableActions = new HashSet<GoapAction>(actions);
+                    var newAvailableActions = new List<GoapAction>(actions);
                     newAvailableActions.Remove(action);
 
                     // Create a new node

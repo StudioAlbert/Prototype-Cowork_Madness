@@ -44,7 +44,7 @@ namespace AI
         public void Update(float deltaTime)
         {
             _timer.Tick(deltaTime);
-            if (_place.user == null)
+            if (!_place.user)
             {
                 _place.user = _user;
             }

@@ -1,0 +1,11 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/06%20-%20UI/EditorStyle.uss?fileID=7433441132597879392&amp;guid=a213fa62b84a3e54e8c5c2ef18e2376b&amp;type=3#EditorStyle" />
+    <engine:VisualElement style="flex-grow: 1; flex-direction: column; border-bottom-width: 0; border-left-color: rgb(82, 82, 82); border-right-color: rgb(82, 82, 82); border-top-color: rgb(82, 82, 82); border-bottom-color: rgb(82, 82, 82); margin-top: 3px; margin-right: 3px; margin-bottom: 3px; margin-left: 3px; border-top-width: 0; padding-bottom: 2px;">
+        <engine:Label text="Name" name="Name" style="width: 70%; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; flex-grow: 0; flex-direction: column; border-bottom-width: 1px; border-left-color: rgb(184, 184, 184); border-right-color: rgb(184, 184, 184); border-top-color: rgb(184, 184, 184); border-bottom-color: rgb(184, 184, 184);" />
+        <engine:VisualElement style="flex-grow: 0; flex-direction: row-reverse; width: auto; flex-shrink: 0; margin-left: 24px;">
+            <engine:FloatField value="42.2" name="Progress" max-length="100" style="flex-grow: 1; flex-shrink: 1; width: auto; white-space: normal; text-overflow: ellipsis; font-size: 12px; flex-direction: row;" />
+            <engine:Label text="%age : " style="font-size: 12px; white-space: normal; -unity-text-align: middle-right; margin-top: 0; margin-right: 10px; margin-bottom: 0; margin-left: 20px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+            <engine:EnumField value="Center" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" name="Status" data-source-type="GOAP.GoapStatus, Assembly-CSharp" style="width: 40%; flex-shrink: 1; flex-grow: 0;" />
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

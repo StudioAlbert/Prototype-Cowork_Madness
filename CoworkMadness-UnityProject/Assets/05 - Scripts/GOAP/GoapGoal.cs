@@ -1,20 +1,34 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using Places;
+using Unity.Properties;
 using UnityEditor;
+using UnityEngine;
+using Utilities;
 
 namespace GOAP
 {
+    [Serializable]
     public class GoapGoal
     {
         GoapGoal(string name)
         {
-            Name = name;
+            _name = name;
         }
 
         private float _startPriority;
-        
-        public string Name { get; }
-        public float Priority { get; set; }
+
+        [SerializeField] private string _name;
+        public string Name => _name;
+
+        [SerializeField] private float _priority;
+        public float Priority
+        {
+            get => _priority;
+            set => _priority = value;
+        }
+
         public BasePlace.PlaceType PlaceType { get; private set; }
         public readonly HashSet<GoapBelief> DesiredEffects = new HashSet<GoapBelief>();
         

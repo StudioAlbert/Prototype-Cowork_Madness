@@ -7,6 +7,7 @@ using Places;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
+using Utilities;
 
 
 [RequireComponent(typeof(Rigidbody))]
@@ -34,8 +35,9 @@ public class NpcAgent : GoapAgent
         _rb = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
         _inventory = GetComponent<Inventory>();
+        _logger = GetComponent<LoggerObject>();
 
-        _planner = new GoapPlanner();
+        _planner = new GoapPlanner(_logger);
 
     }
 
@@ -66,7 +68,7 @@ public class NpcAgent : GoapAgent
     }
     protected override void SetupActions()
     {
-        _actions = new HashSet<GoapAction>();
+        _actions = new List<GoapAction>();
 
         _actions.Add(new GoapAction.Builder("Nothing")
             .WithStrategy(new IdleStrategy(0))
@@ -121,16 +123,16 @@ public class NpcAgent : GoapAgent
             .WithStrategy(new MoveStrategy(_navMesh, KTargetDistance, () => talkPerson.position))
             .AddPostCondition(_beliefs["MetSomeone"])
             .Build());
-        _actions.Add(new GoapAction.Builder("SmallTalkToBoss")
-            .WithStrategy(new IdleStrategy(3))
-            .AddPrecondition(_beliefs["MetSomeone"])
-            .AddPostCondition(_beliefs["HadATalk"])
-            .Build());
+        // _actions.Add(new GoapAction.Builder("SmallTalkToBoss")
+        //     .WithStrategy(new IdleStrategy(3))
+        //     .AddPrecondition(_beliefs["MetSomeone"])
+        //     .AddPostCondition(_beliefs["HadATalk"])
+        //     .Build());
 
     }
     protected override void SetupGoals()
     {
-        _goals = new HashSet<GoapGoal>();
+        _goals = new List<GoapGoal>();
 
         _goals.Add(new GoapGoal.Builder("Nothing")
             .WithPriority(0.01f)

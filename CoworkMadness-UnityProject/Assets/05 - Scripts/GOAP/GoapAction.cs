@@ -1,20 +1,28 @@
 using System;
 using System.Collections.Generic;
-using UnityEditor;
+using System.Diagnostics.CodeAnalysis;
+using UnityEngine;
+using Utilities;
 
 namespace GOAP
 {
-    public class GoapAction
+    [Serializable]
+    public class GoapAction : HasGoapStatus
     {
 
         GoapAction(string name)
         {
-            Name = name;
+            _name = name;
         }
 
-        public string Name { get; }
-        public float Cost { get; private set; }
+        [SerializeField] private string _name;
+        public string Name => _name;
 
+        [SerializeField] private float _cost;
+        public float Cost => _cost;
+
+        [SerializeField] private float _progress;
+        
         private readonly HashSet<GoapBelief> _preconditions = new HashSet<GoapBelief>();
         private readonly HashSet<GoapBelief> _postConditions = new HashSet<GoapBelief>();
         private readonly HashSet<Action> _consequences = new HashSet<Action>();
@@ -23,19 +31,31 @@ namespace GOAP
         public HashSet<GoapBelief> PostConditions => _postConditions;
 
         private IGoapActionStrategy _strategy;
-        public bool Complete => _strategy.Complete;
-        public float Progress => _strategy.Progress;
+        
 
         // Copy cat the strategy, Start, Update, stop
-        public void Start() => _strategy.Start();
-        public void Stop() => _strategy.Stop();
+        public void Start()
+        {
+            _progress = 1;
+            _strategy.Start();
+            _status = GoapStatus.InProgress;
+        }
+        public void Stop()
+        {
+            _progress = 0;
+            _strategy.Stop();
+            _status = GoapStatus.Invalid;
+        }
 
         public void Update(float deltaTime)
         {
-            // If we can apply the strategy , then update it
+            
+            // If we can apply the strategy, then update it
             if (_strategy.CanPerform)
                 _strategy.Update(deltaTime);
-
+            
+            _progress = _strategy.Progress;
+            
             // If strategy is done, apply effects
             // If not, end it
             if (_strategy.Complete)
@@ -44,10 +64,14 @@ namespace GOAP
                 {
                     c.Invoke();
                 }
+                _status = GoapStatus.Complete;
             }
             
-        }
 
+            
+        }
+        
+        
         // BUILDER 
         public class Builder
         {
@@ -57,13 +81,13 @@ namespace GOAP
             {
                 _action = new GoapAction(name)
                 {
-                    Cost = 1f
+                    _cost = 1f
                 };
             }
 
             public Builder WithCost(float cost)
             {
-                _action.Cost = cost;
+                _action._cost = cost;
                 return this;
             }
             public Builder WithStrategy(IGoapActionStrategy strategy)

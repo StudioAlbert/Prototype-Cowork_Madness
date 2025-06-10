@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 76672400b5166c44caae9a4b149acce0
+guid: 7efb9a9daf7c42b0a08e629c918ee860
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - _mNpcAgentXML: {fileID: 9197481963319205126, guid: 285381df33afaa44ab147b7a09e40183, type: 3}
+  - _goalXML: {fileID: 9197481963319205126, guid: 9978aeacf4dc682409481b5c175b239f, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

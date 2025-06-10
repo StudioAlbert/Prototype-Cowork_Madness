@@ -69,7 +69,9 @@ public class AnimatorHandles
         int hash = Animator.StringToHash(stringToHash);
         if (hash == 0)
         {
+#pragma warning disable DBG001
             Debug.LogWarning("Hash [" + stringToHash + "] is empty");
+#pragma warning restore DBG001
         }
         return hash;
     }

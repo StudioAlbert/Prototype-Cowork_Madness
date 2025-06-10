@@ -1,0 +1,20 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <Style src="project://database/Assets/06%20-%20UI/EditorStyle.uss?fileID=7433441132597879392&amp;guid=a213fa62b84a3e54e8c5c2ef18e2376b&amp;type=3#EditorStyle" />
+    <ui:VisualElement class="editor-panel">
+        <ui:Label text="Current goal" style="color: rgb(194, 194, 194); -unity-font-style: bold;" />
+        <uie:PropertyField data-source-type="NpcAgent, Assembly-CSharp" name="CurrentGoal" binding-path="_currentGoal" label="CurrentGoal" />
+    </ui:VisualElement>
+    <ui:VisualElement class="editor-panel" style="flex-grow: 1; border-left-color: rgb(194, 194, 194); border-right-color: rgb(194, 194, 194); border-top-color: rgb(194, 194, 194); border-bottom-color: rgb(194, 194, 194); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px;">
+        <ui:Label text="Goals" style="color: rgb(194, 194, 194);" />
+        <ui:ListView data-source-type="NpcAgent, Assembly-CSharp" binding-path="_goals" />
+    </ui:VisualElement>
+    <ui:VisualElement class="editor-panel">
+        <ui:Label text="Current action" style="color: rgb(194, 194, 194); -unity-font-style: bold;" />
+        <uie:PropertyField data-source-type="NpcAgent, Assembly-CSharp" name="CurrentAction" label="CurrentAction" binding-path="_currentAction" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
+    </ui:VisualElement>
+    <ui:VisualElement class="editor-panel" style="flex-grow: 1; border-left-color: rgb(194, 194, 194); border-right-color: rgb(194, 194, 194); border-top-color: rgb(194, 194, 194); border-bottom-color: rgb(194, 194, 194); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px;">
+        <ui:Label text="Actions" style="color: rgb(194, 194, 194);" />
+        <ui:ListView data-source-type="NpcAgent, Assembly-CSharp" binding-path="_actions" fixed-item-height="50" />
+    </ui:VisualElement>
+    <ui:Foldout text="Default" name="DefaultInspector" style="margin-top: 10px;" />
+</ui:UXML>

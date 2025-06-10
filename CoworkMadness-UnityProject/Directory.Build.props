@@ -1,5 +1,5 @@
 <Project>
     <ItemGroup>
-        <Analyzer Include="Analyzers\Analyzer.dll" />
+        <!--<Analyzer Include="Analyzers\Analyzer.dll" />-->
     </ItemGroup>
 </Project>

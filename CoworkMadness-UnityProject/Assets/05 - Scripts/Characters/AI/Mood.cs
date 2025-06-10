@@ -29,14 +29,6 @@ public class Mood : MonoBehaviour
         goal.ResetPriority();
     }
 
-    void UpdateCurrentGoal(float deltaTime)
-    {
-        if (_agent.CurrentGoal == null)
-            return;
-
-        UpdateOneGoal(_agent.CurrentGoal, deltaTime);
-
-    }
     void UpdateGoals(float deltaTime)
     {
         if (_agent.Goals == null || _agent.Goals.Count <= 0)
