@@ -6,7 +6,7 @@
     </ui:VisualElement>
     <ui:VisualElement class="editor-panel" style="flex-grow: 1; border-left-color: rgb(194, 194, 194); border-right-color: rgb(194, 194, 194); border-top-color: rgb(194, 194, 194); border-bottom-color: rgb(194, 194, 194); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px;">
         <ui:Label text="Goals" style="color: rgb(194, 194, 194);" />
-        <ui:ListView data-source-type="NpcAgent, Assembly-CSharp" binding-path="_goals" />
+        <ui:ListView data-source-type="NpcAgent, Assembly-CSharp" binding-path="_goals" fixed-item-height="50" />
     </ui:VisualElement>
     <ui:VisualElement class="editor-panel">
         <ui:Label text="Current action" style="color: rgb(194, 194, 194); -unity-font-style: bold;" />

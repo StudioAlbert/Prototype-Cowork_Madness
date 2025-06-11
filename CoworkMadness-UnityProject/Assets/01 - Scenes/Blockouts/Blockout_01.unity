@@ -3454,6 +3454,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 108193941}
     m_Modifications:
+    - target: {fileID: 1850730522343723977, guid: 6c4d89e2dd385664b9835f934edda762, type: 3}
+      propertyPath: _breakOverTime
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1850730522343723977, guid: 6c4d89e2dd385664b9835f934edda762, type: 3}
+      propertyPath: _socialOverTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3712612424107896632, guid: 6c4d89e2dd385664b9835f934edda762, type: 3}
       propertyPath: desk
       value: 
@@ -3516,7 +3524,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9222791074539596511, guid: 6c4d89e2dd385664b9835f934edda762, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3542,6 +3550,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 108193941}
     m_Modifications:
+    - target: {fileID: 1850730522343723977, guid: f1e0ff2ac8b21ae46943e0c51a9fc9ac, type: 3}
+      propertyPath: _breakOverTime
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1850730522343723977, guid: f1e0ff2ac8b21ae46943e0c51a9fc9ac, type: 3}
+      propertyPath: _socialOverTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3712612424107896632, guid: f1e0ff2ac8b21ae46943e0c51a9fc9ac, type: 3}
       propertyPath: desk
       value: 
@@ -3604,7 +3620,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9222791074539596511, guid: f1e0ff2ac8b21ae46943e0c51a9fc9ac, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9546,6 +9562,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 108193941}
     m_Modifications:
+    - target: {fileID: 1850730522343723977, guid: f1e0ff2ac8b21ae46943e0c51a9fc9ac, type: 3}
+      propertyPath: _breakOverTime
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1850730522343723977, guid: f1e0ff2ac8b21ae46943e0c51a9fc9ac, type: 3}
+      propertyPath: _socialOverTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3712612424107896632, guid: f1e0ff2ac8b21ae46943e0c51a9fc9ac, type: 3}
       propertyPath: desk
       value: 
@@ -9608,7 +9632,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9222791074539596511, guid: f1e0ff2ac8b21ae46943e0c51a9fc9ac, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11869,6 +11893,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 108193941}
     m_Modifications:
+    - target: {fileID: 1850730522343723977, guid: 6c4d89e2dd385664b9835f934edda762, type: 3}
+      propertyPath: _breakOverTime
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1850730522343723977, guid: 6c4d89e2dd385664b9835f934edda762, type: 3}
+      propertyPath: _socialOverTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3712612424107896632, guid: 6c4d89e2dd385664b9835f934edda762, type: 3}
       propertyPath: desk
       value: 
@@ -11931,7 +11963,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9222791074539596511, guid: 6c4d89e2dd385664b9835f934edda762, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15294,6 +15326,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 108193941}
     m_Modifications:
+    - target: {fileID: 1850730522343723977, guid: f1e0ff2ac8b21ae46943e0c51a9fc9ac, type: 3}
+      propertyPath: _breakOverTime
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1850730522343723977, guid: f1e0ff2ac8b21ae46943e0c51a9fc9ac, type: 3}
+      propertyPath: _socialOverTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3712612424107896632, guid: f1e0ff2ac8b21ae46943e0c51a9fc9ac, type: 3}
       propertyPath: desk
       value: 
@@ -15356,7 +15396,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9222791074539596511, guid: f1e0ff2ac8b21ae46943e0c51a9fc9ac, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15382,6 +15422,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 108193941}
     m_Modifications:
+    - target: {fileID: 1850730522343723977, guid: 6c4d89e2dd385664b9835f934edda762, type: 3}
+      propertyPath: _breakOverTime
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1850730522343723977, guid: 6c4d89e2dd385664b9835f934edda762, type: 3}
+      propertyPath: _socialOverTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3712612424107896632, guid: 6c4d89e2dd385664b9835f934edda762, type: 3}
       propertyPath: desk
       value: 

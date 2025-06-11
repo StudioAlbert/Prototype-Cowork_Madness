@@ -40,6 +40,8 @@ public class GoapGoalDrawer : PropertyDrawer
         FloatField Priority = container.Q<FloatField>("Priority");
         Priority?.BindProperty(goalProperty.FindPropertyRelative("_priority"));
 
+        EnumField status = container.Q<EnumField>("Status");
+        status?.BindProperty(goalProperty.FindPropertyRelative("_status"));
 
         // var popup = new UnityEngine.UIElements.PopupWindow();
         // popup.text = "Goal";

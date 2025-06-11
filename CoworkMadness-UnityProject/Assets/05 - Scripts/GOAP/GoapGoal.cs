@@ -10,7 +10,7 @@ using Utilities;
 namespace GOAP
 {
     [Serializable]
-    public class GoapGoal
+    public class GoapGoal : HasGoapStatus
     {
         GoapGoal(string name)
         {
@@ -31,6 +31,8 @@ namespace GOAP
 
         public BasePlace.PlaceType PlaceType { get; private set; }
         public readonly HashSet<GoapBelief> DesiredEffects = new HashSet<GoapBelief>();
+        
+        public void SetInProgress() => _status = GoapStatus.InProgress;
         
         public class Builder
         {

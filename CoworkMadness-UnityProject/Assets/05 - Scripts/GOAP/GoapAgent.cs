@@ -58,7 +58,9 @@ namespace GOAP
                     _navMesh.ResetPath();
 
                     _currentGoal = _actionPlan.Goal;
+                    _currentGoal.SetInProgress();
                     _logger.Log($"Goal: {_currentGoal.Name} with {_actionPlan.Actions.Count} actions in plan");
+                    
                     _currentAction = _actionPlan.Actions.Pop();
                     _logger.Log($"Popped action: {_currentAction.Name}");
                     
@@ -106,7 +108,7 @@ namespace GOAP
             //var priorityLvl = _currentGoal?.Priority ?? 0;
             // If invalid, priority = 0 => new goal
             // If valid, priority = current priority
-            var priorityLvl = _currentGoal != null ? _currentGoal.Priority : 0;
+            var priorityLvl = _currentGoal.Status != GoapStatus.Invalid ? _currentGoal.Priority : 0;
 
             List<GoapGoal> goalsToCheck = _goals.OrderByDescending(g => g.Priority).Where(g => g.Priority > priorityLvl).ToList();
             // if (_currentGoal != null)
@@ -131,12 +133,12 @@ namespace GOAP
         {
 
             _logger.Log($"Reset Plan : " + (_currentGoal != null ? _currentGoal.Name : "No goal"));
-            if (_currentGoal == null)
-                return;
-
-            _lastGoal = _currentGoal;
-            _currentGoal = null;
-            OnGoalDone?.Invoke(_lastGoal);
+            if (_currentGoal.Status != GoapStatus.Invalid)
+            {
+                _lastGoal = _currentGoal;
+                _currentGoal.Dismiss();
+                OnGoalDone?.Invoke(_lastGoal);
+            }
 
         }
 

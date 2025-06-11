@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using GOAP;
 using Places;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(GoapAgent))]
 public class Mood : MonoBehaviour
 {
 
     [Header("Erosion rates")]
-    [SerializeField] private float workOverTime;
-    [SerializeField] private float breakOverTime;
-    [SerializeField] private float socialOverTime;
+    [SerializeField] private float _workOverTime;
+    [SerializeField] private float _breakOverTime;
+    [SerializeField] private float _socialOverTime;
 
     private HashSet<GoapGoal> _goals;
     private GoapAgent _agent;
@@ -44,13 +45,13 @@ public class Mood : MonoBehaviour
         switch (goal.PlaceType)
         {
             case BasePlace.PlaceType.Work:
-                goal.Priority += workOverTime * deltaTime / 100.0f;
+                goal.Priority += _workOverTime * deltaTime / 100.0f;
                 break;
             case BasePlace.PlaceType.Break:
-                goal.Priority += breakOverTime * deltaTime / 100.0f;
+                goal.Priority += _breakOverTime * deltaTime / 100.0f;
                 break;
             case BasePlace.PlaceType.Social:
-                goal.Priority += socialOverTime * deltaTime / 100.0f;
+                goal.Priority += _socialOverTime * deltaTime / 100.0f;
                 break;
             case BasePlace.PlaceType.None:
                 // No updates, stay the same
