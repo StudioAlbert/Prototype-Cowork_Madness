@@ -1,6 +1,4 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
-using UnityEditor.VersionControl;
+﻿using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 
 namespace Utilities
