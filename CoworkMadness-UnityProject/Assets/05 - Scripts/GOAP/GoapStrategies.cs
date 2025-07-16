@@ -9,6 +9,7 @@ namespace GOAP
     { 
         bool CanPerform { get; }
         bool Complete { get; }
+        bool Failed { get; }
         float Progress { get; }
 
         void Start();
@@ -29,6 +30,7 @@ namespace GOAP
         
         public bool CanPerform => true;
         public bool Complete { get; private set; }
+        public bool Failed => false;
         public float Progress => _timer.Progress;
 
         public void Start() => _timer.Start();
@@ -47,6 +49,7 @@ namespace GOAP
     
         public bool CanPerform => !Complete;
         public bool Complete => _navMesh.remainingDistance <= _distance && !_navMesh.pathPending;
+        public bool Failed => false;
         public float Progress =>  _navMesh.remainingDistance / _startDistance;
 
         private float _startDistance;

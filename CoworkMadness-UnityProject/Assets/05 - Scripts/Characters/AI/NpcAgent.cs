@@ -22,12 +22,13 @@ public class NpcAgent : GoapAgent
     private Inventory _inventory;
 
     // TODO Place provider
-    [FormerlySerializedAs("_desk")]
+    [FormerlySerializedAs("desk")]
     [Header("Places")]
-    [SerializeField] private SimplePlace desk;
-    [SerializeField] private SimplePlace coffeeMachine;
-    [SerializeField] private BasePlace terrace;
-    [SerializeField] private Transform talkPerson;
+    [SerializeField] private SimplePlace _desk;
+    [SerializeField] private SimplePlace _coffeeMachineA;
+    [SerializeField] private SimplePlace _coffeeMachineB;
+    [SerializeField] private BasePlace _terrace;
+    [SerializeField] private Transform _talkPerson;
 
     private void Awake()
     {
@@ -51,21 +52,20 @@ public class NpcAgent : GoapAgent
         bFactory.AddBelief("AgentMoving", () => _navMesh.hasPath);
 
         bFactory.AddBelief("HadABreak", () => false);
-        // TODO
-        // Make a better (inventory/item class) prop/NPC system with feedback => have a coffee mug in the hand
-        bFactory.AddLocationBelief("AtCoffeeMachine", KTargetDistance, coffeeMachine.Position);
-        bFactory.AddBelief("CoffeeMachineAvailable", () => coffeeMachine.Available);
+        BuildCoffeeMachineBeliefs(_coffeeMachineA, "_A");
+        BuildCoffeeMachineBeliefs(_coffeeMachineB, "_B");
         bFactory.AddBelief("HasACoffee", () => _inventory.CoffeeEquipped);
-        bFactory.AddLocationBelief("AtTheTerrace", KTargetDistance, terrace.Position);
+        bFactory.AddLocationBelief("AtTheTerrace", KTargetDistance, _terrace.Position);
 
-        bFactory.AddBelief("HasDesk", () => desk.Available);
-        bFactory.AddLocationBelief("AtDesk", KTargetDistance, desk.Position);
+        bFactory.AddBelief("HasDesk", () => _desk.Available);
+        bFactory.AddLocationBelief("AtDesk", KTargetDistance, _desk.Position);
         bFactory.AddBelief("MakeMoney", () => false);
 
         bFactory.AddBelief("HadATalk", () => false);
-        bFactory.AddLocationBelief("MetSomeone", KTargetDistance, talkPerson);
+        bFactory.AddLocationBelief("MetSomeone", KTargetDistance, _talkPerson);
         
     }
+
     protected override void SetupActions()
     {
         _actions = new List<GoapAction>();
@@ -75,23 +75,11 @@ public class NpcAgent : GoapAgent
             .AddPostCondition(_beliefs["Nothing"])
             .Build());
 
-        _actions.Add(new GoapAction.Builder("GetACoffee")
-            .WithStrategy(new MoveStrategy(_navMesh, KTargetDistance, () => coffeeMachine.Position))
-            .AddPostCondition(_beliefs["AtCoffeeMachine"])
-            .Build());
-        _actions.Add(new GoapAction.Builder("WaitForCoffeeMachine")
-            .WithStrategy(new QueueStrategy(20, coffeeMachine))
-            .AddPrecondition(_beliefs["AtCoffeeMachine"])
-            .AddPostCondition(_beliefs["CoffeeMachineAvailable"])
-            .Build());
-        _actions.Add(new GoapAction.Builder("MakeACoffee")
-            .WithStrategy(new UsingMachineStrategy(10, coffeeMachine, gameObject))
-            .AddPrecondition(_beliefs["CoffeeMachineAvailable"])
-            .AddPostCondition(_beliefs["HasACoffee"])
-            .AddConsequence(() => _inventory.CoffeeEquipped = true)
-            .Build());
+        BuildCoffeeMachineActions(_coffeeMachineA, "_A");
+        BuildCoffeeMachineActions(_coffeeMachineB, "_B");
+
         _actions.Add(new GoapAction.Builder("GoToTheTerrace")
-            .WithStrategy(new MoveStrategy(_navMesh, KTargetDistance, () => terrace.Position))
+            .WithStrategy(new MoveStrategy(_navMesh, KTargetDistance, () => _terrace.Position))
             .AddPrecondition(_beliefs["HasACoffee"])
             .AddPostCondition(_beliefs["AtTheTerrace"])
             .Build());
@@ -104,7 +92,7 @@ public class NpcAgent : GoapAgent
 
 
         _actions.Add(new GoapAction.Builder("GoToDesk")
-            .WithStrategy(new MoveStrategy(_navMesh, KTargetDistance, () => desk.Position))
+            .WithStrategy(new MoveStrategy(_navMesh, KTargetDistance, () => _desk.Position))
             //.AddPrecondition(_beliefs["HasDesk"])
             .AddPostCondition(_beliefs["AtDesk"])
             .Build());
@@ -114,13 +102,13 @@ public class NpcAgent : GoapAgent
         //     .AddPostCondition(_beliefs["HasDesk"])
         //     .Build());
         _actions.Add(new GoapAction.Builder("Work")
-            .WithStrategy(new UsingMachineStrategy(3, desk, gameObject))
+            .WithStrategy(new UsingMachineStrategy(3, _desk, gameObject))
             .AddPrecondition(_beliefs["AtDesk"])
             .AddPostCondition(_beliefs["MakeMoney"])
             .Build());
 
         _actions.Add(new GoapAction.Builder("SmallTalkToBoss")
-            .WithStrategy(new MoveStrategy(_navMesh, KTargetDistance, () => talkPerson.position))
+            .WithStrategy(new MoveStrategy(_navMesh, KTargetDistance, () => _talkPerson.position))
             .AddPostCondition(_beliefs["MetSomeone"])
             .Build());
         // _actions.Add(new GoapAction.Builder("SmallTalkToBoss")
@@ -158,6 +146,36 @@ public class NpcAgent : GoapAgent
             .WithDesiredEffect(_beliefs["HadATalk"])
             .Build());
 
+    }
+    private void BuildCoffeeMachineBeliefs(SimplePlace coffeeMachine, string suffix)
+    {
+        GoapBeliefFactory bFactory = new GoapBeliefFactory(this, _beliefs);
+        bFactory.AddLocationBelief("AtCoffeeMachine" + suffix, KTargetDistance, coffeeMachine.Position);
+        bFactory.AddBelief("CoffeeMachineToMe" + suffix, () => coffeeMachine._user == gameObject);
+        bFactory.AddBelief("CoffeeMachineAvailable" + suffix, () => coffeeMachine.Available);
+    }
+    private void BuildCoffeeMachineActions(SimplePlace coffeeMachine, string suffix)
+    {
+        _actions.Add(new GoapAction.Builder("GetACoffee"+suffix)
+            .WithStrategy(new MoveStrategy(_navMesh, KTargetDistance, () => coffeeMachine.Position))
+            .AddPostCondition(_beliefs["AtCoffeeMachine"+suffix])
+            .Build());
+        _actions.Add(new GoapAction.Builder("CheckMachine"+suffix)
+            .WithStrategy(new IdleStrategy(0.1f))
+            .AddPrecondition(_beliefs["AtCoffeeMachine"+suffix])
+            .AddPostCondition(_beliefs["CoffeeMachineAvailable" + suffix])
+            .Build());
+        _actions.Add(new GoapAction.Builder("WaitForCoffeeMachine"+suffix)
+            .WithStrategy(new QueueStrategy(20, coffeeMachine, gameObject))
+            .AddPrecondition(_beliefs["CoffeeMachineAvailable" + suffix])
+            .AddPostCondition(_beliefs["CoffeeMachineToMe" + suffix])
+            .Build());
+        _actions.Add(new GoapAction.Builder("MakeACoffee"+suffix)
+            .WithStrategy(new UsingMachineStrategy(10, coffeeMachine, gameObject))
+            .AddPrecondition(_beliefs["CoffeeMachineToMe"+suffix])
+            .AddPostCondition(_beliefs["HasACoffee"])
+            .AddConsequence(() => _inventory.CoffeeEquipped = true)
+            .Build());
     }
 
 }

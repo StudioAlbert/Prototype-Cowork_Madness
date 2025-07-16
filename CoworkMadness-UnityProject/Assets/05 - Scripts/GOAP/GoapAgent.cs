@@ -13,7 +13,7 @@ namespace GOAP
     {
         // Loggers
         protected LoggerObject _logger;
-        
+
         // Physics and regular components
         protected NavMeshAgent _navMesh;
         // GOAP Machinery
@@ -23,10 +23,10 @@ namespace GOAP
         protected Dictionary<string, GoapBelief> _beliefs;
 
         protected IGoapPlanner _planner;
-        
-        [SerializeField][DisallowNull] private GoapGoal _currentGoal;
+
+        [SerializeField] [DisallowNull] private GoapGoal _currentGoal;
         [SerializeField] protected List<GoapGoal> _goals;
-        [SerializeField][DisallowNull] private GoapAction _currentAction;
+        [SerializeField] [DisallowNull] private GoapAction _currentAction;
         [SerializeField] protected List<GoapAction> _actions;
 
         //public GoapGoal CurrentGoal => _currentGoal;
@@ -36,7 +36,7 @@ namespace GOAP
         public List<GoapAction> Actions => _actions;
         public List<GoapGoal> Goals => _goals;
 
-        public event Action<GoapGoal> OnGoalDone;
+        public event Action<GoapGoal> OnGoalSucceed;
 
         private void Start()
         {
@@ -60,10 +60,10 @@ namespace GOAP
                     _currentGoal = _actionPlan.Goal;
                     _currentGoal.SetInProgress();
                     _logger.Log($"Goal: {_currentGoal.Name} with {_actionPlan.Actions.Count} actions in plan");
-                    
+
                     _currentAction = _actionPlan.Actions.Pop();
                     _logger.Log($"Popped action: {_currentAction.Name}");
-                    
+
                     // Verify all precondition effects are true
                     if (_currentAction.Preconditions.All(b =>
                         {
@@ -89,22 +89,31 @@ namespace GOAP
             {
                 _currentAction.Update(Time.deltaTime);
 
-                if (_currentAction.Status == GoapStatus.Complete)
+                if (_currentAction.Status == GoapStatus.Complete || _currentAction.Status == GoapStatus.Failed)
                 {
-                    _logger.Log($"{_currentAction.Name} complete");
+                    if (_currentAction.Status == GoapStatus.Complete)
+                        _logger.Log($"{_currentAction.Name} complete");
+
+                    if (_currentAction.Status == GoapStatus.Failed)
+                        _logger.Warning($"{_currentAction.Name} failed");
+
                     _currentAction.Stop();
 
                     if (_actionPlan.Actions.Count == 0)
                     {
                         _logger.Log("Plan complete");
-                        ResetGoal();
+                        if (_currentAction.Status == GoapStatus.Complete)
+                        {
+                            ResetGoal();
+                            OnGoalSucceed?.Invoke(_lastGoal);
+                        }
                     }
                 }
             }
         }
 
         void GetAPlan()
-        {   
+        {
             //var priorityLvl = _currentGoal?.Priority ?? 0;
             // If invalid, priority = 0 => new goal
             // If valid, priority = current priority
@@ -133,11 +142,10 @@ namespace GOAP
         {
 
             _logger.Log($"Reset Plan : " + (_currentGoal != null ? _currentGoal.Name : "No goal"));
-            if (_currentGoal.Status != GoapStatus.Invalid)
+            if (_currentGoal != null && _currentGoal.Status != GoapStatus.Invalid)
             {
                 _lastGoal = _currentGoal;
                 _currentGoal.Dismiss();
-                OnGoalDone?.Invoke(_lastGoal);
             }
 
         }

@@ -15,10 +15,8 @@ namespace Places
         }
         
         public abstract bool Available { get; set; }
-        
         public abstract PlaceType Type { get; }
         public abstract Vector3 Position { get; }
-        public abstract void SetProgress(float progress);
     }
 
 

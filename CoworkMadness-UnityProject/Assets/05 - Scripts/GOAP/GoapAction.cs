@@ -22,7 +22,7 @@ namespace GOAP
         public float Cost => _cost;
 
         [SerializeField] private float _progress;
-        
+
         private readonly HashSet<GoapBelief> _preconditions = new HashSet<GoapBelief>();
         private readonly HashSet<GoapBelief> _postConditions = new HashSet<GoapBelief>();
         private readonly HashSet<Action> _consequences = new HashSet<Action>();
@@ -31,7 +31,7 @@ namespace GOAP
         public HashSet<GoapBelief> PostConditions => _postConditions;
 
         private IGoapActionStrategy _strategy;
-        
+
 
         // Copy cat the strategy, Start, Update, stop
         public void Start()
@@ -49,29 +49,28 @@ namespace GOAP
 
         public void Update(float deltaTime)
         {
-            
+
             // If we can apply the strategy, then update it
             if (_strategy.CanPerform)
                 _strategy.Update(deltaTime);
-            
+
             _progress = _strategy.Progress;
-            
+
             // If strategy is done, apply effects
             // If not, end it
-            if (_strategy.Complete)
+            if (_strategy.Complete || _strategy.Failed)
             {
                 foreach (Action c in _consequences)
                 {
                     c.Invoke();
                 }
-                _status = GoapStatus.Complete;
             }
-            
+            if (_strategy.Complete) _status = GoapStatus.Complete;
+            if (_strategy.Failed) _status = GoapStatus.Failed;
 
-            
         }
-        
-        
+
+
         // BUILDER 
         public class Builder
         {

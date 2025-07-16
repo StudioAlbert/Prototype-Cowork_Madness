@@ -10,18 +10,29 @@ namespace AI
     {
         private readonly CountdownTimer _timer;
         private readonly SimplePlace _place;
+        private readonly GameObject _agent;
         
-        public QueueStrategy(float duration, SimplePlace place)
+        public QueueStrategy(float duration, SimplePlace place, GameObject agent)
         {
             _place = place;
+            _agent = agent;
             
             _timer = new CountdownTimer(duration);
-            _timer.OnTimerStart += () => Complete = false;
-            _timer.OnTimerStop += () =>  Complete = true;
+            _timer.OnTimerStart += () =>
+            {
+                Complete = false;
+                Failed = false;
+            };
+            _timer.OnTimerStop += () =>
+            {
+                Complete = (_place._user == _agent);
+                Failed = !(_place._user == _agent);
+            };
         }
         
         public bool CanPerform => true;
         public bool Complete { get; private set; }
+        public bool Failed { get; private set; }
         public float Progress => _timer.Progress;
 
         public void Start() => _timer.Start();
@@ -33,9 +44,13 @@ namespace AI
         {
             _timer.Tick(deltaTime);
 
+            // ReSharper disable once InvertIf
             if (_place.Available)
+            {
+                _place.Available = false;
+                _place._user = _agent;
                 Stop();
-            
+            }
         }
 
     }

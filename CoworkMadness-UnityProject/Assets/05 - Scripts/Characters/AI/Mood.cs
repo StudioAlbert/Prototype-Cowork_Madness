@@ -18,8 +18,8 @@ public class Mood : MonoBehaviour
     private GoapAgent _agent;
 
     private void Awake() => _agent = GetComponent<GoapAgent>();
-    void OnEnable() => _agent.OnGoalDone += OnAgentGoalDone;
-    void OnDisable() => _agent.OnGoalDone -= OnAgentGoalDone;
+    void OnEnable() => _agent.OnGoalSucceed += OnAgentGoalDone;
+    void OnDisable() => _agent.OnGoalSucceed -= OnAgentGoalDone;
     void Update()
     {
         UpdateGoals(Time.deltaTime);
