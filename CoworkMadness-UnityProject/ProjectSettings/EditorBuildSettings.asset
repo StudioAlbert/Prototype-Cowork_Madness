@@ -9,5 +9,6 @@ EditorBuildSettings:
     path: Assets/01 - Scenes/Blockouts/Blockout_01.unity
     guid: 64787eeba5b56834cad36a422b5cd2b5
   m_configObjects:
+    com.unity.dt.app-ui: {fileID: 11400000, guid: 99f9c9493070a9d4c979a8fec7c5a8d3, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 8d6fa8a4414ee3146b0303fa4f9c29a5, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 [RequireComponent(typeof(GoapAgent))]
-public class Mood : MonoBehaviour
+public class MoodGoap : MonoBehaviour
 {
 
     [Header("Erosion rates")]
