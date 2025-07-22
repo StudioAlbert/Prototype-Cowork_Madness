@@ -21,32 +21,30 @@ namespace AI
         }
 
         //public bool CanPerform => true;
-        public bool CanPerform => _place._user == _agent || _place._user  == null;
+        public bool CanPerform => _place.User == _agent || !_place.Available;
         public bool Complete { get; private set; }
         public bool Failed => false;
         public float Progress => _timer.Progress;
         public void Start()
         {
             _timer.Start();
-            if (_place._user == null)
+            if (!_place.Available)
             {
-                _place._user = _agent;
+                _place.RegisterUser(_agent);
             }
-            _place.Available = false;
         }
         public void Stop()
         {
             _timer.Stop();
-            _place._user = null;
-            _place.Available = true;
+            _place.UnregisterUser(_agent);;
         }
 
         public void Update(float deltaTime)
         {
             _timer.Tick(deltaTime);
-            if (!_place._user)
+            if (!_place.Available)
             {
-                _place._user = _agent;
+                _place.RegisterUser(_agent);;
             }
         }
 

@@ -25,8 +25,8 @@ namespace AI
             };
             _timer.OnTimerStop += () =>
             {
-                Complete = (_place._user == _agent);
-                Failed = !(_place._user == _agent);
+                Complete = (_place.User == _agent);
+                Failed = !(_place.User == _agent);
             };
         }
         
@@ -47,8 +47,7 @@ namespace AI
             // ReSharper disable once InvertIf
             if (_place.Available)
             {
-                _place.Available = false;
-                _place._user = _agent;
+                _place.RegisterUser(_agent);
                 Stop();
             }
         }

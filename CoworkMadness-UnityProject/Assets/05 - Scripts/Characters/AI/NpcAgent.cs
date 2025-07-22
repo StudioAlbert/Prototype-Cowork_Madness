@@ -124,25 +124,25 @@ public class NpcAgent : GoapAgent
 
         _goals.Add(new GoapGoal.Builder("Nothing")
             .WithPriority(0.01f)
-            .WithType(BasePlace.PlaceType.None)
+            .WithType(Places.PlaceType.None)
             .WithDesiredEffect(_beliefs["Nothing"])
             .Build());
 
         _goals.Add(new GoapGoal.Builder("HaveABreak")
             .WithPriority(0.1f)
-            .WithType(BasePlace.PlaceType.Break)
+            .WithType(Places.PlaceType.Break)
             .WithDesiredEffect(_beliefs["HadABreak"])
             .Build());
 
         _goals.Add(new GoapGoal.Builder("MakeMoney")
             .WithPriority(1)
-            .WithType(BasePlace.PlaceType.Work)
+            .WithType(Places.PlaceType.Work)
             .WithDesiredEffect(_beliefs["MakeMoney"])
             .Build());
         
         _goals.Add(new GoapGoal.Builder("Talk")
             .WithPriority(0.1f)
-            .WithType(BasePlace.PlaceType.Social)
+            .WithType(Places.PlaceType.Social)
             .WithDesiredEffect(_beliefs["HadATalk"])
             .Build());
 
@@ -151,7 +151,7 @@ public class NpcAgent : GoapAgent
     {
         GoapBeliefFactory bFactory = new GoapBeliefFactory(this, _beliefs);
         bFactory.AddLocationBelief("AtCoffeeMachine" + suffix, KTargetDistance, coffeeMachine.Position);
-        bFactory.AddBelief("CoffeeMachineToMe" + suffix, () => coffeeMachine._user == gameObject);
+        bFactory.AddBelief("CoffeeMachineToMe" + suffix, () => coffeeMachine.User == gameObject);
         bFactory.AddBelief("CoffeeMachineAvailable" + suffix, () => coffeeMachine.Available);
     }
     private void BuildCoffeeMachineActions(SimplePlace coffeeMachine, string suffix)

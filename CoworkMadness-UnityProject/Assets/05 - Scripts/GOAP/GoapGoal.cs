@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using Places;
 using Unity.Properties;
 using UnityEditor;
 using UnityEngine;
@@ -29,7 +28,7 @@ namespace GOAP
             set => _priority = value;
         }
 
-        public BasePlace.PlaceType PlaceType { get; private set; }
+        public Places.PlaceType PlaceType { get; private set; }
         public readonly HashSet<GoapBelief> DesiredEffects = new HashSet<GoapBelief>();
         
         public void SetInProgress() => _status = GoapStatus.InProgress;
@@ -50,7 +49,7 @@ namespace GOAP
                 _goal.Priority = priority;
                 return this;
             }
-            public Builder WithType(BasePlace.PlaceType type)
+            public Builder WithType(Places.PlaceType type)
             {
                 _goal.PlaceType = type;
                 return this;

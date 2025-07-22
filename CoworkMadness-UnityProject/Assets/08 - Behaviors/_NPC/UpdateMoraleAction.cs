@@ -5,26 +5,27 @@ using Action = Unity.Behavior.Action;
 using Unity.Properties;
 using UnityEngine.Serialization;
 using UnityEngine.TextCore.Text;
+using AI_Motivation;
 
 [Serializable, GeneratePropertyBag]
 [NodeDescription(
     name: "UpdateMorale", 
-    story: "[_self] : update morale from [_goalType] / [_successfulOrNot]", 
-    category: "Action", 
+    story: "[_self] : Update morale from [_goalType] / [_successfulOrNot]", 
+    category: "_NPC", 
     id: "b2eeb99250114e736e54f20f70fd9421")
 ]
 public partial class UpdateMoraleAction : Action
 {
-    [SerializeReference] public BlackboardVariable<GameObject> _self;
-    [SerializeReference] public BlackboardVariable<GoalType> _goalType;
-    [SerializeReference] public BlackboardVariable<bool> _successfulOrNot;
+    [SerializeReference] public BlackboardVariable<GameObject> Self;
+    [SerializeReference] public BlackboardVariable<GoalType> GoalType;
+    [SerializeReference] public BlackboardVariable<bool> SuccessfulOrNot;
     
     private Morale _morale;
     
     protected override Status OnStart()
     {
-        _morale = _self.Value.GetComponent<Morale>();
-        _morale.UpdateMoraleAmongGoals(_goalType, _successfulOrNot);
+        _morale = Self.Value.GetComponent<Morale>();
+        _morale?.UpdateMoraleAmongGoals(GoalType, SuccessfulOrNot);
         return Status.Running;
     }
 

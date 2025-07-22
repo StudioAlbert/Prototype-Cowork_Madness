@@ -1,0 +1,207 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-3451930168481019460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c02bb70996b49eba31d0c206e28da24, type: 3}
+  m_Name: NPCStats
+  m_EditorClassIdentifier: 
+  VersionTimestamp: 638888250480836707
+  AssetID:
+    m_Value0: 4946718147869058526
+    m_Value1: 472349467298594296
+  m_Blackboard:
+    m_Variables:
+    - rid: 5114172147109462058
+    - rid: 5114172147109462059
+    - rid: 5114172147109462060
+    - rid: 5114172147109462061
+    - rid: 5114172147109462062
+    - rid: 5114172147109462063
+    - rid: 5114172147109462064
+    - rid: 5114172147109462065
+  m_SharedBlackboardVariableGuids: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 5114172147109462058
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 15740201641859059217
+          m_Value1: 12947471881560723593
+        Name: WorkTimeMin
+        m_Value: 4
+    - rid: 5114172147109462059
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 8689927526324965830
+          m_Value1: 13821430066902739250
+        Name: WorkTimeMax
+        m_Value: 5
+    - rid: 5114172147109462060
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 18124172744212382048
+          m_Value1: 7760915992020457657
+        Name: NavigationSpeed
+        m_Value: 8
+    - rid: 5114172147109462061
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 10367181803990087761
+          m_Value1: 13263862465545385758
+        Name: CoffeTimeMin
+        m_Value: 8
+    - rid: 5114172147109462062
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 3632759975046415385
+          m_Value1: 10948508677860950220
+        Name: CoffeTimeMax
+        m_Value: 12
+    - rid: 5114172147109462063
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 8792532070648656164
+          m_Value1: 4197675263589467666
+        Name: DrinkCoffeeTimeMin
+        m_Value: 15
+    - rid: 5114172147109462064
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 9512122308841810162
+          m_Value1: 11737009662277624147
+        Name: DrinkCoffeeTimeMax
+        m_Value: 18
+    - rid: 5114172147109462065
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 5684656043078939516
+          m_Value1: 9172576126793999983
+        Name: QueueTime
+        m_Value: 10
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dd922ae02c94c87a66e46a10a7319b9, type: 3}
+  m_Name: NPCStats
+  m_EditorClassIdentifier: 
+  AssetID:
+    m_Value0: 4946718147869058526
+    m_Value1: 472349467298594296
+  m_Variables:
+  - rid: 5114172147109462050
+  - rid: 5114172147109462051
+  - rid: 5114172147109462052
+  - rid: 5114172147109462053
+  - rid: 5114172147109462054
+  - rid: 5114172147109462055
+  - rid: 5114172147109462056
+  - rid: 5114172147109462057
+  m_VersionTimestamp: 638888250480836707
+  m_CommandBuffer:
+    m_Commands: []
+  m_RuntimeBlackboardAsset: {fileID: -3451930168481019460}
+  references:
+    version: 2
+    RefIds:
+    - rid: 5114172147109462050
+      type: {class: 'TypedVariableModel`1[[System.Single, mscorlib]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 15740201641859059217
+          m_Value1: 12947471881560723593
+        Name: WorkTimeMin
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: 4
+    - rid: 5114172147109462051
+      type: {class: 'TypedVariableModel`1[[System.Single, mscorlib]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 8689927526324965830
+          m_Value1: 13821430066902739250
+        Name: WorkTimeMax
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: 5
+    - rid: 5114172147109462052
+      type: {class: 'TypedVariableModel`1[[System.Single, mscorlib]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 18124172744212382048
+          m_Value1: 7760915992020457657
+        Name: NavigationSpeed
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: 8
+    - rid: 5114172147109462053
+      type: {class: 'TypedVariableModel`1[[System.Single, mscorlib]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 10367181803990087761
+          m_Value1: 13263862465545385758
+        Name: CoffeTimeMin
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: 8
+    - rid: 5114172147109462054
+      type: {class: 'TypedVariableModel`1[[System.Single, mscorlib]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 3632759975046415385
+          m_Value1: 10948508677860950220
+        Name: CoffeTimeMax
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: 12
+    - rid: 5114172147109462055
+      type: {class: 'TypedVariableModel`1[[System.Single, mscorlib]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 8792532070648656164
+          m_Value1: 4197675263589467666
+        Name: DrinkCoffeeTimeMin
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: 15
+    - rid: 5114172147109462056
+      type: {class: 'TypedVariableModel`1[[System.Single, mscorlib]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 9512122308841810162
+          m_Value1: 11737009662277624147
+        Name: DrinkCoffeeTimeMax
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: 18
+    - rid: 5114172147109462057
+      type: {class: 'TypedVariableModel`1[[System.Single, mscorlib]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 5684656043078939516
+          m_Value1: 9172576126793999983
+        Name: QueueTime
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: 10

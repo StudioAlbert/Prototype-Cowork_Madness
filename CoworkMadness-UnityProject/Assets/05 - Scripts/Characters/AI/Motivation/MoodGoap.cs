@@ -44,16 +44,16 @@ public class MoodGoap : MonoBehaviour
 
         switch (goal.PlaceType)
         {
-            case BasePlace.PlaceType.Work:
+            case PlaceType.Work:
                 goal.Priority += _workOverTime * deltaTime / 100.0f;
                 break;
-            case BasePlace.PlaceType.Break:
+            case PlaceType.Break:
                 goal.Priority += _breakOverTime * deltaTime / 100.0f;
                 break;
-            case BasePlace.PlaceType.Social:
+            case PlaceType.Social:
                 goal.Priority += _socialOverTime * deltaTime / 100.0f;
                 break;
-            case BasePlace.PlaceType.None:
+            case PlaceType.None:
                 // No updates, stay the same
                 break;
             default:

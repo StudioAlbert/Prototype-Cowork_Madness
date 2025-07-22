@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -8,17 +9,17 @@ namespace Places
         public class SimplePlace : BasePlace
         {
             [SerializeField] private PlaceType _type;
-            [SerializeField] private bool _available;
-
-
-            public override bool Available
-            {
-                get => _available;
-                set => _available = value;
-            }
+            [SerializeField] private GameObject _user;
+            
+            public override bool Available =>  _user == null;
             public override PlaceType Type => _type;
             public override Vector3 Position => transform.position;
-
-            public GameObject _user;
+            public GameObject User => _user;
+            
+            public void RegisterUser(GameObject user) => _user = user;
+            public void UnregisterUser(GameObject user) => _user = null;
+            
+            
+            
         }
 }
