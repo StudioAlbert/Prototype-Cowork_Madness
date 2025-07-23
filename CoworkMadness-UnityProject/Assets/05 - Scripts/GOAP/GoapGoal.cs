@@ -28,7 +28,7 @@ namespace GOAP
             set => _priority = value;
         }
 
-        public Places.PlaceType PlaceType { get; private set; }
+        public AI_Motivation.GoalType GoalType { get; private set; }
         public readonly HashSet<GoapBelief> DesiredEffects = new HashSet<GoapBelief>();
         
         public void SetInProgress() => _status = GoapStatus.InProgress;
@@ -49,9 +49,9 @@ namespace GOAP
                 _goal.Priority = priority;
                 return this;
             }
-            public Builder WithType(Places.PlaceType type)
+            public Builder WithType(AI_Motivation.GoalType type)
             {
-                _goal.PlaceType = type;
+                _goal.GoalType = type;
                 return this;
             }
             public Builder WithDesiredEffect(GoapBelief effect)

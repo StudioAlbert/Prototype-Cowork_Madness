@@ -1,4 +1,5 @@
 ﻿using System;
+using AI_Motivation;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -8,18 +9,19 @@ namespace Places
 {
         public class SimplePlace : BasePlace
         {
-            [SerializeField] private PlaceType _type;
+            [SerializeField] private GoalType _type;
             [SerializeField] private GameObject _user;
             
+            private PlaceProvider _placeProvider;
+            
             public override bool Available =>  _user == null;
-            public override PlaceType Type => _type;
+            public override GoalType Type => _type;
             public override Vector3 Position => transform.position;
-            public GameObject User => _user;
+            public override GameObject User => _user;
             
-            public void RegisterUser(GameObject user) => _user = user;
-            public void UnregisterUser(GameObject user) => _user = null;
-            
-            
-            
+            public override void RegisterUser(GameObject user) => _user = user;
+            public override void UnregisterUser(GameObject user) => _user = null;
+
+
         }
 }

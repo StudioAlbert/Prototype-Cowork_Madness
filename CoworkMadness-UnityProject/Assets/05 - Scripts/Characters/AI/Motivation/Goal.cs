@@ -3,10 +3,10 @@
 namespace AI_Motivation
 {
     [Serializable]
-    class Goal
+    public class Goal
     {
-        public GoalType Type { get; set; }
-        public float Priority { get; set; }
+        public GoalType Type;
+        public float Priority;
         public Goal(GoalType type, float priority)
         {
             Type = type;

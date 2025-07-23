@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using AI_Motivation;
 using AI;
 using GOAP;
 using Places;
@@ -124,25 +125,25 @@ public class NpcAgent : GoapAgent
 
         _goals.Add(new GoapGoal.Builder("Nothing")
             .WithPriority(0.01f)
-            .WithType(Places.PlaceType.None)
+            .WithType(GoalType.Idle)
             .WithDesiredEffect(_beliefs["Nothing"])
             .Build());
 
         _goals.Add(new GoapGoal.Builder("HaveABreak")
             .WithPriority(0.1f)
-            .WithType(Places.PlaceType.Break)
+            .WithType(GoalType.Break)
             .WithDesiredEffect(_beliefs["HadABreak"])
             .Build());
 
         _goals.Add(new GoapGoal.Builder("MakeMoney")
             .WithPriority(1)
-            .WithType(Places.PlaceType.Work)
+            .WithType(GoalType.Work)
             .WithDesiredEffect(_beliefs["MakeMoney"])
             .Build());
         
         _goals.Add(new GoapGoal.Builder("Talk")
             .WithPriority(0.1f)
-            .WithType(Places.PlaceType.Social)
+            .WithType(GoalType.Social)
             .WithDesiredEffect(_beliefs["HadATalk"])
             .Build());
 

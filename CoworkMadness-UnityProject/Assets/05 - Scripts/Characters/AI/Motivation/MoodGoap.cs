@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using AI_Motivation;
 using GOAP;
 using Places;
 using UnityEngine;
@@ -42,18 +43,18 @@ public class MoodGoap : MonoBehaviour
     private void UpdateOneGoal(GoapGoal goal, float deltaTime)
     {
 
-        switch (goal.PlaceType)
+        switch (goal.GoalType)
         {
-            case PlaceType.Work:
+            case GoalType.Work:
                 goal.Priority += _workOverTime * deltaTime / 100.0f;
                 break;
-            case PlaceType.Break:
+            case GoalType.Break:
                 goal.Priority += _breakOverTime * deltaTime / 100.0f;
                 break;
-            case PlaceType.Social:
+            case GoalType.Social:
                 goal.Priority += _socialOverTime * deltaTime / 100.0f;
                 break;
-            case PlaceType.None:
+            case GoalType.Idle:
                 // No updates, stay the same
                 break;
             default:

@@ -1,18 +1,19 @@
 using Places;
 using System;
+using AI_Motivation;
 using Unity.Behavior;
 using UnityEngine;
 using Action = Unity.Behavior.Action;
 using Unity.Properties;
 
 [Serializable, GeneratePropertyBag]
-[NodeDescription(name: "GetBestPlace", story: "[Self] , [PlaceProvider] : Get best place [BestPlace] for [PlaceType]", category: "_NPC", id: "0aeda56294ee54ca21a7d5bd13177445")]
+[NodeDescription(name: "GetBestPlace", story: "[Self] , [PlaceProvider] : Get best place [BestPlace] for [GoalType]", category: "_NPC", id: "0aeda56294ee54ca21a7d5bd13177445")]
 public partial class GetBestPlaceAction : Action
 {
     [SerializeReference] public BlackboardVariable<GameObject> Self;
     [SerializeReference] public BlackboardVariable<PlaceProvider> PlaceProvider;
-    [SerializeReference] public BlackboardVariable<SimplePlace> BestPlace;
-    [SerializeReference] public BlackboardVariable<PlaceType> PlaceType;
+    [SerializeReference] public BlackboardVariable<BasePlace> BestPlace;
+    [SerializeReference] public BlackboardVariable<GoalType> GoalType;
 
     private PlaceProvider _placeProvider;
     
@@ -24,7 +25,7 @@ public partial class GetBestPlaceAction : Action
 
     protected override Status OnUpdate()
     {
-        SimplePlace place = _placeProvider.GetBestPlaceOfType(Self.Value.transform.position, PlaceType.Value);
+        BasePlace place = _placeProvider.GetBestPlaceOfType(Self.Value.transform.position, GoalType.Value);
         if(!place) return Status.Running;
         
         BestPlace.Value = place;

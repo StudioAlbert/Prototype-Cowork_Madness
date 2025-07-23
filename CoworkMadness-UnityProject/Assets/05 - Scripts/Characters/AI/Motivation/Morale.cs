@@ -27,7 +27,7 @@ namespace AI_Motivation
                     break;
             }
             
-            Debug.Log($"UPDATE MORALE :: [{gameObject.name}] : [{type}] ? {successful} => ({_moraleScore})");
+            // Debug.Log($"UPDATE MORALE :: [{gameObject.name}] : [{type}] ? {successful} => ({_moraleScore})");
             
         }
 
