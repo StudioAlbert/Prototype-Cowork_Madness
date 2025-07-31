@@ -268,6 +268,7 @@ GameObject:
   - component: {fileID: 293271651}
   - component: {fileID: 293271650}
   - component: {fileID: 293271655}
+  - component: {fileID: 293271656}
   m_Layer: 0
   m_Name: Candidate.01
   m_TagString: Untagged
@@ -287,8 +288,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f87f9d7473b8ce64abd6a3cc2021c3e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  QueuePoint: {fileID: 0}
   _queueManager: {fileID: 757518913}
+  _candidate: {fileID: 293271656}
 --- !u!65 &293271651
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -400,6 +401,19 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &293271656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293271649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9df151969c244e349a7f08ac3b638e09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  QueuePoint: {fileID: 0}
 --- !u!1 &520745219
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,6 +428,7 @@ GameObject:
   - component: {fileID: 520745221}
   - component: {fileID: 520745220}
   - component: {fileID: 520745225}
+  - component: {fileID: 520745226}
   m_Layer: 0
   m_Name: Candidate.05
   m_TagString: Untagged
@@ -433,8 +448,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f87f9d7473b8ce64abd6a3cc2021c3e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  QueuePoint: {fileID: 0}
   _queueManager: {fileID: 757518913}
+  _candidate: {fileID: 520745226}
 --- !u!65 &520745221
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -546,6 +561,19 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &520745226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520745219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9df151969c244e349a7f08ac3b638e09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  QueuePoint: {fileID: 0}
 --- !u!1 &700196414
 GameObject:
   m_ObjectHideFlags: 0
@@ -940,6 +968,7 @@ GameObject:
   - component: {fileID: 1093372080}
   - component: {fileID: 1093372079}
   - component: {fileID: 1093372084}
+  - component: {fileID: 1093372085}
   m_Layer: 0
   m_Name: Candidate.02
   m_TagString: Untagged
@@ -959,8 +988,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f87f9d7473b8ce64abd6a3cc2021c3e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  QueuePoint: {fileID: 0}
   _queueManager: {fileID: 757518913}
+  _candidate: {fileID: 1093372085}
 --- !u!65 &1093372080
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1072,6 +1101,19 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1093372085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093372078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9df151969c244e349a7f08ac3b638e09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  QueuePoint: {fileID: 0}
 --- !u!1 &1306385666
 GameObject:
   m_ObjectHideFlags: 0
@@ -1086,6 +1128,7 @@ GameObject:
   - component: {fileID: 1306385668}
   - component: {fileID: 1306385667}
   - component: {fileID: 1306385672}
+  - component: {fileID: 1306385673}
   m_Layer: 0
   m_Name: Candidate.03
   m_TagString: Untagged
@@ -1105,8 +1148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f87f9d7473b8ce64abd6a3cc2021c3e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  QueuePoint: {fileID: 0}
   _queueManager: {fileID: 757518913}
+  _candidate: {fileID: 1306385673}
 --- !u!65 &1306385668
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1218,6 +1261,19 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1306385673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306385666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9df151969c244e349a7f08ac3b638e09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  QueuePoint: {fileID: 0}
 --- !u!1 &1432382524
 GameObject:
   m_ObjectHideFlags: 0
@@ -1363,6 +1419,7 @@ GameObject:
   - component: {fileID: 1468378922}
   - component: {fileID: 1468378921}
   - component: {fileID: 1468378926}
+  - component: {fileID: 1468378927}
   m_Layer: 0
   m_Name: Candidate.04
   m_TagString: Untagged
@@ -1382,8 +1439,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f87f9d7473b8ce64abd6a3cc2021c3e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  QueuePoint: {fileID: 0}
   _queueManager: {fileID: 757518913}
+  _candidate: {fileID: 1468378927}
 --- !u!65 &1468378922
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1495,6 +1552,19 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1468378927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468378920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9df151969c244e349a7f08ac3b638e09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  QueuePoint: {fileID: 0}
 --- !u!1 &2017051777
 GameObject:
   m_ObjectHideFlags: 0

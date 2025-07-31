@@ -7,23 +7,24 @@ namespace Places
 {
     public abstract class BasePlace : MonoBehaviour
     {
-        private PlaceProvider _placeProvider;
+        protected abstract PlaceProvider PlaceProvider { get; set; }
         
         public abstract bool Available { get; }
         public abstract GoalType Type { get; }
         public abstract Vector3 Position { get; }
-        public abstract GameObject User { get; }
-        
-        public virtual void RegisterUser(GameObject user) { }
-        public virtual void UnregisterUser(GameObject user) { }
-        
-        
-        private void Awake() => _placeProvider = GetComponentInParent<PlaceProvider>();
+        public abstract float Neighbourhood { get; }
 
-        private void OnEnable() => _placeProvider?.RegisterPlace(this);
-        private void OnDisable() => _placeProvider?.UnregisterPlace(this);
+        public abstract bool RegisterUser(GameObject user);
+        public abstract bool UnregisterUser(GameObject user);
+        
+        
+        private void Awake() => PlaceProvider = GetComponentInParent<PlaceProvider>();
+
+        private void OnEnable() => PlaceProvider?.RegisterPlace(this);
+        private void OnDisable() => PlaceProvider?.UnregisterPlace(this);
         
     }
+
 
 
 }
