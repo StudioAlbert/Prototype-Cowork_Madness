@@ -16,6 +16,9 @@ namespace Places
         [SerializeField] private QueueManager _queueManager;
         [SerializeField] private float _neighbourhood = 5f;
         
+        [Header("Processing")]
+        [SerializeField] private float _processingTimeAvg = 7.5f;
+        [SerializeField] private float _processingTimeVar = 4.5f;
         
         private QueuePoint _point;
         private IProcessStrategy _processStrategy;
@@ -60,7 +63,7 @@ namespace Places
         private void Start()
         {
             if(!_queueManager) _queueManager = GetComponent<QueueManager>();
-            ProcessStrategy = new TimeBasedStrategy();
+            ProcessStrategy = new TimeBasedStrategy(_processingTimeAvg, _processingTimeVar);
         }
 
         

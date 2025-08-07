@@ -262,7 +262,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &220401711
 Transform:
   m_ObjectHideFlags: 0
@@ -304,7 +304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0038c16c34866b4f9e25c9c0dc0f7e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Graph: {fileID: 0}
+  m_Graph: {fileID: -2528028333067002021, guid: 2238147195a28cf4ead87dcd6310401f, type: 2}
   m_BlackboardVariableOverridesList:
   - rid: 5114172281542934528
   - rid: 5114172281542934608
@@ -1208,7 +1208,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &979517388
 Transform:
   m_ObjectHideFlags: 0
@@ -1250,7 +1250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0038c16c34866b4f9e25c9c0dc0f7e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Graph: {fileID: 0}
+  m_Graph: {fileID: -2528028333067002021, guid: 2238147195a28cf4ead87dcd6310401f, type: 2}
   m_BlackboardVariableOverridesList:
   - rid: 5114172281542934528
   - rid: 5114172281542934608
@@ -1719,7 +1719,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1518026595
 Transform:
   m_ObjectHideFlags: 0
@@ -1761,7 +1761,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0038c16c34866b4f9e25c9c0dc0f7e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Graph: {fileID: 0}
+  m_Graph: {fileID: -2528028333067002021, guid: 2238147195a28cf4ead87dcd6310401f, type: 2}
   m_BlackboardVariableOverridesList:
   - rid: 5114172281542934528
   - rid: 5114172281542934608
@@ -2340,6 +2340,8 @@ MonoBehaviour:
   _type: 0
   _queueManager: {fileID: 2124801916}
   _neighbourhood: 8.5
+  _processingTimeAvg: 1
+  _processingTimeVar: 0.25
 --- !u!4 &2124801918
 Transform:
   m_ObjectHideFlags: 0
