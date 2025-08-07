@@ -1,5 +1,6 @@
 ﻿using System;
 using AI_Motivation;
+using Places.Process;
 using Places.Queue;
 using UnityEngine;
 
@@ -14,7 +15,10 @@ namespace Places
         [Header("Queue")]
         [SerializeField] private QueueManager _queueManager;
         [SerializeField] private float _neighbourhood = 5f;
+        
+        
         private QueuePoint _point;
+        private IProcessStrategy _processStrategy;
 
         protected override PlaceProvider PlaceProvider
         {
@@ -23,7 +27,7 @@ namespace Places
         }
         public override bool Available => _queueManager.HasFreePositions();
         public override GoalType Type => _type;
-        public override Vector3 Position => _queueManager.FirstFreePosition();
+        public override Vector3 Position => _queueManager.EntryPoint();
         public override float Neighbourhood => _neighbourhood;
         public override bool RegisterUser(GameObject user)
         {
@@ -42,11 +46,23 @@ namespace Places
             }
             return false;
         }
-
+        protected override IProcessStrategy ProcessStrategy
+        {
+            get => _processStrategy;
+            set => _processStrategy = value;
+        }
+        public override Status ProcessStatus => _processStrategy.Status;
+        public override float ProcessProgress => _processStrategy.Progress;
+        public override void StartProcess() => _processStrategy.StartProcess();
+        public override void Process(float deltaTime) => _processStrategy.Process(deltaTime);
+        public override void StopProcess() => _processStrategy.StopProcess();
+        
         private void Start()
         {
             if(!_queueManager) _queueManager = GetComponent<QueueManager>();
+            ProcessStrategy = new TimeBasedStrategy();
         }
+
         
         public void OnDrawGizmos()
         {

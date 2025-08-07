@@ -40,7 +40,6 @@ public partial class MoveToPlacePositionAction : Unity.Behavior.Action
     protected override Status OnUpdate()
     {
         _navMeshAgent.SetDestination(Place.Value.Position);
-        // Vector2.Distance(Self.Value.transform.position, Place.Value.Position)
         if (Vector2.Distance(Self.Value.transform.position, Place.Value.Position) < (0.5f * Place.Value.Neighbourhood))
         {
             return Status.Success;
@@ -51,16 +50,6 @@ public partial class MoveToPlacePositionAction : Unity.Behavior.Action
 
     protected override void OnEnd()
     {
-        // if (_navMeshAgent != null)
-        // {
-        //     if (_navMeshAgent.isOnNavMesh)
-        //     {
-        //         _navMeshAgent.ResetPath();
-        //     }
-        //     _navMeshAgent.speed = _OriginalSpeed;
-        //     _navMeshAgent.stoppingDistance = m_OriginalStoppingDistance;
-        // }
-
     }
 
     private void UpdateAnimatorSpeed(float explicitSpeed = -1)

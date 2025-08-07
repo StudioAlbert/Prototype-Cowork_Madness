@@ -1,8 +1,6 @@
-﻿using System;
-using AI_Motivation;
-using TMPro;
+﻿using AI_Motivation;
+using Places.Process;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 // ReSharper disable once CheckNamespace
 namespace Places
@@ -15,6 +13,7 @@ namespace Places
             [SerializeField] private float _neighbourhood = 5f;
 
             public GameObject User => _user;
+            private IProcessStrategy _processStrategy;
 
             protected override PlaceProvider PlaceProvider
             {
@@ -36,7 +35,16 @@ namespace Places
                 _user = null;
                 return true;
             }
-
+            protected override IProcessStrategy ProcessStrategy
+            {
+                get => _processStrategy;
+                set => _processStrategy = value;
+            }
+            public override Status ProcessStatus => _processStrategy.Status;
+            public override float ProcessProgress => _processStrategy.Progress;
+            public override void StartProcess() => _processStrategy.StartProcess();
+            public override void Process(float deltaTime) => _processStrategy.Process(deltaTime);
+            public override void StopProcess() => _processStrategy.StopProcess();
 
         }
 }

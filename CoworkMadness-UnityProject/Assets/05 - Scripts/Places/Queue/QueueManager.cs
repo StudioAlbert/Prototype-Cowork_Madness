@@ -10,6 +10,7 @@ namespace Places.Queue
     {
 
         [SerializeField] private List<QueuePoint> _queuePoints = new List<QueuePoint>();
+        [SerializeField] private QueuePoint _doneQueuePoint;
         
         private readonly List<QueueCandidate> _candidates = new List<QueueCandidate>();
 
@@ -69,11 +70,14 @@ namespace Places.Queue
         {
             return _candidates.Count < _queuePoints.Count;
         }
-        public Vector3 FirstFreePosition()
+        public Vector3 EntryPoint()
         {
-            return HasFreePositions() ? _queuePoints.First(qp => !qp.Occupied).transform.position : transform.position;
+            return _queuePoints.Last().transform.position;
         }
-
+        public bool IsQueueDone(QueueCandidate candidate)
+        {
+            return candidate.QueuePoint == _doneQueuePoint;
+        }
     }
 
 

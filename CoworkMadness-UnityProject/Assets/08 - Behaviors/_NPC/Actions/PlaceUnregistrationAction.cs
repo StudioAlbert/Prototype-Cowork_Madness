@@ -18,11 +18,12 @@ public partial class PlaceUnregistrationAction : Action
 
     protected override Status OnStart()
     {
+        // If can not UNregister, pass trough anyway
         if (!Place.Value.UnregisterUser(Self.Value))
         {
-            return Status.Failure;
+            Debug.LogWarning($"Place {Place.Value.name} : Can not unregister {Self.Value.name}");
         }
-        return Status.Running;
+        return Status.Success;
     }
 
     protected override Status OnUpdate()
