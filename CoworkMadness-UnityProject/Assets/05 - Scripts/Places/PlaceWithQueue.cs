@@ -19,6 +19,7 @@ namespace Places
         [Header("Processing")]
         [SerializeField] private float _processingTimeAvg = 7.5f;
         [SerializeField] private float _processingTimeVar = 4.5f;
+        [SerializeField] private bool _canAbort = false;
         
         private QueuePoint _point;
         private IProcessStrategy _processStrategy;
@@ -59,6 +60,7 @@ namespace Places
         public override void StartProcess() => _processStrategy.StartProcess();
         public override void Process(float deltaTime) => _processStrategy.Process(deltaTime);
         public override void StopProcess() => _processStrategy.StopProcess();
+        public override bool CanAbort => _canAbort;
         
         private void Start()
         {

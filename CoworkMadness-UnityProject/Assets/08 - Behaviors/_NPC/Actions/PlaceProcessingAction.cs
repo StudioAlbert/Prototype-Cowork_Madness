@@ -33,16 +33,28 @@ public partial class PlaceProcessingAction : Action
 
         if (!_manager || !_candidate || !_navMeshAgent || !_navMeshAgent.isOnNavMesh) return Status.Failure;
 
+        _candidate.StartWait();
+        
         return Status.Running;
     }
 
     protected override Status OnUpdate()
     {
+        // Can abort
+        if (Place.Value.CanAbort && !_manager.IsQueueDone(_candidate))
+        {
+            if(!_candidate.CanWait(Time.deltaTime))
+            {
+                Debug.Log($"{Self.Value.name} : Can not wait anymore at {Place.Value.name} !");
+                return Status.Failure;
+            }
+        }
+        
         // Go from the nearest queue point
         Vector3 queuePointPosition = _candidate.QueuePoint.transform.position;
         _navMeshAgent.SetDestination(queuePointPosition);
 
-        if (Vector2.Distance(Self.Value.transform.position, queuePointPosition) <= PointDistance)
+        if (Vector3.Distance(Self.Value.transform.position, queuePointPosition) <= PointDistance)
         {
             // Make the queue until queue is over (Last point)
             if (_manager.IsQueueDone(_candidate))

@@ -11,8 +11,8 @@ namespace Places
 
             private void OnDrawGizmos()
             {
-                Gizmos.color = Occupied ? Color.yellow : Color.green;
-                Gizmos.DrawWireSphere(transform.position, 0.5f);
+                Gizmos.color = Occupied ? new Color(1f,0.5f, 0): Color.green;
+                Gizmos.DrawSphere(transform.position + new Vector3(0,3,0), 0.5f);
             }
         }
     }

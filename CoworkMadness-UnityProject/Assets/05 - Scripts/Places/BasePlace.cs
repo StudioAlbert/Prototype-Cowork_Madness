@@ -21,11 +21,14 @@ namespace Places
         
         // Process
         protected abstract IProcessStrategy ProcessStrategy { get; set; }
+        // TODO : Encapsulate into strategy
         public abstract Status ProcessStatus { get; }
         public abstract void StartProcess();
         public abstract void Process(float deltaTime);
         public abstract void StopProcess();
         public abstract float ProcessProgress { get; }
+        // Can abort ?
+        public abstract bool CanAbort { get;}
         
         private void Awake() => PlaceProvider = GetComponentInParent<PlaceProvider>();
 

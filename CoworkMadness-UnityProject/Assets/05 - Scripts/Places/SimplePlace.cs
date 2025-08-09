@@ -11,6 +11,10 @@ namespace Places
             [SerializeField] private GameObject _user;
             [SerializeField] private PlaceProvider _placeProvider;
             [SerializeField] private float _neighbourhood = 5f;
+            [Header("Processing")]
+            [SerializeField] private float _processingTimeAvg = 7.5f;
+            [SerializeField] private float _processingTimeVar = 4.5f;
+            [SerializeField] private bool _canAbort;
 
             public GameObject User => _user;
             private IProcessStrategy _processStrategy;
@@ -45,6 +49,12 @@ namespace Places
             public override void StartProcess() => _processStrategy.StartProcess();
             public override void Process(float deltaTime) => _processStrategy.Process(deltaTime);
             public override void StopProcess() => _processStrategy.StopProcess();
+            public override bool CanAbort => _canAbort;
+            
+            private void Start()
+            {
+                ProcessStrategy = new TimeBasedStrategy(_processingTimeAvg, _processingTimeVar);
+            }
 
         }
 }
