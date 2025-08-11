@@ -72,7 +72,10 @@ namespace Places.Queue
         }
         public Vector3 EntryPoint()
         {
-            return _queuePoints.Last().transform.position;
+            if (_queuePoints.Count <= 0)
+                return Vector3.zero;
+            else
+                return _queuePoints.Last().transform.position;
         }
         public bool IsQueueDone(QueueCandidate candidate)
         {

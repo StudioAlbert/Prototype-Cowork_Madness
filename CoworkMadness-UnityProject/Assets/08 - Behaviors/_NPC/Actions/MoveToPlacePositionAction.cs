@@ -31,7 +31,7 @@ public partial class MoveToPlacePositionAction : Unity.Behavior.Action
         _animator = Self.Value.GetComponent<Animator>();
 
         if (!_navMeshAgent || !_navMeshAgent.isOnNavMesh) return Status.Failure;
-        if (!Place.Value) return Status.Failure;
+        if (!Place.Value && Place.Value.isActiveAndEnabled) return Status.Failure;
 
         return Status.Running;
 

@@ -85,17 +85,26 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1652544263031632, guid: 667648fed638e664891f2956d621847f, type: 3}
-      insertIndex: -1
+      insertIndex: 4
       addedObject: {fileID: 8747985033423662044}
     - targetCorrespondingSourceObject: {fileID: 1652544263031632, guid: 667648fed638e664891f2956d621847f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2649499728135872248}
     - targetCorrespondingSourceObject: {fileID: 1652544263031632, guid: 667648fed638e664891f2956d621847f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 644790217644078097}
+      addedObject: {fileID: 5459717239393579768}
     - targetCorrespondingSourceObject: {fileID: 1652544263031632, guid: 667648fed638e664891f2956d621847f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1075847088000606729}
+      addedObject: {fileID: 3590194398192677728}
+    - targetCorrespondingSourceObject: {fileID: 1652544263031632, guid: 667648fed638e664891f2956d621847f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9189996547959449232}
+    - targetCorrespondingSourceObject: {fileID: 1652544263031632, guid: 667648fed638e664891f2956d621847f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5130842701716753152}
+    - targetCorrespondingSourceObject: {fileID: 1652544263031632, guid: 667648fed638e664891f2956d621847f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 644790217644078097}
     - targetCorrespondingSourceObject: {fileID: 3867002027278046317, guid: 667648fed638e664891f2956d621847f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8549926568345864238}
@@ -223,10 +232,94 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 581d1cfb8b14a93418564ab367b0f557, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  desk: {fileID: 0}
-  coffeeMachine: {fileID: 0}
-  terrace: {fileID: 0}
-  talkPerson: {fileID: 0}
+  _currentGoal:
+    _status: 0
+    _name: 
+    _priority: 0
+  _goals: []
+  _currentAction:
+    _status: 0
+    _name: 
+    _cost: 0
+    _progress: 0
+  _actions: []
+  _desk: {fileID: 0}
+  _coffeeMachineA: {fileID: 0}
+  _coffeeMachineB: {fileID: 0}
+  _terrace: {fileID: 0}
+  _talkPerson: {fileID: 0}
+--- !u!114 &5459717239393579768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7547152530467986207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0038c16c34866b4f9e25c9c0dc0f7e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Graph: {fileID: 5555642797922274440, guid: 7bef9eb0bf282824f8d75ea7fbd0c0be, type: 2}
+  m_BlackboardVariableOverridesList:
+  - rid: 5256532265355706532
+  m_IsInitialised: 0
+  m_IsStarted: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 5256532265355706532
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1
+          m_Value1: 0
+        Name: Self
+        m_Value: {fileID: 7547152530467986207}
+--- !u!114 &3590194398192677728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7547152530467986207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9df151969c244e349a7f08ac3b638e09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  QueuePoint: {fileID: 0}
+  _abortTimeAvg: 5
+  _abortTimeVar: 1
+--- !u!114 &9189996547959449232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7547152530467986207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2381c3227f9d2064fb1e073cdc9314c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moraleScore: 0
+--- !u!114 &5130842701716753152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7547152530467986207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46b2616eb74a4a5bbc4a32c6b2955cd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _workOverTime: 5
+  _breakOverTime: 2
+  _socialOverTime: 3
+  _moods: []
 --- !u!114 &644790217644078097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,21 +334,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coffeeCup: {fileID: 8549926568345864238}
   briefcase: {fileID: 8416143257592256115}
---- !u!114 &1075847088000606729
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7547152530467986207}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10f67c2defc5e6e4f9be3330f87454de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  workOverTime: 0
-  breakOverTime: 2
-  socialOverTime: 1
 --- !u!1 &7838812369478172056 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 319772714394267095, guid: 667648fed638e664891f2956d621847f, type: 3}
