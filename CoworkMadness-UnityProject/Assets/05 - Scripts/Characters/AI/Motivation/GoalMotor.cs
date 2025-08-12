@@ -11,7 +11,7 @@ namespace AI_Motivation
     public class GoalMotor : MonoBehaviour
     {
 
-        public GoalType BestGoalType { get; set; }
+        public GoalType BestGoalType;
 
         [Header("Erosion rates")]
         [SerializeField] private float _workOverTime;

@@ -10,10 +10,6 @@ namespace Places
     public class PlaceProvider : MonoBehaviour
     {
 
-        // TODO Make a place provider :
-        // Check type of the place according to the goal : Work, Break, Social
-        // Is the place available ? (unoccupied, broken , empty, etc......)
-
         [SerializeField] private List<BasePlace> _allPlaces = new List<BasePlace>();
 
         public void RegisterPlace(BasePlace place)
@@ -34,10 +30,12 @@ namespace Places
                 availablePlaces = _allPlaces.FindAll(p => p.Type == type);
             }
 
-            return availablePlaces
-                .OrderBy(p => Vector3.Distance(p.Position, positionFrom))
-                .FirstOrDefault();
-
+            
+            // Prend au hasard parmi ceux de qualité maximale
+            var maxQuality = availablePlaces.Max(p => p.Quality);
+            var top = availablePlaces.Where(p => p.Quality == maxQuality).ToList();
+            return top[Random.Range(0, top.Count)];
+            
         }
     }
 }

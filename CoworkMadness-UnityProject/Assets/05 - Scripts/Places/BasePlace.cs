@@ -35,6 +35,9 @@ namespace Places
         private void OnEnable() => PlaceProvider?.RegisterPlace(this);
         private void OnDisable() => PlaceProvider?.UnregisterPlace(this);
         
+        // Attributes
+        public abstract Attributes.Quality Quality { get;}
+        
         
 
 
