@@ -42,8 +42,6 @@ public partial class MoveToPlacePositionAction : Unity.Behavior.Action
         _navMeshAgent.SetDestination(Place.Value.Position);
         if (Vector3.Distance(Self.Value.transform.position, Place.Value.Position) < (0.5f * Place.Value.Neighbourhood))
         {
-            Debug.Log($"{Self.Value.name} : Arrived at {Place.Value.name}");
-            Debug.Log($"{Self.Value.name} : Arrived positions = {Self.Value.transform.position} , {Place.Value.Position}");
             return Status.Success;
         }
         return Status.Running;

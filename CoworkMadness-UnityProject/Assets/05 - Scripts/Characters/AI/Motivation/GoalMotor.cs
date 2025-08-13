@@ -11,16 +11,16 @@ namespace AI_Motivation
     public class GoalMotor : MonoBehaviour
     {
 
-        public GoalType BestGoalType;
+        // public GoalType BestGoalType;
 
         [Header("Erosion rates")]
         [SerializeField] private float _workOverTime;
         [SerializeField] private float _breakOverTime;
         [SerializeField] private float _socialOverTime;
 
-        [SerializeField] private List<Goal> _moods = new List<Goal>();
-
-
+        private readonly List<Goal> _moods = new List<Goal>();
+        public List<Goal> Moods => _moods;
+        
         void Awake()
         {
             _moods.Add(new Goal(GoalType.Idle, 1));
@@ -32,14 +32,14 @@ namespace AI_Motivation
         void Update()
         {
             UpdateGoals(Time.deltaTime);
+        }
+        public GoalType BestGoalType()
+        {
             if (_moods.Count > 0)
             {
-                BestGoalType = _moods.OrderByDescending(g => g.Priority).First().Type;
+                return _moods.OrderByDescending(g => g.Priority).First().Type;
             }
-            else
-            {
-                BestGoalType = GoalType.Idle;
-            }
+            return GoalType.Idle;
         }
 
         // private void OnAgentGoalDone(float goal)

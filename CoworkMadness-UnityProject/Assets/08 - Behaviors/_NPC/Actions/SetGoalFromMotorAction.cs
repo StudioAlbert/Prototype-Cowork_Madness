@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Unity.Behavior;
 using UnityEngine;
 using Action = Unity.Behavior.Action;
@@ -17,15 +18,19 @@ public partial class SetGoalFromMotorAction : Action
     [SerializeReference] public BlackboardVariable<GameObject> Self;
     [SerializeReference] public BlackboardVariable<GoalType> UpdatedGoal;
 
-    private GoalMotor _motor;
+    private GoalMotor _goalMotor;
     
     protected override Status OnStart()
     {
-        _motor = Self.Value.GetComponent<GoalMotor>();
-        UpdatedGoal.Value = _motor ? _motor.BestGoalType : GoalType.Idle;
+        _goalMotor = Self.Value.GetComponent<GoalMotor>();
+        UpdatedGoal.Value = _goalMotor ? _goalMotor.BestGoalType() : GoalType.Idle;
         
-        Debug.Log($"Get Goal : {UpdatedGoal.Value} !");
-
+        // string dbgMoods = "";
+        // foreach (var m in _goalMotor.Moods.OrderByDescending(m => m.Priority))
+        // {
+        //     dbgMoods += $"{m.Type} : {m.Priority}\n";
+        // }
+        // Debug.Log($"Get Goal : {UpdatedGoal.Value}\nMoods : \n{dbgMoods}");
         return Status.Running;
     }
 

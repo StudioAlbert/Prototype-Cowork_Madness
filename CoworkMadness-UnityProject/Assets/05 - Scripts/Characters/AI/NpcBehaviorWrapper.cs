@@ -21,7 +21,7 @@ public class NpcBehaviorWrapper : MonoBehaviour
     {
         if(_goalType != null)
         {
-            _goalType.ObjectValue = _motor.BestGoalType;
+            _goalType.ObjectValue = _motor.BestGoalType();
         }
     }
 }
