@@ -24,11 +24,11 @@ public class GoalDrawer : PropertyDrawer
 
 
         // Create drawer UI using C#.
-       FloatField Priority = container.Q<FloatField>("Priority");
-        Priority?.BindProperty(goalProperty.FindPropertyRelative("Priority"));
-
-        EnumField status = container.Q<EnumField>("Type");
-        status?.BindProperty(goalProperty.FindPropertyRelative("Type"));
+       // FloatField Priority = container.Q<FloatField>("Priority");
+       //  Priority?.BindProperty(goalProperty.FindPropertyRelative("Priority"));
+       //
+       //  EnumField status = container.Q<EnumField>("Type");
+       //  status?.BindProperty(goalProperty.FindPropertyRelative("Type"));
 
         // var popup = new UnityEngine.UIElements.PopupWindow();
         // popup.text = "Goal";

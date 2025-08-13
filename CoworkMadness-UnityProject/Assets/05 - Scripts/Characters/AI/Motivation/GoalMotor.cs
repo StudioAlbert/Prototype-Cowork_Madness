@@ -11,33 +11,36 @@ namespace AI_Motivation
     public class GoalMotor : MonoBehaviour
     {
 
-        // public GoalType BestGoalType;
+        [HideInInspector]
+        public GoalType BestGoalType = GoalType.Idle;
 
         [Header("Erosion rates")]
         [SerializeField] private float _workOverTime;
         [SerializeField] private float _breakOverTime;
         [SerializeField] private float _socialOverTime;
 
-        private readonly List<Goal> _moods = new List<Goal>();
-        public List<Goal> Moods => _moods;
+        [HideInInspector]
+        public List<Goal> Moods = new List<Goal>();
         
         void Awake()
         {
-            _moods.Add(new Goal(GoalType.Idle, 1));
-            _moods.Add(new Goal(GoalType.Work, 1));
-            _moods.Add(new Goal(GoalType.Break, 1));
-            _moods.Add(new Goal(GoalType.Social, 1));
+            Moods.Add(new Goal(GoalType.Idle, 1));
+            Moods.Add(new Goal(GoalType.Work, 1));
+            Moods.Add(new Goal(GoalType.Break, 1));
+            Moods.Add(new Goal(GoalType.Social, 1));
         }
 
         void Update()
         {
             UpdateGoals(Time.deltaTime);
         }
-        public GoalType BestGoalType()
+        
+        public GoalType GetBestGoalType()
         {
-            if (_moods.Count > 0)
+            if (Moods.Count > 0)
             {
-                return _moods.OrderByDescending(g => g.Priority).First().Type;
+                BestGoalType = Moods.OrderByDescending(g => g.Priority).First().Type;
+                return BestGoalType;
             }
             return GoalType.Idle;
         }
@@ -49,7 +52,7 @@ namespace AI_Motivation
 
         void UpdateGoals(float deltaTime)
         {
-            foreach (Goal mood in _moods)
+            foreach (Goal mood in Moods)
             {
                 UpdateOneGoal(mood, deltaTime);
             }
@@ -79,7 +82,7 @@ namespace AI_Motivation
         }
         public void ResetPriority(GoalType type, float newPriority)
         {
-            var goals = _moods.Where(g => g.Type == type);
+            var goals = Moods.Where(g => g.Type == type);
             foreach (Goal goal in goals)
             {
                 goal.Priority = newPriority;

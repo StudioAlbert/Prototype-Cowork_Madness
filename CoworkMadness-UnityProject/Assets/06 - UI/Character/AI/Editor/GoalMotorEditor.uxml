@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <Style src="project://database/Assets/06%20-%20UI/EditorStyle.uss?fileID=7433441132597879392&amp;guid=a213fa62b84a3e54e8c5c2ef18e2376b&amp;type=3#EditorStyle" />
+    <ui:VisualElement class="editor-panel">
+        <uie:PropertyField data-source-type="AI_Motivation.GoalMotor, Assembly-CSharp" name="BestGoal" label="Best Goal" binding-path="BestGoalType" style="flex-grow: 1;" />
+    </ui:VisualElement>
+    <ui:VisualElement class="editor-panel" style="flex-grow: 1; border-left-color: rgb(194, 194, 194); border-right-color: rgb(194, 194, 194); border-top-color: rgb(194, 194, 194); border-bottom-color: rgb(194, 194, 194); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px;">
+        <ui:Label text="Moods" style="color: rgb(194, 194, 194);" />
+        <ui:ListView data-source-type="AI_Motivation.GoalMotor, Assembly-CSharp" binding-path="Moods" virtualization-method="DynamicHeight" />
+    </ui:VisualElement>
+    <ui:Foldout text="Default" name="DefaultInspector" style="margin-top: 10px;" />
+</ui:UXML>

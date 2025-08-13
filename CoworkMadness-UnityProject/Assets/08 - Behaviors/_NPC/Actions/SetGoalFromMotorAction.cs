@@ -23,7 +23,7 @@ public partial class SetGoalFromMotorAction : Action
     protected override Status OnStart()
     {
         _goalMotor = Self.Value.GetComponent<GoalMotor>();
-        UpdatedGoal.Value = _goalMotor ? _goalMotor.BestGoalType() : GoalType.Idle;
+        UpdatedGoal.Value = _goalMotor ? _goalMotor.GetBestGoalType() : GoalType.Idle;
         
         // string dbgMoods = "";
         // foreach (var m in _goalMotor.Moods.OrderByDescending(m => m.Priority))
