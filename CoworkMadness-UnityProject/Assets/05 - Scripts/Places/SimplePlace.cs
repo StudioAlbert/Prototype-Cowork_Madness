@@ -16,6 +16,7 @@ namespace Places
             [SerializeField] private float _processingTimeAvg = 7.5f;
             [SerializeField] private float _processingTimeVar = 4.5f;
             [SerializeField] private bool _canAbort;
+            [SerializeField] private Transform _entryPoint;
             
             [Header("Attributes")]
             [SerializeField] private Attributes.Quality _quality = Attributes.Quality.Bronze;
@@ -30,7 +31,6 @@ namespace Places
             }
             public override bool Available =>  _user == null;
             public override GoalType Type => _type;
-            public override Vector3 Position => transform.position;
             public override float Neighbourhood => _neighbourhood;
 
             public override bool RegisterUser(GameObject user)
@@ -54,6 +54,7 @@ namespace Places
             public override void Process(float deltaTime) => _processStrategy.Process(deltaTime);
             public override void StopProcess() => _processStrategy.StopProcess();
             public override bool CanAbort => _canAbort;
+            public override Transform EntryPoint => _entryPoint;
             
             public override Attributes.Quality Quality => _quality;
             

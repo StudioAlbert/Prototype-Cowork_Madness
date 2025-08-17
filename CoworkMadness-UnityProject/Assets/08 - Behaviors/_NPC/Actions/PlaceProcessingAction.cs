@@ -21,14 +21,14 @@ public partial class PlaceProcessingAction : Action
     [SerializeReference] public BlackboardVariable<float> PointDistance;
 
     private QueueCandidate _candidate;
-    private QueueManager _manager;
+    private BaseQueueManager _manager;
     private NavMeshAgent _navMeshAgent;
 
     protected override Status OnStart()
     {
         // Get components and fail if unvalids
         _candidate = Self.Value.GetComponent<QueueCandidate>();
-        _manager = Place.Value.GetComponent<QueueManager>();
+        _manager = Place.Value.GetComponent<BaseQueueManager>();
         _navMeshAgent = Self.Value.GetComponent<NavMeshAgent>();
 
         if (!_manager || !_candidate || !_navMeshAgent || !_navMeshAgent.isOnNavMesh) return Status.Failure;
@@ -67,7 +67,7 @@ public partial class PlaceProcessingAction : Action
                 else
                 {
                     Place.Value.Process(Time.deltaTime);
-                    // Debug.Log($"{Self.Value.name} : Process status [{Place.Value.ProcessStatus}], progress [{Place.Value.ProcessProgress:P0}]");
+                    Debug.Log($"{Self.Value.name} : Process status [{Place.Value.ProcessStatus}], progress [{Place.Value.ProcessProgress:P0}]");
 
                     if (Place.Value.ProcessStatus == Places.Process.Status.Failed)
                         return Status.Failure;

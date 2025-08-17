@@ -687,7 +687,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _placeProvider: {fileID: 0}
   _type: 0
-  _queueManager: {fileID: 347094243}
+  _queueManager: {fileID: 0}
   _neighbourhood: 2
   _processingTimeAvg: 3
   _processingTimeVar: 0.5
@@ -1162,7 +1162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _placeProvider: {fileID: 0}
   _type: 2
-  _queueManager: {fileID: 977353446}
+  _queueManager: {fileID: 0}
   _neighbourhood: 5
   _processingTimeAvg: 5
   _processingTimeVar: 2
@@ -1639,7 +1639,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _placeProvider: {fileID: 0}
   _type: 1
-  _queueManager: {fileID: 1168071598}
+  _queueManager: {fileID: 0}
   _neighbourhood: 2
   _processingTimeAvg: 3
   _processingTimeVar: 0.5
@@ -1704,6 +1704,7 @@ GameObject:
   - component: {fileID: 1440257583}
   - component: {fileID: 1440257587}
   - component: {fileID: 1440257586}
+  - component: {fileID: 1440257588}
   m_Layer: 0
   m_Name: CoffeeMachine.01
   m_TagString: Untagged
@@ -1834,12 +1835,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _placeProvider: {fileID: 0}
   _type: 2
-  _queueManager: {fileID: 1440257586}
+  _queueManager: {fileID: 0}
   _neighbourhood: 5
   _processingTimeAvg: 5
   _processingTimeVar: 2
   _canAbort: 1
   _quality: 0
+--- !u!114 &1440257588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440257580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0266cadc09cb48bc845563e474a88f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _queuePoints:
+  - {fileID: 1045164344}
+  - {fileID: 1697177470}
+  _doneQueuePoints:
+  - {fileID: 605821962}
 --- !u!1 &1455285964
 GameObject:
   m_ObjectHideFlags: 0
@@ -2577,7 +2595,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _placeProvider: {fileID: 0}
   _type: 2
-  _queueManager: {fileID: 2083992055}
+  _queueManager: {fileID: 0}
   _neighbourhood: 5
   _processingTimeAvg: 8
   _processingTimeVar: 6

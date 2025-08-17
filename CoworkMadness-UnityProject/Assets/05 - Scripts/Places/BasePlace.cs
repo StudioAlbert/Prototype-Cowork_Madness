@@ -12,7 +12,6 @@ namespace Places
         
         public abstract bool Available { get; }
         public abstract GoalType Type { get; }
-        public abstract Vector3 Position { get; }
         public abstract float Neighbourhood { get; }
 
         // Registration 
@@ -29,6 +28,7 @@ namespace Places
         public abstract float ProcessProgress { get; }
         // Can abort ?
         public abstract bool CanAbort { get;}
+        public abstract Transform EntryPoint { get; }
         
         private void Awake() => PlaceProvider = GetComponentInParent<PlaceProvider>();
 

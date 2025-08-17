@@ -9,8 +9,8 @@ namespace Places.Queue
         [SerializeField] private float _abortTimeAvg = 5;
         [SerializeField] private float _abortTimeVar = 1;
 
-        private float _elapsedTime;
-        private float _abortTime;
+        [SerializeField] private float _elapsedTime;
+        [SerializeField] private float _abortTime;
         
         public void StartWait()
         {
