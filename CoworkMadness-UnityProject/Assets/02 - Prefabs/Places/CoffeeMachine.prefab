@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4544475643649669287}
   - component: {fileID: 4526453648251931133}
   m_Layer: 0
-  m_Name: QueuePoint.01
+  m_Name: ActionPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -180,6 +180,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Occupied: 0
+--- !u!1 &5462457130267643771
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 863082067104536135}
+  m_Layer: 0
+  m_Name: EntryPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &863082067104536135
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5462457130267643771}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7783613637316667522}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5922234483972896771
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,6 +324,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8551408602525131643, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
+      propertyPath: _entryPoint
+      value: 
+      objectReference: {fileID: 863082067104536135}
+    - target: {fileID: 8551408602525131643, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
+      propertyPath: _queueManager
+      value: 
+      objectReference: {fileID: 675106350320908358}
     - target: {fileID: 8917270789342601085, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
       propertyPath: _doneQueuePoint
       value: 
@@ -321,7 +360,8 @@ PrefabInstance:
       propertyPath: '_queuePoints.Array.data[4]'
       value: 
       objectReference: {fileID: 1371876478756339639}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8917270789342601085, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7366858319021847422, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
@@ -339,8 +379,37 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7366858319021847422, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8632784589794753360}
-    m_AddedComponents: []
+    - targetCorrespondingSourceObject: {fileID: 7366858319021847422, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 863082067104536135}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 854467142843081480, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 675106350320908358}
   m_SourcePrefab: {fileID: 100100000, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
+--- !u!1 &135961862271367412 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 854467142843081480, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
+  m_PrefabInstance: {fileID: 736520788475698172}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &675106350320908358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135961862271367412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0266cadc09cb48bc845563e474a88f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _queuePoints:
+  - {fileID: 6497684381010986786}
+  - {fileID: 4862469713568752817}
+  - {fileID: 7672323286243282702}
+  - {fileID: 1371876478756339639}
+  _actionPoint: {fileID: 4526453648251931133}
 --- !u!4 &7783613637316667522 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7366858319021847422, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}

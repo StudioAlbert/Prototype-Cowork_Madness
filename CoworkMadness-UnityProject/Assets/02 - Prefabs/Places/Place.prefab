@@ -46,12 +46,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _placeProvider: {fileID: 0}
-  _type: 1
-  _queueManager: {fileID: 8917270789342601085}
-  _neighbourhood: 3
+  _type: 2
+  _queueManager: {fileID: 0}
+  _neighbourhood: 1.5
   _processingTimeAvg: 7.5
   _processingTimeVar: 4.5
   _canAbort: 0
+  _entryPoint: {fileID: 0}
+  _quality: 0
 --- !u!114 &8917270789342601085
 MonoBehaviour:
   m_ObjectHideFlags: 0

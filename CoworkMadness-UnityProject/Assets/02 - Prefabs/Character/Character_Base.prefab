@@ -1234,8 +1234,8 @@ GameObject:
   - component: {fileID: 95579000025458510}
   - component: {fileID: 4865036202285367438}
   - component: {fileID: 2286570228028743865}
-  - component: {fileID: 2833825991826738823}
   - component: {fileID: 261113023060706667}
+  - component: {fileID: 2833825991826738823}
   m_Layer: 0
   m_Name: Character_Base
   m_TagString: Untagged
@@ -1333,6 +1333,18 @@ CapsuleCollider:
   m_Height: 1.8742654
   m_Direction: 1
   m_Center: {x: 0, y: 0.87167394, z: 0}
+--- !u!114 &261113023060706667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652544263031632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c31ad57908d4c0492f10a210be0fcc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2833825991826738823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1351,18 +1363,6 @@ MonoBehaviour:
   _isChating: 0
   _minTempo: 0.4
   _maxTempo: 0.7
---- !u!114 &261113023060706667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1652544263031632}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c31ad57908d4c0492f10a210be0fcc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1661704491848366
 GameObject:
   m_ObjectHideFlags: 0
