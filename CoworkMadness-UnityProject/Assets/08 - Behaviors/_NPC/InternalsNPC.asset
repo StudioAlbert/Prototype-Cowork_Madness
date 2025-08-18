@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c02bb70996b49eba31d0c206e28da24, type: 3}
   m_Name: InternalsNPC
   m_EditorClassIdentifier: 
-  VersionTimestamp: 638889109466876798
+  VersionTimestamp: 638911577200290897
   AssetID:
     m_Value0: 3813163619077130607
     m_Value1: 8428352184965924730
@@ -20,6 +20,7 @@ MonoBehaviour:
     m_Variables:
     - rid: 5114172168393457838
     - rid: 5114172169798811809
+    - rid: 5256532423124451903
   m_SharedBlackboardVariableGuids: []
   references:
     version: 2
@@ -38,7 +39,15 @@ MonoBehaviour:
         GUID:
           m_Value0: 10950869742791043452
           m_Value1: 11819309135312308087
-        Name: BestPlaceToBreak
+        Name: ToBreak
+        m_Value: {fileID: 0}
+    - rid: 5256532423124451903
+      type: {class: 'BlackboardVariable`1[[Places.BasePlace, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 10174697341034543784
+          m_Value1: 3730344139884708888
+        Name: ToWork
         m_Value: {fileID: 0}
 --- !u!114 &11400000
 MonoBehaviour:
@@ -58,7 +67,8 @@ MonoBehaviour:
   m_Variables:
   - rid: 5114172168393457837
   - rid: 5114172169798811808
-  m_VersionTimestamp: 638889109466876798
+  - rid: 5256532423124451902
+  m_VersionTimestamp: 638911577200290897
   m_CommandBuffer:
     m_Commands: []
   m_RuntimeBlackboardAsset: {fileID: -3200774731482501763}
@@ -81,7 +91,17 @@ MonoBehaviour:
         ID:
           m_Value0: 10950869742791043452
           m_Value1: 11819309135312308087
-        Name: BestPlaceToBreak
+        Name: ToBreak
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: {fileID: 0}
+    - rid: 5256532423124451902
+      type: {class: 'TypedVariableModel`1[[Places.BasePlace, Assembly-CSharp]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 10174697341034543784
+          m_Value1: 3730344139884708888
+        Name: ToWork
         IsExposed: 1
         m_IsShared: 0
         m_Value: {fileID: 0}

@@ -40,10 +40,14 @@ public partial class MoveToPlacePositionAction : Unity.Behavior.Action
     protected override Status OnUpdate()
     {
         _navMeshAgent.SetDestination(Place.Value.EntryPoint.position);
+        
+        // Place not available anymore
+        if(Place.Value.Available == false) return Status.Failure;
+        
+        // Place Reached
         if (Vector3.Distance(Self.Value.transform.position, Place.Value.EntryPoint.position) < (0.5f * Place.Value.Neighbourhood))
-        {
             return Status.Success;
-        }
+        
         return Status.Running;
 
     }

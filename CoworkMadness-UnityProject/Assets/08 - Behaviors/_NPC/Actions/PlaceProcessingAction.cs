@@ -67,7 +67,7 @@ public partial class PlaceProcessingAction : Action
                 else
                 {
                     Place.Value.Process(Time.deltaTime);
-                    Debug.Log($"{Self.Value.name} : Process status [{Place.Value.ProcessStatus}], progress [{Place.Value.ProcessProgress:P0}]");
+                    Debug.Log($"{Self.Value.name} : Process [{Place.Value.Type}] status [{Place.Value.ProcessStatus}], progress [{Place.Value.ProcessProgress:P0}]");
 
                     if (Place.Value.ProcessStatus == Places.Process.Status.Failed)
                         return Status.Failure;
