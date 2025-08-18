@@ -98,6 +98,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8551408602525131643, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
+      propertyPath: _type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8551408602525131643, guid: 0f89ced1d6a81e04a984e398c6a5415e, type: 3}
       propertyPath: _entryPoint
       value: 
       objectReference: {fileID: 6457728583541601513}

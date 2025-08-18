@@ -1,4 +1,5 @@
 using System;
+using AI_Motivation;
 using UnityEngine;
 
 namespace Places
@@ -12,7 +13,7 @@ namespace Places
             private void OnDrawGizmos()
             {
                 Gizmos.color = Occupied ? new Color(1f,0.5f, 0): Color.green;
-                Gizmos.DrawSphere(transform.position + new Vector3(0,3,0), 0.5f);
+                Gizmos.DrawCube(transform.position + new Vector3(0,3,0), new Vector3(0.25f, 0.25f, 0.25f));
             }
         }
     }

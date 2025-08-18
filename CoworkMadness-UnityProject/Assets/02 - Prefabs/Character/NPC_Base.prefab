@@ -258,8 +258,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BestGoalType: 0
+  _idleOverTime: 0
   _workOverTime: 5
-  _breakOverTime: 2
+  _breakOverTime: 4
   _socialOverTime: 3
   Moods: []
 --- !u!114 &3590194398192677728

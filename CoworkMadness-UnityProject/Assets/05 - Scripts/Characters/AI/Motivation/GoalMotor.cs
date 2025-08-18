@@ -15,19 +15,22 @@ namespace AI_Motivation
         public GoalType BestGoalType = GoalType.Idle;
 
         [Header("Erosion rates")]
+        [SerializeField] private float _idleOverTime;
         [SerializeField] private float _workOverTime;
         [SerializeField] private float _breakOverTime;
         [SerializeField] private float _socialOverTime;
 
         [HideInInspector]
         public List<Goal> Moods = new List<Goal>();
+
         
         void Awake()
         {
-            Moods.Add(new Goal(GoalType.Idle, 1));
+            Moods.Add(new Goal(GoalType.Idle, 0.1f));
             Moods.Add(new Goal(GoalType.Work, 1));
-            Moods.Add(new Goal(GoalType.Break, 1));
-            Moods.Add(new Goal(GoalType.Social, 1));
+            Moods.Add(new Goal(GoalType.Break, 0));
+            Moods.Add(new Goal(GoalType.Social, 0));
+            
         }
 
         void Update()
@@ -60,23 +63,14 @@ namespace AI_Motivation
         private void UpdateOneGoal(Goal goal, float deltaTime)
         {
 
-            switch (goal.Type)
+            goal.Priority += goal.Type switch
             {
-                case GoalType.Work:
-                    goal.Priority += _workOverTime * deltaTime / 100.0f;
-                    break;
-                case GoalType.Break:
-                    goal.Priority += _breakOverTime * deltaTime / 100.0f;
-                    break;
-                case GoalType.Social:
-                    goal.Priority += _socialOverTime * deltaTime / 100.0f;
-                    break;
-                case GoalType.Idle:
-                    // No updates, stay the same
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+                GoalType.Work => _workOverTime * deltaTime / 100.0f,
+                GoalType.Break => _breakOverTime * deltaTime / 100.0f,
+                GoalType.Social => _socialOverTime * deltaTime / 100.0f,
+                GoalType.Idle => _idleOverTime * deltaTime / 100.0f,
+                _ => throw new ArgumentOutOfRangeException()
+            };
 
             //goal.Priority = Mathf.Clamp(goal.Priority, 0, 1);
         }
